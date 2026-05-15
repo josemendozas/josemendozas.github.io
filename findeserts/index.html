@@ -1194,7 +1194,13 @@ async function renderCountry(country, year) {
     const cfg = countryConfig[country];
     const geojson = await loadGeo(country);
     const allYearData = await loadYearData(country);
-    const yearData = allYearData[String(year)] || [];
+    // If requested year not available, use closest available year
+    let yearData = allYearData[String(year)];
+    if (!yearData) {
+        const availYears = Object.keys(allYearData).map(Number).sort();
+        const closest = availYears.reduce((a, b) => Math.abs(b - year) < Math.abs(a - year) ? b : a, availYears[0]);
+        yearData = allYearData[String(closest)] || [];
+    }
 
     const lookup = {};
     yearData.forEach(d => { lookup[String(d.match_id || d.id)] = d; });
@@ -1248,7 +1254,13 @@ async function updateMap() {
 
     let totalDeserts = 0, totalUnits = 0;
     for (const c of countries) {
-        const yd = yearDataCache[c]?.[String(year)] || [];
+        let yd = yearDataCache[c]?.[String(year)];
+        if (!yd && yearDataCache[c]) {
+            const avail = Object.keys(yearDataCache[c]).map(Number).sort();
+            const closest = avail.reduce((a, b) => Math.abs(b - year) < Math.abs(a - year) ? b : a, avail[0]);
+            yd = yearDataCache[c][String(closest)] || [];
+        }
+        yd = yd || [];
         totalDeserts += yd.filter(d => d.desert === 1).length;
         totalUnits += yd.length;
     }
@@ -1324,10 +1336,16 @@ async function loadTrendChart() {
 
     const line = d3.line().x(d => x(d.year)).y(d => y(d.pct_desierto ?? d.pct_desert ?? d.pct)).curve(d3.curveMonotoneX);
     [{data:peru,color:COLORS.peru,label:'Peru'},{data:brasil,color:COLORS.brazil,label:'Brazil'},{data:colombia,color:COLORS.colombia,label:'Colombia'},{data:philippines,color:COLORS.philippines,label:'Philippines'},{data:mozambique,color:COLORS.mozambique,label:'Mozambique'}].forEach(ds => {
-        g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',line);
+        const strokeW = ds.data.length <= 5 ? 3.5 : 2.5;
+        g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',strokeW).attr('d',line);
+        // Start dot for short series
+        if (ds.data.length <= 5) {
+            const first = ds.data[0]; const fval = first.pct_desierto ?? first.pct_desert ?? first.pct;
+            g.append('circle').attr('cx',x(first.year)).attr('cy',y(fval)).attr('r',3).attr('fill',ds.color);
+        }
         // End dot
         const last = ds.data[ds.data.length-1]; const val = last.pct_desierto ?? last.pct_desert ?? last.pct;
-        g.append('circle').attr('cx',x(last.year)).attr('cy',y(val)).attr('r',3.5).attr('fill',ds.color);
+        g.append('circle').attr('cx',x(last.year)).attr('cy',y(val)).attr('r',4).attr('fill',ds.color);
         // Label
         g.append('text').attr('x',x(last.year)+8).attr('y',y(val))
             .text(`${ds.label} ${val}%`)
@@ -1442,11 +1460,18 @@ async function loadOfficesChart() {
 
     [{data:peru,color:COLORS.peru,label:'Peru',key:'oficinas_total'},{data:brasil,color:COLORS.brazil,label:'Brazil',key:'agencias'},{data:colombia,color:COLORS.colombia,label:'Colombia',key:'oficinas_total'},{data:philippines,color:COLORS.philippines,label:'Philippines',key:'total_offices'},{data:mozambique,color:COLORS.mozambique,label:'Mozambique',key:'total_offices'}].forEach(ds => {
         const lineGen = d3.line().x(d=>x(d.year)).y(d=>y(d[ds.key]||0)).curve(d3.curveMonotoneX);
-        g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',lineGen);
+        const strokeW = ds.data.length <= 5 ? 3.5 : 2.5;
+        g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',strokeW).attr('d',lineGen);
+        if (ds.data.length <= 5) {
+            const first = ds.data[0];
+            g.append('circle').attr('cx',x(first.year)).attr('cy',y(first[ds.key]||0)).attr('r',3).attr('fill',ds.color);
+        }
         const last = ds.data[ds.data.length-1];
-        g.append('circle').attr('cx',x(last.year)).attr('cy',y(last[ds.key]||0)).attr('r',3.5).attr('fill',ds.color);
-        g.append('text').attr('x',x(last.year)+8).attr('y',y(last[ds.key]||0))
-            .text(`${ds.label} ${((last[ds.key]||0)/1000).toFixed(1)}K`)
+        const lastVal = last[ds.key]||0;
+        g.append('circle').attr('cx',x(last.year)).attr('cy',y(lastVal)).attr('r',4).attr('fill',ds.color);
+        const labelY = lastVal < 1000 ? y(lastVal) - 15 : y(lastVal);
+        g.append('text').attr('x',x(last.year)+8).attr('y',labelY)
+            .text(`${ds.label} ${lastVal < 1000 ? lastVal : ((lastVal/1000).toFixed(1)+'K')}`)
             .style('fill',ds.color).style('font-size','11px').style('font-weight','600').style('font-family','Inter, system-ui')
             .attr('dominant-baseline','middle');
     });
