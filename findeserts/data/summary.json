@@ -46,5 +46,17 @@
     "peak_year": 2023,
     "peak_offices": 13294,
     "decline_pct": -2.0
+  },
+  {
+    "country": "Mozambique",
+    "year": 2023,
+    "units": 150,
+    "with_office": 100,
+    "deserts": 50,
+    "pct_desert": 33.3,
+    "offices": 390,
+    "peak_year": 2022,
+    "peak_offices": 431,
+    "decline_pct": -9.5
   }
 ]

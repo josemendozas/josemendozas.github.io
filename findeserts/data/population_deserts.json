@@ -446,6 +446,29 @@
       "pop_total_M": 40.97
     }
   ],
+  "mozambique": [
+    {
+      "year": 2021,
+      "pct_units": null,
+      "pct_pop": null,
+      "pop_desert_M": null,
+      "pop_total_M": null
+    },
+    {
+      "year": 2022,
+      "pct_units": null,
+      "pct_pop": null,
+      "pop_desert_M": null,
+      "pop_total_M": null
+    },
+    {
+      "year": 2023,
+      "pct_units": null,
+      "pct_pop": null,
+      "pop_desert_M": null,
+      "pop_total_M": null
+    }
+  ],
   "philippines": [
     {
       "year": 2012,

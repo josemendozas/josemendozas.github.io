@@ -1,0 +1,2273 @@
+{
+  "2021": [
+    {
+      "id": "Matola",
+      "desert": 0,
+      "offices": 42
+    },
+    {
+      "id": "Boane",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Magude",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manhiça",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Marracuene",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Matutuíne",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Namaacha",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moamba",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Xai-Xai",
+      "desert": 0,
+      "offices": 14
+    },
+    {
+      "id": "Bilene",
+      "desert": 0,
+      "offices": 5
+    },
+    {
+      "id": "Chibuto",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chicualacuala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chigubo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chókwè",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Guijá",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mabalane",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manjacaze",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Massangena",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Massingir",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chonguene",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Limpopo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mapai",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maxixe",
+      "desert": 0,
+      "offices": 8
+    },
+    {
+      "id": "Funhaloro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Govuro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Homoine",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Inharrime",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Inhassoro",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Jangamo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mabote",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Massinga",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Morrumbene",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Panda",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Vilankulo",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Zavala",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Beira",
+      "desert": 0,
+      "offices": 38
+    },
+    {
+      "id": "Buzi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Caia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chemba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Cheringoma",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chibabava",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Dondo",
+      "desert": 0,
+      "offices": 5
+    },
+    {
+      "id": "Gorongoza",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Machanga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maringue",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Marromeu",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Muanza",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nhamatanda",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chimoio",
+      "desert": 0,
+      "offices": 17
+    },
+    {
+      "id": "Bárue",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Gondola",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Guro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Machaze",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Macossa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Vanduzi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mossurize",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Sussundenga",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Tambara",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macate",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Angónia",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Cahora-Bassa",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Changara",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chifunde",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chiuta",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Macanga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mágoe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maravia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moatize",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Mutarara",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Tsangano",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Zumbo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Marara",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Dôa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Quelimane",
+      "desert": 0,
+      "offices": 13
+    },
+    {
+      "id": "Alto Molócuè",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chinde",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Gurúè",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Ile",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Inhassunge",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Lugela",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Gilé",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maganja da Costa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Milange",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mocuba",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Mopeia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Morrumbala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namacurra",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namarroi",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nicoadala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Pebane",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Luabo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mulevala",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mocubela",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Derre",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Molumbo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nacala-Porto",
+      "desert": 0,
+      "offices": 16
+    },
+    {
+      "id": "Angoche",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Island of Mozambique (Ilha de Moçambique)",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Lalaua",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Malema",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Meconta (Namialo)",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mecuburi",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Memba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mogincual",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mogovolas",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moma",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Monapo",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mossuril",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Muecate",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Murrupula",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nacala-Velha",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Nacaroa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Erati",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Rapale",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Ribaué",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Larde",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Liúpo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Pemba",
+      "desert": 0,
+      "offices": 17
+    },
+    {
+      "id": "Ancuabe",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Balama",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chiúre",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Ibo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macomia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecufi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Meluco",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mocimboa da Praia",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Montepuez",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Mueda",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Muidumbe",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namuno",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nangade",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Palma",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Metuge",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Quissanga",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Lichinga",
+      "desert": 0,
+      "offices": 10
+    },
+    {
+      "id": "Cuamba",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Lago",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chimbonila",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manjune",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mandimba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Marrupa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maúa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mavago",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecanhelas",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecula",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Metarica",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Muembe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "N´gauma",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nipepe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Sanga",
+      "desert": 0,
+      "offices": 1
+    }
+  ],
+  "2022": [
+    {
+      "id": "Matola city",
+      "desert": 0,
+      "offices": 42
+    },
+    {
+      "id": "Boane",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Magude",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manhiça",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Marracuene",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Matutuíne",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Namaacha",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moamba",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Xai-Xai city",
+      "desert": 0,
+      "offices": 14
+    },
+    {
+      "id": "Bilene-Macia",
+      "desert": 0,
+      "offices": 5
+    },
+    {
+      "id": "Chibuto",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chicualacuala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chigubo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chókwè",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Guijá",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mabalane",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manjacaze",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Massangena",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Massingir",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chonguene",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mapai",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Limpopo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Inhambane city",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Maxixe city",
+      "desert": 0,
+      "offices": 9
+    },
+    {
+      "id": "Funhaloro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Govuro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Homoine",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Inharrime",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Inhassoro",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Jangamo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mabote",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Massinga",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Morrumbene",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Panda",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Vilankulo",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Zavala (Quissico)",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Beira city",
+      "desert": 0,
+      "offices": 38
+    },
+    {
+      "id": "Buzi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Caia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chemba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Cheringoma",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chibabava",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Dondo",
+      "desert": 0,
+      "offices": 5
+    },
+    {
+      "id": "Gorongoza",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Machanga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maringue",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Marromeu",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Muanza",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nhamatanda",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chimoio city",
+      "desert": 0,
+      "offices": 17
+    },
+    {
+      "id": "Bárue",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Gondola",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Guro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Machaze",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Macossa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mossurize",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Sussundenga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Tambara",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macate",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Vanduzi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Tete city",
+      "desert": 0,
+      "offices": 21
+    },
+    {
+      "id": "Angónia",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Cahora-Bassa",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Changara",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chifunde",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chiuta",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Macanga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mágoe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maravia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moatize",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Mutarara",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Tsangano",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Zumbo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Doa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Marara",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Quelimane city",
+      "desert": 0,
+      "offices": 13
+    },
+    {
+      "id": "Alto Molócuè",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chinde",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Gurúè",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Ile",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Inhassunge",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Lugela",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Gilé",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maganja da Costa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Milange",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mocuba",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Mopeia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Morrumbala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namacurra",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namarroi",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nicoadala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Pebane",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Molumbo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mocubela",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mulevala",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Luabo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Derre",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nampula city",
+      "desert": 0,
+      "offices": 33
+    },
+    {
+      "id": "Nacala-Porto city",
+      "desert": 0,
+      "offices": 16
+    },
+    {
+      "id": "Angoche",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Island of Mozambique (Ilha de Moçambique)",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Lalaua",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Malema",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Meconta (Namialo)",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mecuburi",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Memba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mogincual",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mogovolas",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moma",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Monapo",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mossuril",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Muecate",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Murrupula",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nacala-Velha",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Nacaroa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namapa-Erati",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Rapale-Nampula",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Ribaué",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Larde",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Liupo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Pemba city",
+      "desert": 0,
+      "offices": 17
+    },
+    {
+      "id": "Ancuabe",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Balama",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chiúre",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Ibo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macomia",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mecufi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Meluco",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mocimboa da Praia",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Montepuez",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Mueda",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Muidumbe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Namuno",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nangade",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Palma",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Pemba-Metuge",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Quissanga",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Lichinga city",
+      "desert": 0,
+      "offices": 10
+    },
+    {
+      "id": "Cuamba",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Lago",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Manjune",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mandimba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Marrupa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maúa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mavago",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecanhelas",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecula",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Metarica",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Muembe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "N´gauma",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nipepe",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Sanga",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Chimbunhila",
+      "desert": 0,
+      "offices": 1
+    }
+  ],
+  "2023": [
+    {
+      "id": "Matola",
+      "desert": 0,
+      "offices": 53
+    },
+    {
+      "id": "Boane",
+      "desert": 0,
+      "offices": 9
+    },
+    {
+      "id": "Magude",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manhiça",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Marracuene",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Matutuíne",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Namaacha",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moamba",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Xai-Xai",
+      "desert": 0,
+      "offices": 16
+    },
+    {
+      "id": "Bilene",
+      "desert": 0,
+      "offices": 5
+    },
+    {
+      "id": "Chibuto",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Chicualacuala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chigubo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Chókwè",
+      "desert": 0,
+      "offices": 7
+    },
+    {
+      "id": "Guijá",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mabalane",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Manjacaze",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Massangena",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Massingir",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chonguene",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Limpopo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mapai",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maxixe",
+      "desert": 0,
+      "offices": 11
+    },
+    {
+      "id": "Funhaloro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Govuro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Homoine",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Inharrime",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Inhassoro",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Jangamo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mabote",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Massinga",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Morrumbene",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Panda",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Vilankulo",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Zavala",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Beira",
+      "desert": 0,
+      "offices": 41
+    },
+    {
+      "id": "Buzi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Caia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chemba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Cheringoma",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chibabava",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Dondo",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Gorongoza",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Machanga",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maringue",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Marromeu",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Muanza",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nhamatanda",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chimoio",
+      "desert": 0,
+      "offices": 20
+    },
+    {
+      "id": "Bárue",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Gondola",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Guro",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Machaze",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macossa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Vanduzi",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mossurize",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Sussundenga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Tambara",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macate",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Angónia",
+      "desert": 0,
+      "offices": 5
+    },
+    {
+      "id": "Cahora-Bassa",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Changara",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Chifunde",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Chiuta",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Macanga",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mágoe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maravia",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Moatize",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Mutarara",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Tsangano",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Zumbo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Marara",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Dôa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Quelimane",
+      "desert": 0,
+      "offices": 14
+    },
+    {
+      "id": "Alto Molócuè",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chinde",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Gurúè",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Ile",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Inhassunge",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Lugela",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Gilé",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Maganja da Costa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Milange",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mocuba",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Mopeia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Morrumbala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namacurra",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namarroi",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nicoadala",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Pebane",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Luabo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mulevala",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mocubela",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Derre",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Molumbo",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nacala-Porto",
+      "desert": 0,
+      "offices": 17
+    },
+    {
+      "id": "Angoche",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Ilha de Moçambique",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Lalaua",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Malema",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Meconta (Namialo)",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mecuburi",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Memba",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mogincual",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mogovolas",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Moma",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Monapo",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Mossuril",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Muecate",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Murrupula",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Nacala-Velha",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Nacaroa",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Erati",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Rapale",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Ribaué",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Larde",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Liúpo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Pemba",
+      "desert": 0,
+      "offices": 19
+    },
+    {
+      "id": "Ancuabe",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Balama",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chiúre",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Ibo",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Macomia",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecufi",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Meluco",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mocimboa da Praia",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Montepuez",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Mueda",
+      "desert": 0,
+      "offices": 3
+    },
+    {
+      "id": "Muidumbe",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Namuno",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nangade",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Palma",
+      "desert": 0,
+      "offices": 4
+    },
+    {
+      "id": "Metuge",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Quissanga",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Lichinga",
+      "desert": 0,
+      "offices": 10
+    },
+    {
+      "id": "Cuamba",
+      "desert": 0,
+      "offices": 6
+    },
+    {
+      "id": "Lago",
+      "desert": 0,
+      "offices": 2
+    },
+    {
+      "id": "Chimbonila",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Manjune",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mandimba",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Marrupa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Maúa",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mavago",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Mecanhelas",
+      "desert": 0,
+      "offices": 1
+    },
+    {
+      "id": "Mecula",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Metarica",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Muembe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "N´gauma",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Nipepe",
+      "desert": 1,
+      "offices": 0
+    },
+    {
+      "id": "Sanga",
+      "desert": 1,
+      "offices": 0
+    }
+  ]
+}

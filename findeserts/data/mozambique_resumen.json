@@ -1,0 +1,26 @@
+[
+  {
+    "year": 2021,
+    "total_units": 150,
+    "with_office": 123,
+    "deserts": 27,
+    "pct_desert": 18.0,
+    "total_offices": 378
+  },
+  {
+    "year": 2022,
+    "total_units": 153,
+    "with_office": 121,
+    "deserts": 32,
+    "pct_desert": 20.9,
+    "total_offices": 431
+  },
+  {
+    "year": 2023,
+    "total_units": 150,
+    "with_office": 100,
+    "deserts": 50,
+    "pct_desert": 33.3,
+    "total_offices": 390
+  }
+]
