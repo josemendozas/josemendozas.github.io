@@ -1,1 +1,542 @@
-{"peru": [{"year": 2002, "pct_units": 92.0, "pct_pop": 46.8, "pop_desert_M": 15.06, "pop_total_M": 32.16}, {"year": 2003, "pct_units": 92.0, "pct_pop": 46.9, "pop_desert_M": 15.08, "pop_total_M": 32.16}, {"year": 2004, "pct_units": 91.9, "pct_pop": 45.5, "pop_desert_M": 14.63, "pop_total_M": 32.16}, {"year": 2005, "pct_units": 91.6, "pct_pop": 44.7, "pop_desert_M": 14.37, "pop_total_M": 32.16}, {"year": 2006, "pct_units": 90.6, "pct_pop": 42.0, "pop_desert_M": 13.5, "pop_total_M": 32.16}, {"year": 2007, "pct_units": 88.0, "pct_pop": 38.5, "pop_desert_M": 12.39, "pop_total_M": 32.16}, {"year": 2008, "pct_units": 84.4, "pct_pop": 33.7, "pop_desert_M": 10.83, "pop_total_M": 32.16}, {"year": 2009, "pct_units": 83.5, "pct_pop": 32.1, "pop_desert_M": 10.34, "pop_total_M": 32.16}, {"year": 2010, "pct_units": 82.5, "pct_pop": 31.5, "pop_desert_M": 10.13, "pop_total_M": 32.16}, {"year": 2011, "pct_units": 75.2, "pct_pop": 24.4, "pop_desert_M": 7.84, "pop_total_M": 32.16}, {"year": 2012, "pct_units": 74.8, "pct_pop": 23.7, "pop_desert_M": 7.63, "pop_total_M": 32.16}, {"year": 2013, "pct_units": 74.4, "pct_pop": 23.6, "pop_desert_M": 7.57, "pop_total_M": 32.16}, {"year": 2014, "pct_units": 74.3, "pct_pop": 23.5, "pop_desert_M": 7.56, "pop_total_M": 32.16}, {"year": 2015, "pct_units": 74.0, "pct_pop": 23.0, "pop_desert_M": 7.4, "pop_total_M": 32.16}, {"year": 2016, "pct_units": 73.6, "pct_pop": 22.3, "pop_desert_M": 7.16, "pop_total_M": 32.16}, {"year": 2017, "pct_units": 73.6, "pct_pop": 22.6, "pop_desert_M": 7.26, "pop_total_M": 32.16}, {"year": 2018, "pct_units": 73.3, "pct_pop": 22.0, "pop_desert_M": 7.08, "pop_total_M": 32.16}, {"year": 2019, "pct_units": 73.0, "pct_pop": 21.9, "pop_desert_M": 7.03, "pop_total_M": 32.16}, {"year": 2020, "pct_units": 72.9, "pct_pop": 21.8, "pop_desert_M": 7.0, "pop_total_M": 32.16}, {"year": 2021, "pct_units": 72.6, "pct_pop": 21.5, "pop_desert_M": 6.92, "pop_total_M": 32.16}, {"year": 2022, "pct_units": 72.4, "pct_pop": 21.4, "pop_desert_M": 6.88, "pop_total_M": 32.16}, {"year": 2023, "pct_units": 72.4, "pct_pop": 21.3, "pop_desert_M": 6.83, "pop_total_M": 32.16}, {"year": 2024, "pct_units": 72.4, "pct_pop": 21.1, "pop_desert_M": 6.78, "pop_total_M": 32.16}], "brasil": [{"year": 2002, "pct_units": 41.7, "pct_pop": 10.1, "pop_desert_M": 20.48, "pop_total_M": 203.08}, {"year": 2003, "pct_units": 41.8, "pct_pop": 10.0, "pop_desert_M": 20.37, "pop_total_M": 203.08}, {"year": 2004, "pct_units": 38.2, "pct_pop": 8.0, "pop_desert_M": 16.26, "pop_total_M": 203.08}, {"year": 2005, "pct_units": 38.1, "pct_pop": 8.0, "pop_desert_M": 16.2, "pop_total_M": 203.08}, {"year": 2006, "pct_units": 37.9, "pct_pop": 7.9, "pop_desert_M": 16.12, "pop_total_M": 203.08}, {"year": 2007, "pct_units": 38.5, "pct_pop": 8.0, "pop_desert_M": 16.19, "pop_total_M": 203.08}, {"year": 2008, "pct_units": 38.4, "pct_pop": 7.9, "pop_desert_M": 16.03, "pop_total_M": 203.08}, {"year": 2009, "pct_units": 38.1, "pct_pop": 7.8, "pop_desert_M": 15.76, "pop_total_M": 203.08}, {"year": 2010, "pct_units": 37.9, "pct_pop": 7.6, "pop_desert_M": 15.52, "pop_total_M": 203.08}, {"year": 2011, "pct_units": 35.7, "pct_pop": 6.6, "pop_desert_M": 13.45, "pop_total_M": 203.08}, {"year": 2012, "pct_units": 34.5, "pct_pop": 6.2, "pop_desert_M": 12.5, "pop_total_M": 203.08}, {"year": 2013, "pct_units": 34.1, "pct_pop": 6.1, "pop_desert_M": 12.44, "pop_total_M": 203.08}, {"year": 2014, "pct_units": 34.5, "pct_pop": 6.1, "pop_desert_M": 12.46, "pop_total_M": 203.08}, {"year": 2015, "pct_units": 35.7, "pct_pop": 6.5, "pop_desert_M": 13.15, "pop_total_M": 203.08}, {"year": 2016, "pct_units": 36.0, "pct_pop": 6.5, "pop_desert_M": 13.15, "pop_total_M": 203.08}, {"year": 2017, "pct_units": 39.2, "pct_pop": 7.1, "pop_desert_M": 14.4, "pop_total_M": 203.08}, {"year": 2018, "pct_units": 39.9, "pct_pop": 7.4, "pop_desert_M": 14.93, "pop_total_M": 203.08}, {"year": 2019, "pct_units": 41.9, "pct_pop": 8.0, "pop_desert_M": 16.31, "pop_total_M": 203.08}, {"year": 2020, "pct_units": 42.1, "pct_pop": 8.1, "pop_desert_M": 16.54, "pop_total_M": 203.08}, {"year": 2021, "pct_units": 43.5, "pct_pop": 8.6, "pop_desert_M": 17.43, "pop_total_M": 203.08}, {"year": 2022, "pct_units": 43.8, "pct_pop": 8.6, "pop_desert_M": 17.56, "pop_total_M": 203.08}, {"year": 2023, "pct_units": 44.5, "pct_pop": 8.9, "pop_desert_M": 17.98, "pop_total_M": 203.08}, {"year": 2024, "pct_units": 46.1, "pct_pop": 9.2, "pop_desert_M": 18.78, "pop_total_M": 203.08}], "colombia": [{"year": 2008, "pct_units": 25.7, "pct_pop": 9.0, "pop_desert_M": 3.68, "pop_total_M": 40.97}, {"year": 2009, "pct_units": 25.3, "pct_pop": 8.7, "pop_desert_M": 3.56, "pop_total_M": 40.97}, {"year": 2010, "pct_units": 24.9, "pct_pop": 8.1, "pop_desert_M": 3.32, "pop_total_M": 40.97}, {"year": 2011, "pct_units": 24.5, "pct_pop": 7.7, "pop_desert_M": 3.14, "pop_total_M": 40.97}, {"year": 2012, "pct_units": 24.4, "pct_pop": 7.5, "pop_desert_M": 3.08, "pop_total_M": 40.97}, {"year": 2013, "pct_units": 24.3, "pct_pop": 7.4, "pop_desert_M": 3.05, "pop_total_M": 40.97}, {"year": 2014, "pct_units": 24.1, "pct_pop": 7.4, "pop_desert_M": 3.01, "pop_total_M": 40.97}, {"year": 2015, "pct_units": 24.6, "pct_pop": 7.7, "pop_desert_M": 3.16, "pop_total_M": 40.97}, {"year": 2016, "pct_units": 24.4, "pct_pop": 7.7, "pop_desert_M": 3.15, "pop_total_M": 40.97}, {"year": 2017, "pct_units": 24.5, "pct_pop": 7.1, "pop_desert_M": 2.91, "pop_total_M": 40.97}, {"year": 2018, "pct_units": 24.0, "pct_pop": 6.9, "pop_desert_M": 2.84, "pop_total_M": 40.97}, {"year": 2019, "pct_units": 24.1, "pct_pop": 7.4, "pop_desert_M": 3.04, "pop_total_M": 40.97}, {"year": 2020, "pct_units": 24.1, "pct_pop": 7.5, "pop_desert_M": 3.07, "pop_total_M": 40.97}, {"year": 2021, "pct_units": 24.0, "pct_pop": 7.4, "pop_desert_M": 3.03, "pop_total_M": 40.97}, {"year": 2022, "pct_units": 24.1, "pct_pop": 7.5, "pop_desert_M": 3.09, "pop_total_M": 40.97}, {"year": 2023, "pct_units": 24.1, "pct_pop": 7.5, "pop_desert_M": 3.07, "pop_total_M": 40.97}, {"year": 2024, "pct_units": 24.1, "pct_pop": 7.5, "pop_desert_M": 3.09, "pop_total_M": 40.97}], "philippines": [{"year": 2012, "pct_units": 38.4, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2013, "pct_units": 37.0, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2014, "pct_units": 36.4, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2015, "pct_units": 36.2, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2016, "pct_units": 35.6, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2017, "pct_units": 36.1, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2018, "pct_units": 32.8, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2019, "pct_units": 31.2, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2020, "pct_units": 30.5, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2021, "pct_units": 30.2, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2022, "pct_units": 29.9, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2023, "pct_units": 30.7, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}, {"year": 2024, "pct_units": 32.0, "pct_pop": null, "pop_desert_M": null, "pop_total_M": null}]}
+{
+  "peru": [
+    {
+      "year": 2002,
+      "pct_units": 92.0,
+      "pct_pop": 46.8,
+      "pop_desert_M": 15.06,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2003,
+      "pct_units": 92.0,
+      "pct_pop": 46.9,
+      "pop_desert_M": 15.08,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2004,
+      "pct_units": 91.9,
+      "pct_pop": 45.5,
+      "pop_desert_M": 14.63,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2005,
+      "pct_units": 91.6,
+      "pct_pop": 44.7,
+      "pop_desert_M": 14.37,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2006,
+      "pct_units": 90.6,
+      "pct_pop": 42.0,
+      "pop_desert_M": 13.5,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2007,
+      "pct_units": 88.0,
+      "pct_pop": 38.5,
+      "pop_desert_M": 12.39,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2008,
+      "pct_units": 84.4,
+      "pct_pop": 33.7,
+      "pop_desert_M": 10.83,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2009,
+      "pct_units": 83.5,
+      "pct_pop": 32.1,
+      "pop_desert_M": 10.34,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2010,
+      "pct_units": 82.5,
+      "pct_pop": 31.5,
+      "pop_desert_M": 10.13,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2011,
+      "pct_units": 75.2,
+      "pct_pop": 24.4,
+      "pop_desert_M": 7.84,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2012,
+      "pct_units": 74.8,
+      "pct_pop": 23.7,
+      "pop_desert_M": 7.63,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2013,
+      "pct_units": 74.4,
+      "pct_pop": 23.6,
+      "pop_desert_M": 7.57,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2014,
+      "pct_units": 74.3,
+      "pct_pop": 23.5,
+      "pop_desert_M": 7.56,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2015,
+      "pct_units": 74.0,
+      "pct_pop": 23.0,
+      "pop_desert_M": 7.4,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2016,
+      "pct_units": 73.6,
+      "pct_pop": 22.3,
+      "pop_desert_M": 7.16,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2017,
+      "pct_units": 73.6,
+      "pct_pop": 22.6,
+      "pop_desert_M": 7.26,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2018,
+      "pct_units": 73.3,
+      "pct_pop": 22.0,
+      "pop_desert_M": 7.08,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2019,
+      "pct_units": 73.0,
+      "pct_pop": 21.9,
+      "pop_desert_M": 7.03,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2020,
+      "pct_units": 72.9,
+      "pct_pop": 21.8,
+      "pop_desert_M": 7.0,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2021,
+      "pct_units": 72.6,
+      "pct_pop": 21.5,
+      "pop_desert_M": 6.92,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2022,
+      "pct_units": 72.4,
+      "pct_pop": 21.4,
+      "pop_desert_M": 6.88,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2023,
+      "pct_units": 72.4,
+      "pct_pop": 21.3,
+      "pop_desert_M": 6.83,
+      "pop_total_M": 32.16
+    },
+    {
+      "year": 2024,
+      "pct_units": 72.4,
+      "pct_pop": 21.1,
+      "pop_desert_M": 6.78,
+      "pop_total_M": 32.16
+    }
+  ],
+  "brasil": [
+    {
+      "year": 2002,
+      "pct_units": 41.7,
+      "pct_pop": 10.1,
+      "pop_desert_M": 20.48,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2003,
+      "pct_units": 41.8,
+      "pct_pop": 10.0,
+      "pop_desert_M": 20.37,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2004,
+      "pct_units": 38.2,
+      "pct_pop": 8.0,
+      "pop_desert_M": 16.26,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2005,
+      "pct_units": 38.1,
+      "pct_pop": 8.0,
+      "pop_desert_M": 16.2,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2006,
+      "pct_units": 37.9,
+      "pct_pop": 7.9,
+      "pop_desert_M": 16.12,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2007,
+      "pct_units": 38.5,
+      "pct_pop": 8.0,
+      "pop_desert_M": 16.19,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2008,
+      "pct_units": 38.4,
+      "pct_pop": 7.9,
+      "pop_desert_M": 16.03,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2009,
+      "pct_units": 38.1,
+      "pct_pop": 7.8,
+      "pop_desert_M": 15.76,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2010,
+      "pct_units": 37.9,
+      "pct_pop": 7.6,
+      "pop_desert_M": 15.52,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2011,
+      "pct_units": 35.7,
+      "pct_pop": 6.6,
+      "pop_desert_M": 13.45,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2012,
+      "pct_units": 34.5,
+      "pct_pop": 6.2,
+      "pop_desert_M": 12.5,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2013,
+      "pct_units": 34.1,
+      "pct_pop": 6.1,
+      "pop_desert_M": 12.44,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2014,
+      "pct_units": 34.5,
+      "pct_pop": 6.1,
+      "pop_desert_M": 12.46,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2015,
+      "pct_units": 35.7,
+      "pct_pop": 6.5,
+      "pop_desert_M": 13.15,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2016,
+      "pct_units": 36.0,
+      "pct_pop": 6.5,
+      "pop_desert_M": 13.15,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2017,
+      "pct_units": 39.2,
+      "pct_pop": 7.1,
+      "pop_desert_M": 14.4,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2018,
+      "pct_units": 39.9,
+      "pct_pop": 7.4,
+      "pop_desert_M": 14.93,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2019,
+      "pct_units": 41.9,
+      "pct_pop": 8.0,
+      "pop_desert_M": 16.31,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2020,
+      "pct_units": 42.1,
+      "pct_pop": 8.1,
+      "pop_desert_M": 16.54,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2021,
+      "pct_units": 43.5,
+      "pct_pop": 8.6,
+      "pop_desert_M": 17.43,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2022,
+      "pct_units": 43.8,
+      "pct_pop": 8.6,
+      "pop_desert_M": 17.56,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2023,
+      "pct_units": 44.5,
+      "pct_pop": 8.9,
+      "pop_desert_M": 17.98,
+      "pop_total_M": 203.08
+    },
+    {
+      "year": 2024,
+      "pct_units": 46.1,
+      "pct_pop": 9.2,
+      "pop_desert_M": 18.78,
+      "pop_total_M": 203.08
+    }
+  ],
+  "colombia": [
+    {
+      "year": 2008,
+      "pct_units": 25.7,
+      "pct_pop": 9.0,
+      "pop_desert_M": 3.68,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2009,
+      "pct_units": 25.3,
+      "pct_pop": 8.7,
+      "pop_desert_M": 3.56,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2010,
+      "pct_units": 24.9,
+      "pct_pop": 8.1,
+      "pop_desert_M": 3.32,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2011,
+      "pct_units": 24.5,
+      "pct_pop": 7.7,
+      "pop_desert_M": 3.14,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2012,
+      "pct_units": 24.4,
+      "pct_pop": 7.5,
+      "pop_desert_M": 3.08,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2013,
+      "pct_units": 24.3,
+      "pct_pop": 7.4,
+      "pop_desert_M": 3.05,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2014,
+      "pct_units": 24.1,
+      "pct_pop": 7.4,
+      "pop_desert_M": 3.01,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2015,
+      "pct_units": 24.6,
+      "pct_pop": 7.7,
+      "pop_desert_M": 3.16,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2016,
+      "pct_units": 24.4,
+      "pct_pop": 7.7,
+      "pop_desert_M": 3.15,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2017,
+      "pct_units": 24.5,
+      "pct_pop": 7.1,
+      "pop_desert_M": 2.91,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2018,
+      "pct_units": 24.0,
+      "pct_pop": 6.9,
+      "pop_desert_M": 2.84,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2019,
+      "pct_units": 24.1,
+      "pct_pop": 7.4,
+      "pop_desert_M": 3.04,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2020,
+      "pct_units": 24.1,
+      "pct_pop": 7.5,
+      "pop_desert_M": 3.07,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2021,
+      "pct_units": 24.0,
+      "pct_pop": 7.4,
+      "pop_desert_M": 3.03,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2022,
+      "pct_units": 24.1,
+      "pct_pop": 7.5,
+      "pop_desert_M": 3.09,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2023,
+      "pct_units": 24.1,
+      "pct_pop": 7.5,
+      "pop_desert_M": 3.07,
+      "pop_total_M": 40.97
+    },
+    {
+      "year": 2024,
+      "pct_units": 24.1,
+      "pct_pop": 7.5,
+      "pop_desert_M": 3.09,
+      "pop_total_M": 40.97
+    }
+  ],
+  "philippines": [
+    {
+      "year": 2012,
+      "pct_units": 38.4,
+      "pct_pop": 27.3,
+      "pop_desert_M": 26.0,
+      "pop_total_M": 95.4
+    },
+    {
+      "year": 2013,
+      "pct_units": 37.0,
+      "pct_pop": 15.7,
+      "pop_desert_M": 15.0,
+      "pop_total_M": 95.4
+    },
+    {
+      "year": 2014,
+      "pct_units": 36.4,
+      "pct_pop": 15.4,
+      "pop_desert_M": 14.7,
+      "pop_total_M": 95.6
+    },
+    {
+      "year": 2015,
+      "pct_units": 36.2,
+      "pct_pop": 15.1,
+      "pop_desert_M": 14.5,
+      "pop_total_M": 95.7
+    },
+    {
+      "year": 2016,
+      "pct_units": 35.6,
+      "pct_pop": 14.8,
+      "pop_desert_M": 14.4,
+      "pop_total_M": 97.3
+    },
+    {
+      "year": 2017,
+      "pct_units": 36.1,
+      "pct_pop": 17.9,
+      "pop_desert_M": 18.1,
+      "pop_total_M": 101.3
+    },
+    {
+      "year": 2018,
+      "pct_units": 32.8,
+      "pct_pop": 13.3,
+      "pop_desert_M": 12.9,
+      "pop_total_M": 96.7
+    },
+    {
+      "year": 2019,
+      "pct_units": 31.2,
+      "pct_pop": 12.5,
+      "pop_desert_M": 12.2,
+      "pop_total_M": 97.3
+    },
+    {
+      "year": 2020,
+      "pct_units": 30.5,
+      "pct_pop": 12.0,
+      "pop_desert_M": 11.7,
+      "pop_total_M": 97.3
+    },
+    {
+      "year": 2021,
+      "pct_units": 30.2,
+      "pct_pop": 11.7,
+      "pop_desert_M": 11.4,
+      "pop_total_M": 97.3
+    },
+    {
+      "year": 2022,
+      "pct_units": 29.9,
+      "pct_pop": 11.7,
+      "pop_desert_M": 11.4,
+      "pop_total_M": 97.6
+    },
+    {
+      "year": 2023,
+      "pct_units": 30.7,
+      "pct_pop": 12.5,
+      "pop_desert_M": 12.3,
+      "pop_total_M": 98.7
+    },
+    {
+      "year": 2024,
+      "pct_units": 32.0,
+      "pct_pop": 15.0,
+      "pop_desert_M": 14.5,
+      "pop_total_M": 97.1
+    }
+  ]
+}
