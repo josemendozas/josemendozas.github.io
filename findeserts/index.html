@@ -294,7 +294,7 @@
            ============================================ */
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 0;
             border: 1px solid #E5E7EB;
             border-radius: 8px;
@@ -819,7 +819,7 @@
      HERO -- THE OPENING STATEMENT
      ======================================== -->
 <section class="hero">
-    <div class="hero-eyebrow">Research Atlas / 4 Countries, 3 Continents</div>
+    <div class="hero-eyebrow">Research Atlas / 4 Countries &middot; Latin America &amp; Asia</div>
     <h1 class="hero-headline">
         Across Peru, Brazil, Colombia, and the Philippines, <span class="number-inline">4,743 municipalities</span> have no bank branch at all.
     </h1>
@@ -1338,6 +1338,7 @@ async function loadPopChart() {
     const peru = popData.peru.filter(d => d.year <= 2024);
     const brasil = popData.brasil.filter(d => d.year <= 2024);
     const colombia = popData.colombia.filter(d => d.year <= 2024);
+    const phl_pop = popData.philippines ? popData.philippines.filter(d => d.year <= 2024) : [];
 
     const svg = d3.select('#chart-pop');
     const containerWidth = svg.node().parentElement.getBoundingClientRect().width - 20;
@@ -1372,7 +1373,7 @@ async function loadPopChart() {
         {data: peru, color: COLORS.peru, label: 'Peru'},
         {data: brasil, color: COLORS.brazil, label: 'Brazil'},
         {data: colombia, color: COLORS.colombia, label: 'Colombia'},
-        {data: philippines, color: COLORS.philippines, label: 'Philippines'}
+        {data: phl_pop, color: COLORS.philippines, label: 'Philippines'}
     ];
 
     datasets.forEach(ds => {
