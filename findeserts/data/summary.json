@@ -42,18 +42,6 @@
     "with_office": 1109,
     "deserts": 523,
     "pct_desert": 32.0,
-    "offices": 13033,
-    "peak_year": 2023,
-    "peak_offices": 13279,
-    "decline_pct": -1.9
-  },
-  {
-    "country": "Philippines",
-    "year": 2024,
-    "units": 1632,
-    "with_office": 1109,
-    "deserts": 523,
-    "pct_desert": 32.0,
     "offices": 13318,
     "peak_year": 2024,
     "peak_offices": 13318,
