@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Deserts Atlas -- Latin America</title>
-    <meta name="description" content="The first subnational atlas of financial exclusion in Peru, Brazil, and Colombia (2002-2024). 4,220 municipalities with zero bank offices.">
+    <title>Financial Deserts Atlas</title>
+    <meta name="description" content="The first subnational atlas of financial exclusion across 4 countries and 3 continents (2002-2024). 4,743 municipalities with zero bank offices.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -819,12 +819,12 @@
      HERO -- THE OPENING STATEMENT
      ======================================== -->
 <section class="hero">
-    <div class="hero-eyebrow">Research Atlas / 2002 -- 2024</div>
+    <div class="hero-eyebrow">Research Atlas / 4 Countries, 3 Continents</div>
     <h1 class="hero-headline">
-        Across Peru, Brazil, and Colombia, <span class="number-inline">4,220 municipalities</span> have no bank branch at all.
+        Across Peru, Brazil, Colombia, and the Philippines, <span class="number-inline">4,743 municipalities</span> have no bank branch at all.
     </h1>
     <p class="hero-deck">
-        We mapped two decades of financial exclusion at the subnational level. The result: a persistent geography of absence that digital banking has not yet resolved.
+        We mapped financial exclusion at the subnational level across Latin America and Asia. The result: a persistent geography of absence that affects over 30 million people.
     </p>
     <div class="hero-meta">
         <span class="hero-authors">Jos&eacute; Mendoza</span>
@@ -854,10 +854,10 @@
     <div class="section-header">
         <span class="section-number">01 -- Overview</span>
         <h2 class="section-title">The scale of exclusion</h2>
-        <p class="section-lead">In 2024, nearly half of all local jurisdictions across these three countries lack a single bank branch -- and the problem is getting worse, not better.</p>
+        <p class="section-lead">In 2024, thousands of local jurisdictions across four countries and three continents lack a single bank branch -- and in Latin America, the problem is getting worse, not better.</p>
     </div>
     <div class="stats-row" id="stats-bar"></div>
-    <p class="stats-footnote">That is 6.8 million Peruvians, 18.8 million Brazilians, and 3.1 million Colombians living without physical access to a bank.</p>
+    <p class="stats-footnote">Over 30 million people across Peru, Brazil, Colombia, and the Philippines live without physical access to a bank.</p>
 </section>
 
 <!-- ========================================
@@ -877,6 +877,7 @@
             <option value="peru">Peru (1,891 districts)</option>
             <option value="brasil">Brazil (5,570 municipalities)</option>
             <option value="colombia">Colombia (1,121 municipalities)</option>
+            <option value="philippines">Philippines (1,632 municipalities)</option>
         </select>
         <label>Year</label>
         <select id="year-select" onchange="updateMap()"></select>
@@ -907,10 +908,10 @@
         </p>
         <div class="chart-frame">
             <svg id="chart-trend" width="100%" height="320"></svg>
-            <p class="chart-source">Source: SBS (Peru), BCB (Brazil), SFC (Colombia). Authors' calculations.</p>
+            <p class="chart-source">Source: SBS (Peru), BCB (Brazil), SFC (Colombia), BSP (Philippines). Authors' calculations.</p>
         </div>
         <p class="finding-note">
-            Peru remains the most excluded: 72.6% of its districts had no bank branch in 2024, virtually unchanged from 2002. Brazil showed moderate improvement before stalling. Colombia started lower but progress has flattened since 2016.
+            Peru remains the most excluded: 72.6% of its districts had no bank branch in 2024, virtually unchanged from 2002. Brazil showed moderate improvement before reversing. Colombia started lower but has flattened since 2016. The Philippines has improved from 38% to 32% but progress has stalled since 2020.
         </p>
     </div>
 
@@ -931,7 +932,7 @@
     <!-- Finding 3: Offices -->
     <div class="finding-block fade-in">
         <p class="finding-insight">
-            Banks are closing branches, not opening them. Total offices have declined from their peak in all three countries.
+            In Latin America, banks are closing branches, not opening them. Total offices have declined from their peak in all three LAC countries. The Philippines bucks the trend with growing offices -- but deserts persist.
         </p>
         <div class="chart-frame">
             <svg id="chart-offices" width="100%" height="320"></svg>
@@ -970,7 +971,7 @@
     <div class="download-row fade-in">
         <div class="download-card">
             <span class="download-card-type">Working Paper</span>
-            <h3>Financial Deserts in Latin America</h3>
+            <h3>Financial Deserts Atlas</h3>
             <p>Subnational evidence from Peru, Brazil, and Colombia. Mendoza, 2026.</p>
             <a href="WP_Financial_Deserts.pdf" class="btn-download">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -993,7 +994,7 @@
         <span class="cite-label">BibTeX</span>
         <button class="copy-btn" onclick="copyBibtex()">Copy</button>
         <pre>@article{mendoza2026findeserts,
-  title   = {Financial Deserts in Latin America:
+  title   = {Financial Deserts:
              Subnational Evidence from Peru, Brazil, and Colombia},
   author  = {Mendoza, Jos\'e},
   year    = {2026},
@@ -1012,7 +1013,7 @@
         <h2 class="section-title">About this project</h2>
     </div>
     <div class="about-content fade-in">
-        <p>A <strong>financial desert</strong> is a district or municipality with zero bank offices. This atlas provides the first systematic subnational mapping of financial exclusion across three Latin American countries, using over two decades of administrative data.</p>
+        <p>A <strong>financial desert</strong> is a district or municipality with zero bank offices. This atlas provides the first systematic subnational mapping of financial exclusion across four countries and three continents, using administrative data from financial regulators.</p>
 
         <h3>Methodology</h3>
         <ul>
@@ -1051,7 +1052,7 @@
     <div class="about-content fade-in">
 
         <h3>Expanding coverage</h3>
-        <p>The current atlas covers three countries. Our next phase will extend to <strong>Mexico</strong> (CNBV), <strong>Chile</strong> (CMF), <strong>Ecuador</strong> (Superintendencia de Bancos), and <strong>Bolivia</strong> (ASFI)&mdash;aiming for 10+ Latin American countries by 2027. Longer term, we plan to apply the same methodology to <strong>Sub-Saharan Africa</strong> and <strong>South Asia</strong>, where subnational financial access data exists but has never been harmonized across countries.</p>
+        <p>The current atlas covers four countries across three continents. We have identified <strong>20 additional countries</strong> with publicly available subnational banking data. Our next phase will extend to <strong>Mexico</strong> (CNBV), <strong>Chile</strong> (CMF), <strong>Ecuador</strong>, <strong>India</strong> (RBI), <strong>Morocco</strong> (BAM), and <strong>Kenya</strong> (CBK)&mdash;aiming for 10+ countries by 2027. The goal: a global subnational database of financial access, the subnational complement to the World Bank's Global Findex.</p>
 
         <h3>Adding layers of access</h3>
         <p>Bank offices are only one dimension. Future versions of the atlas will incorporate:</p>
@@ -1161,7 +1162,10 @@ const countryConfig = {
               nameField: 'name', extraFields: f => '' },
     colombia: { file: 'data/colombia_map.geojson', yearFile: 'data/colombia_by_year.json',
                 center: [4.57, -74.30], zoom: 6, idField: 'match_id', matchBy: 'id',
-                nameField: 'name', extraFields: f => f.department || '' }
+                nameField: 'name', extraFields: f => f.department || '' },
+    philippines: { file: 'data/philippines_map.geojson', yearFile: 'data/philippines_by_year.json',
+                   center: [12.88, 121.77], zoom: 6, idField: 'muni_id', matchBy: 'id',
+                   nameField: 'name', extraFields: f => f.province || '' }
 };
 
 async function loadGeo(country) {
@@ -1229,12 +1233,12 @@ async function updateMap() {
     currentLayers.forEach(l => map.removeLayer(l));
     currentLayers = [];
 
-    const countries = country === 'all' ? ['peru','brasil','colombia'] : [country];
+    const countries = country === 'all' ? ['peru','brasil','colombia','philippines'] : [country];
     for (const c of countries) {
         const layer = await renderCountry(c, year);
         layer.addTo(map); currentLayers.push(layer);
     }
-    map.setView(country === 'all' ? [-5, -60] : countryConfig[country].center, country === 'all' ? 3 : countryConfig[country].zoom);
+    map.setView(country === 'all' ? [5, 30] : countryConfig[country].center, country === 'all' ? 2 : countryConfig[country].zoom);
 
     let totalDeserts = 0, totalUnits = 0;
     for (const c of countries) {
@@ -1268,6 +1272,7 @@ const COLORS = {
     peru: '#C0392B',
     brazil: '#1E8449',
     colombia: '#D4A017',
+    philippines: '#8E44AD',
     axis: '#9CA3AF',
     gridLine: '#F3F4F6',
     text: '#4B5563',
@@ -1278,8 +1283,8 @@ const COLORS = {
 // Trend chart
 // ========================================
 async function loadTrendChart() {
-    const [peru, brasil, colombia] = await Promise.all([
-        d3.json('data/peru_resumen.json'), d3.json('data/brasil_resumen.json'), d3.json('data/colombia_resumen.json')
+    const [peru, brasil, colombia, philippines] = await Promise.all([
+        d3.json('data/peru_resumen.json'), d3.json('data/brasil_resumen.json'), d3.json('data/colombia_resumen.json'), d3.json('data/philippines_resumen.json')
     ]);
 
     const svg = d3.select('#chart-trend');
@@ -1311,7 +1316,7 @@ async function loadTrendChart() {
         .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
 
     const line = d3.line().x(d => x(d.year)).y(d => y(d.pct_desierto ?? d.pct)).curve(d3.curveMonotoneX);
-    [{data:peru,color:COLORS.peru,label:'Peru'},{data:brasil,color:COLORS.brazil,label:'Brazil'},{data:colombia,color:COLORS.colombia,label:'Colombia'}].forEach(ds => {
+    [{data:peru,color:COLORS.peru,label:'Peru'},{data:brasil,color:COLORS.brazil,label:'Brazil'},{data:colombia,color:COLORS.colombia,label:'Colombia'},{data:philippines,color:COLORS.philippines,label:'Philippines'}].forEach(ds => {
         g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',line);
         // End dot
         const last = ds.data[ds.data.length-1]; const val = last.pct_desierto ?? last.pct;
@@ -1365,7 +1370,8 @@ async function loadPopChart() {
     const datasets = [
         {data: peru, color: COLORS.peru, label: 'Peru'},
         {data: brasil, color: COLORS.brazil, label: 'Brazil'},
-        {data: colombia, color: COLORS.colombia, label: 'Colombia'}
+        {data: colombia, color: COLORS.colombia, label: 'Colombia'},
+        {data: philippines, color: COLORS.philippines, label: 'Philippines'}
     ];
 
     datasets.forEach(ds => {
@@ -1391,8 +1397,8 @@ async function loadPopChart() {
 // Offices chart
 // ========================================
 async function loadOfficesChart() {
-    const [peru, brasil, colombia] = await Promise.all([
-        d3.json('data/peru_resumen.json'), d3.json('data/brasil_resumen.json'), d3.json('data/colombia_resumen.json')
+    const [peru, brasil, colombia, philippines] = await Promise.all([
+        d3.json('data/peru_resumen.json'), d3.json('data/brasil_resumen.json'), d3.json('data/colombia_resumen.json'), d3.json('data/philippines_resumen.json')
     ]);
 
     const svg = d3.select('#chart-offices');
@@ -1422,7 +1428,7 @@ async function loadOfficesChart() {
         .call(g => g.select('.domain').remove())
         .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
 
-    [{data:peru,color:COLORS.peru,label:'Peru',key:'oficinas_total'},{data:brasil,color:COLORS.brazil,label:'Brazil',key:'agencias'},{data:colombia,color:COLORS.colombia,label:'Colombia',key:'oficinas_total'}].forEach(ds => {
+    [{data:peru,color:COLORS.peru,label:'Peru',key:'oficinas_total'},{data:brasil,color:COLORS.brazil,label:'Brazil',key:'agencias'},{data:colombia,color:COLORS.colombia,label:'Colombia',key:'oficinas_total'},{data:philippines,color:COLORS.philippines,label:'Philippines',key:'total_offices'}].forEach(ds => {
         const lineGen = d3.line().x(d=>x(d.year)).y(d=>y(d[ds.key]||0)).curve(d3.curveMonotoneX);
         g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',lineGen);
         const last = ds.data[ds.data.length-1];
