@@ -1316,11 +1316,11 @@ async function loadTrendChart() {
         .call(g => g.select('.domain').remove())
         .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
 
-    const line = d3.line().x(d => x(d.year)).y(d => y(d.pct_desierto ?? d.pct)).curve(d3.curveMonotoneX);
+    const line = d3.line().x(d => x(d.year)).y(d => y(d.pct_desierto ?? d.pct_desert ?? d.pct)).curve(d3.curveMonotoneX);
     [{data:peru,color:COLORS.peru,label:'Peru'},{data:brasil,color:COLORS.brazil,label:'Brazil'},{data:colombia,color:COLORS.colombia,label:'Colombia'},{data:philippines,color:COLORS.philippines,label:'Philippines'}].forEach(ds => {
         g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',line);
         // End dot
-        const last = ds.data[ds.data.length-1]; const val = last.pct_desierto ?? last.pct;
+        const last = ds.data[ds.data.length-1]; const val = last.pct_desierto ?? last.pct_desert ?? last.pct;
         g.append('circle').attr('cx',x(last.year)).attr('cy',y(val)).attr('r',3.5).attr('fill',ds.color);
         // Label
         g.append('text').attr('x',x(last.year)+8).attr('y',y(val))
@@ -1412,7 +1412,7 @@ async function loadOfficesChart() {
     const w = width - margin.left;
     const h = height - margin.bottom - margin.top;
     const x = d3.scaleLinear().domain([2002, 2025]).range([0, w]);
-    const y = d3.scaleLinear().domain([0, 12000]).range([h, 0]);
+    const y = d3.scaleLinear().domain([0, 15000]).range([h, 0]);
 
     // Grid
     g.selectAll('.grid-line').data(y.ticks(4)).join('line')
