@@ -449,24 +449,24 @@
   "mozambique": [
     {
       "year": 2021,
-      "pct_units": null,
-      "pct_pop": null,
-      "pop_desert_M": null,
-      "pop_total_M": null
+      "pct_units": 18.0,
+      "pct_pop": 10.9,
+      "pop_desert_M": 2.8,
+      "pop_total_M": 26.1
     },
     {
       "year": 2022,
-      "pct_units": null,
-      "pct_pop": null,
-      "pop_desert_M": null,
-      "pop_total_M": null
+      "pct_units": 20.9,
+      "pct_pop": 13.1,
+      "pop_desert_M": 3.0,
+      "pop_total_M": 22.8
     },
     {
       "year": 2023,
-      "pct_units": null,
-      "pct_pop": null,
-      "pop_desert_M": null,
-      "pop_total_M": null
+      "pct_units": 33.3,
+      "pct_pop": 20.7,
+      "pop_desert_M": 5.4,
+      "pop_total_M": 26.2
     }
   ],
   "philippines": [
