@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Deserts Atlas -- Latin America</title>
+    <meta name="description" content="The first subnational atlas of financial exclusion in Peru, Brazil, and Colombia (2002-2024). 4,220 municipalities with zero bank offices.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+        /* ============================================
+           FINANCIAL DESERTS ATLAS -- REDESIGN
+           Inspired by The Pudding, Bloomberg, OWID
+           ============================================ */
+
+        /* -- Reset & Base -- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #FAF9F6;
+            color: #1B1B1B;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* -- Utility -- */
+        .serif { font-family: 'Source Serif 4', 'Georgia', serif; }
+        .muted { color: #6B7280; }
+        .accent { color: #C0392B; }
+
+        /* -- Scroll Fade-in Animation -- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 48px;
+            background: rgba(250, 249, 246, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            padding: 0 clamp(1rem, 4vw, 3rem);
+            transition: box-shadow 0.3s;
+        }
+        .nav.scrolled {
+            box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        }
+        .nav-logo {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #1B1B1B;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-right: auto;
+        }
+        .nav-logo span {
+            color: #C0392B;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #6B7280;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #C0392B;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: #1B1B1B; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ============================================
+           HERO -- THE OPENING STATEMENT
+           Full viewport, provocative, immersive
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem clamp(2rem, 8vw, 10rem) 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(192, 57, 43, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(39, 174, 96, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #C0392B;
+            margin-bottom: 2rem;
+        }
+        .hero-headline {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.12;
+            color: #1B1B1B;
+            max-width: 800px;
+            letter-spacing: -0.02em;
+        }
+        .hero-headline .number-inline {
+            color: #C0392B;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+        .hero-deck {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-weight: 400;
+            color: #4B5563;
+            max-width: 580px;
+            margin-top: 1.75rem;
+            line-height: 1.65;
+        }
+        .hero-meta {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .hero-authors {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #1B1B1B;
+        }
+        .hero-affiliation {
+            font-size: 0.78rem;
+            color: #9CA3AF;
+            font-weight: 400;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: #1B1B1B;
+            color: #FFFFFF;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            transition: background 0.25s, transform 0.15s;
+        }
+        .btn-primary:hover { background: #333; transform: translateY(-1px); }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: transparent;
+            color: #1B1B1B;
+            border: 1.5px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            transition: border-color 0.25s, transform 0.15s;
+        }
+        .btn-secondary:hover { border-color: #1B1B1B; transform: translateY(-1px); }
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: #9CA3AF;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: pulse-down 2s infinite;
+        }
+        .hero-scroll-hint svg {
+            width: 16px; height: 16px;
+            stroke: #9CA3AF;
+        }
+        @keyframes pulse-down {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* ============================================
+           SECTION STRUCTURE
+           ============================================ */
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+        .section-wide {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+        .section-spacer {
+            height: clamp(5rem, 10vw, 8rem);
+        }
+        .section-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+        .section-divider hr {
+            border: none;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        /* Section Header Pattern -- OWID style */
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+        .section-number {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #C0392B;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: #1B1B1B;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        .section-lead {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.05rem;
+            color: #4B5563;
+            margin-top: 0.75rem;
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           KEY NUMBERS -- Bloomberg / FT style
+           ============================================ */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #FFFFFF;
+        }
+        .stat-cell {
+            padding: 2rem 1.75rem;
+            position: relative;
+        }
+        .stat-cell:not(:last-child) {
+            border-right: 1px solid #E5E7EB;
+        }
+        .stat-country {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-bottom: 0.5rem;
+        }
+        .stat-number {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-cell:nth-child(1) .stat-number { color: #C0392B; }
+        .stat-cell:nth-child(2) .stat-number { color: #1E8449; }
+        .stat-cell:nth-child(3) .stat-number { color: #D4A017; }
+        .stat-unit {
+            font-size: 0.82rem;
+            color: #4B5563;
+            margin-top: 0.35rem;
+            line-height: 1.45;
+        }
+        .stat-detail {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+            margin-top: 0.15rem;
+        }
+        .stat-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #C0392B;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #F3F4F6;
+        }
+        .stat-trend svg {
+            width: 10px; height: 10px;
+        }
+        .stats-footnote {
+            margin-top: 1.25rem;
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 0.92rem;
+            font-style: italic;
+            color: #6B7280;
+            line-height: 1.65;
+        }
+
+        /* ============================================
+           MAP -- IMMERSIVE, FULL-WIDTH
+           ============================================ */
+        .map-section {
+            background: #1B1B1B;
+            padding: clamp(3rem, 6vw, 5rem) 0;
+            position: relative;
+        }
+        .map-section .section-header {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+        }
+        .map-section .section-number { color: rgba(255,255,255,0.4); }
+        .map-section .section-title { color: #FFFFFF; }
+        .map-section .section-lead { color: rgba(255,255,255,0.55); }
+        .map-controls {
+            max-width: 1200px;
+            margin: 0 auto 1rem;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .map-controls label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+        }
+        .map-controls select {
+            background: rgba(255,255,255,0.08);
+            color: #FFFFFF;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.5rem 2rem 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.5)'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.6rem center;
+        }
+        .map-controls select:hover,
+        .map-controls select:focus {
+            border-color: rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.12);
+            outline: none;
+        }
+        .map-controls select option {
+            background: #1B1B1B;
+            color: #FFFFFF;
+        }
+        .map-status {
+            margin-left: auto;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            font-variant-numeric: tabular-nums;
+        }
+        #map {
+            height: 75vh;
+            min-height: 500px;
+            max-height: 800px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        }
+        .map-legend {
+            max-width: 1200px;
+            margin: 1rem auto 0;
+            padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+            display: flex;
+            gap: 1.75rem;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.45);
+        }
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .map-legend-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           FINDINGS -- VISUAL ESSAY STYLE
+           Each chart is a "moment" with insight + viz
+           ============================================ */
+        .finding-block {
+            margin-bottom: clamp(4rem, 8vw, 6rem);
+        }
+        .finding-insight {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(1.15rem, 2vw, 1.4rem);
+            font-weight: 600;
+            color: #1B1B1B;
+            line-height: 1.45;
+            margin-bottom: 1.5rem;
+            max-width: 640px;
+        }
+        .chart-frame {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 2rem 1.75rem 1.5rem;
+            position: relative;
+        }
+        .chart-frame svg {
+            display: block;
+        }
+        .chart-source {
+            font-size: 0.68rem;
+            color: #9CA3AF;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #F3F4F6;
+        }
+        .finding-note {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 0.92rem;
+            color: #6B7280;
+            margin-top: 1rem;
+            line-height: 1.7;
+            max-width: 640px;
+        }
+
+        /* -- Table -- */
+        .table-frame {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .table-frame table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .table-frame th {
+            background: #F9FAFB;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            color: #9CA3AF;
+            border-bottom: 1px solid #E5E7EB;
+            font-weight: 600;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .table-frame td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #F3F4F6;
+            color: #4B5563;
+        }
+        .table-frame tr:last-child td { border-bottom: none; }
+        .table-frame tr:hover td { background: #FAFBFC; }
+        .table-frame td strong {
+            color: #C0392B;
+            font-weight: 700;
+        }
+        .table-frame td .decline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #C0392B;
+            font-weight: 600;
+            font-size: 0.78rem;
+        }
+
+        /* ============================================
+           DATA & PAPER -- Clean download cards
+           ============================================ */
+        .download-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .download-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .download-card:hover {
+            border-color: #D1D5DB;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .download-card-type {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-bottom: 0.75rem;
+        }
+        .download-card h3 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1B1B1B;
+            line-height: 1.35;
+        }
+        .download-card p {
+            font-size: 0.85rem;
+            color: #6B7280;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+        .download-card .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1B1B1B;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .download-card .btn-download:hover { color: #C0392B; }
+        .download-card .btn-download svg {
+            width: 14px; height: 14px;
+            transition: transform 0.2s;
+        }
+        .download-card .btn-download:hover svg {
+            transform: translateY(2px);
+        }
+        .download-card .license-tag {
+            font-size: 0.68rem;
+            color: #9CA3AF;
+            margin-top: 0.5rem;
+        }
+
+        /* BibTeX */
+        .cite-block {
+            position: relative;
+            background: #1B1B1B;
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-all;
+            overflow: hidden;
+        }
+        .cite-block .cite-label {
+            position: absolute;
+            top: 0.75rem;
+            left: 1.75rem;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+        .cite-block pre {
+            margin-top: 1.25rem;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            line-height: inherit;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.68rem;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            color: rgba(255,255,255,0.5);
+            transition: background 0.2s, color 0.2s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ============================================
+           ABOUT -- Clean academic credibility
+           ============================================ */
+        .about-content {
+            max-width: 640px;
+        }
+        .about-content p,
+        .about-content ul {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 0.95rem;
+            color: #4B5563;
+            line-height: 1.8;
+        }
+        .about-content ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+        .about-content li {
+            margin-bottom: 0.35rem;
+        }
+        .about-content h3 {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .about-content a {
+            color: #1B1B1B;
+            text-decoration: underline;
+            text-decoration-color: #D1D5DB;
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.2s;
+        }
+        .about-content a:hover {
+            text-decoration-color: #C0392B;
+        }
+        .about-support {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #E5E7EB;
+            font-size: 0.82rem;
+            color: #9CA3AF;
+            line-height: 1.7;
+        }
+        .about-support a {
+            color: #6B7280;
+            text-decoration: none;
+            border-bottom: 1px solid #D1D5DB;
+            transition: border-color 0.2s;
+        }
+        .about-support a:hover { border-color: #C0392B; }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
+            border-top: 1px solid #E5E7EB;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #9CA3AF;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: #6B7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer a:hover { color: #C0392B; }
+        .footer-sep {
+            color: #D1D5DB;
+            margin: 0 0.75rem;
+        }
+
+        /* ============================================
+           LEAFLET OVERRIDES
+           ============================================ */
+        .leaflet-popup-content-wrapper {
+            background: #FFFFFF;
+            color: #1B1B1B;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.78rem;
+            line-height: 1.5;
+            padding: 0;
+        }
+        .leaflet-popup-content {
+            margin: 12px 14px;
+        }
+        .leaflet-popup-tip {
+            background: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .leaflet-control-zoom a {
+            background: rgba(255,255,255,0.95) !important;
+            color: #1B1B1B !important;
+            border-color: rgba(0,0,0,0.1) !important;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            .stat-cell:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid #E5E7EB;
+            }
+            .download-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+                padding: 5rem 1.5rem 3rem;
+            }
+            .nav-links { gap: 1.25rem; }
+            #map { height: 55vh; min-height: 350px; }
+            .map-section { padding: 2.5rem 0; }
+            .chart-frame { padding: 1.5rem 1rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-actions { flex-direction: column; }
+            .hero-actions a { text-align: center; justify-content: center; }
+            .map-controls { gap: 0.5rem; }
+            .nav-links a { font-size: 0.72rem; }
+            .nav-links { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========================================
+     NAVIGATION
+     ======================================== -->
+<nav class="nav" id="main-nav">
+    <div class="nav-logo">Financial Deserts <span>Atlas</span></div>
+    <div class="nav-links">
+        <a href="#map-section">Map</a>
+        <a href="#findings">Findings</a>
+        <a href="#data">Data</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
+
+<!-- ========================================
+     HERO -- THE OPENING STATEMENT
+     ======================================== -->
+<section class="hero">
+    <div class="hero-eyebrow">Research Atlas / 2002 -- 2024</div>
+    <h1 class="hero-headline">
+        Across Peru, Brazil, and Colombia, <span class="number-inline">4,220 municipalities</span> have no bank branch at all.
+    </h1>
+    <p class="hero-deck">
+        We mapped two decades of financial exclusion at the subnational level. The result: a persistent geography of absence that digital banking has not yet resolved.
+    </p>
+    <div class="hero-meta">
+        <span class="hero-authors">Jos&eacute; Mendoza &amp; Carolina Trivelli</span>
+        <span class="hero-affiliation">PUCP / Instituto de Estudios Peruanos (IEP)</span>
+    </div>
+    <div class="hero-actions">
+        <a href="#map-section" class="btn-primary">
+            Explore the map
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a href="WP_Financial_Deserts.pdf" class="btn-secondary">
+            Read the paper
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+    </div>
+    <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    </div>
+</section>
+
+<!-- ========================================
+     KEY NUMBERS
+     ======================================== -->
+<div class="section-spacer"></div>
+<section class="section-container fade-in">
+    <div class="section-header">
+        <span class="section-number">01 -- Overview</span>
+        <h2 class="section-title">The scale of exclusion</h2>
+        <p class="section-lead">In 2024, nearly half of all local jurisdictions across these three countries lack a single bank branch -- and the problem is getting worse, not better.</p>
+    </div>
+    <div class="stats-row" id="stats-bar"></div>
+    <p class="stats-footnote">That is 6.8 million Peruvians, 18.8 million Brazilians, and 3.1 million Colombians living without physical access to a bank.</p>
+</section>
+
+<!-- ========================================
+     MAP -- IMMERSIVE
+     ======================================== -->
+<div class="section-spacer"></div>
+<section class="map-section" id="map-section">
+    <div class="section-header">
+        <span class="section-number">02 -- Geography</span>
+        <h2 class="section-title">Where are the financial deserts?</h2>
+        <p class="section-lead">Every red polygon is a local jurisdiction with zero bank offices. Select a country and year to explore.</p>
+    </div>
+    <div class="map-controls">
+        <label>Country</label>
+        <select id="country-select" onchange="updateMap()">
+            <option value="all">All Countries</option>
+            <option value="peru">Peru (1,891 districts)</option>
+            <option value="brasil">Brazil (5,570 municipalities)</option>
+            <option value="colombia">Colombia (1,121 municipalities)</option>
+        </select>
+        <label>Year</label>
+        <select id="year-select" onchange="updateMap()"></select>
+        <span class="map-status" id="year-label"></span>
+    </div>
+    <div id="map"></div>
+    <div class="map-legend">
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#C0392B"></div> Financial desert (0 offices)</div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#1E8449"></div> Has bank offices</div>
+        <div class="map-legend-item"><div class="map-legend-swatch" style="background:#9CA3AF"></div> No data</div>
+    </div>
+</section>
+
+<!-- ========================================
+     KEY FINDINGS -- VISUAL ESSAY
+     ======================================== -->
+<div class="section-spacer"></div>
+<section class="section-container" id="findings">
+    <div class="section-header fade-in">
+        <span class="section-number">03 -- Findings</span>
+        <h2 class="section-title">What the data reveals</h2>
+    </div>
+
+    <!-- Finding 1: Trend -->
+    <div class="finding-block fade-in">
+        <p class="finding-insight">
+            Despite two decades of economic growth, the share of municipalities without a bank branch has barely budged.
+        </p>
+        <div class="chart-frame">
+            <svg id="chart-trend" width="100%" height="320"></svg>
+            <p class="chart-source">Source: SBS (Peru), BCB (Brazil), SFC (Colombia). Authors' calculations.</p>
+        </div>
+        <p class="finding-note">
+            Peru remains the most excluded: 72.6% of its districts had no bank branch in 2024, virtually unchanged from 2002. Brazil showed moderate improvement before stalling. Colombia started lower but progress has flattened since 2016.
+        </p>
+    </div>
+
+    <!-- Finding 2: Population -->
+    <div class="finding-block fade-in">
+        <p class="finding-insight">
+            Millions of people live in areas where the nearest bank is in another town entirely.
+        </p>
+        <div class="chart-frame">
+            <svg id="chart-pop" width="100%" height="360"></svg>
+            <p class="chart-source">Source: National census projections matched to banking supervisory data.</p>
+        </div>
+        <p class="finding-note">
+            The population share in financial deserts has fallen somewhat -- driven by urbanization, not by banks arriving. People move to where banks are, rather than banks moving to where people are.
+        </p>
+    </div>
+
+    <!-- Finding 3: Offices -->
+    <div class="finding-block fade-in">
+        <p class="finding-insight">
+            Banks are closing branches, not opening them. Total offices have declined from their peak in all three countries.
+        </p>
+        <div class="chart-frame">
+            <svg id="chart-offices" width="100%" height="320"></svg>
+            <p class="chart-source">Source: National banking supervisory records, branch-level data.</p>
+        </div>
+        <p class="finding-note">
+            The rise of digital banking has coincided with branch closures, but mobile coverage and digital literacy remain uneven -- raising the question of whether digital channels truly substitute for physical presence.
+        </p>
+    </div>
+
+    <div class="section-divider fade-in"><hr></div>
+    <div style="height: 2.5rem;"></div>
+
+    <!-- Finding 4: Table -->
+    <div class="finding-block fade-in">
+        <p class="finding-insight">
+            A cross-country comparison in 2024 shows the starkly different scales of financial exclusion.
+        </p>
+        <div class="table-frame">
+            <table id="comparison-table"></table>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     DATA & PAPER
+     ======================================== -->
+<div class="section-spacer"></div>
+<section class="section-container" id="data">
+    <div class="section-header fade-in">
+        <span class="section-number">04 -- Data &amp; Paper</span>
+        <h2 class="section-title">Download and cite</h2>
+        <p class="section-lead">All data and the working paper are freely available for research use.</p>
+    </div>
+
+    <div class="download-row fade-in">
+        <div class="download-card">
+            <span class="download-card-type">Working Paper</span>
+            <h3>Financial Deserts in Latin America</h3>
+            <p>Subnational evidence from Peru, Brazil, and Colombia. Mendoza &amp; Trivelli, 2026.</p>
+            <a href="WP_Financial_Deserts.pdf" class="btn-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+            </a>
+        </div>
+        <div class="download-card">
+            <span class="download-card-type">Dataset</span>
+            <h3>Subnational Panel Data</h3>
+            <p>Bank offices, financial desert classification, and population for 8,582 districts/municipalities (2002--2024).</p>
+            <a href="data/summary.json" class="btn-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download JSON
+            </a>
+            <span class="license-tag">License: CC-BY 4.0</span>
+        </div>
+    </div>
+
+    <div class="cite-block fade-in">
+        <span class="cite-label">BibTeX</span>
+        <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+        <pre>@article{mendoza2026findeserts,
+  title   = {Financial Deserts in Latin America:
+             Subnational Evidence from Peru, Brazil, and Colombia},
+  author  = {Mendoza, Jos\'e and Trivelli, Carolina},
+  year    = {2026},
+  note    = {Working Paper, PUCP/IEP}
+}</pre>
+    </div>
+</section>
+
+<!-- ========================================
+     ABOUT
+     ======================================== -->
+<div class="section-spacer"></div>
+<section class="section-container" id="about">
+    <div class="section-header fade-in">
+        <span class="section-number">05 -- About</span>
+        <h2 class="section-title">About this project</h2>
+    </div>
+    <div class="about-content fade-in">
+        <p>A <strong>financial desert</strong> is a district or municipality with zero bank offices. This atlas provides the first systematic subnational mapping of financial exclusion across three Latin American countries, using over two decades of administrative data.</p>
+
+        <h3>Methodology</h3>
+        <ul>
+            <li>Financial deserts are defined as administrative units (districts in Peru, municipios in Brazil and Colombia) with zero bank branches in a given year.</li>
+            <li>Panel data spans 2002--2024, constructed from national banking supervisory records at the branch level, aggregated to the subnational unit.</li>
+            <li>Population estimates are matched from national census projections to calculate the share of people living in financial deserts.</li>
+        </ul>
+
+        <h3>Data Sources</h3>
+        <ul>
+            <li><strong>Peru:</strong> Superintendencia de Banca, Seguros y AFP (SBS)</li>
+            <li><strong>Brazil:</strong> Banco Central do Brasil -- ESTBAN</li>
+            <li><strong>Colombia:</strong> Superintendencia Financiera de Colombia (SFC)</li>
+        </ul>
+
+        <h3>Authors</h3>
+        <p><a href="https://josemendozas.github.io" target="_blank">Jos&eacute; Mendoza</a> (PUCP / IEP) &amp; <a href="https://iep.org.pe" target="_blank">Carolina Trivelli</a> (IEP)</p>
+
+        <div class="about-support">
+            Supported by TREES-EGAP / Ford Foundation<br>
+            Contact: <a href="mailto:jose.mendoza@pucp.edu.pe">jose.mendoza@pucp.edu.pe</a>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     FOOTER
+     ======================================== -->
+<div class="section-spacer"></div>
+<footer class="footer">
+    <p>Data: SBS Peru, BCB Brazil, SFC Colombia
+    <span class="footer-sep">|</span>
+    <a href="https://github.com/josemendozas/findeserts">GitHub</a>
+    <span class="footer-sep">|</span>
+    Last updated May 2026</p>
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+     ======================================== -->
+<script>
+// ========================================
+// Scroll effects
+// ========================================
+const navEl = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// Intersection Observer for fade-in
+const fadeEls = document.querySelectorAll('.fade-in');
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => fadeObserver.observe(el));
+
+// ========================================
+// Copy BibTeX
+// ========================================
+function copyBibtex() {
+    const box = document.querySelector('.cite-block pre');
+    const text = box.textContent.trim();
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    });
+}
+
+// ========================================
+// Stats bar
+// ========================================
+async function loadStats() {
+    const summary = await d3.json('data/summary.json');
+    const bar = document.getElementById('stats-bar');
+    summary.forEach(s => {
+        bar.innerHTML += `
+            <div class="stat-cell">
+                <div class="stat-country">${s.country}</div>
+                <div class="stat-number">${s.pct_desert}%</div>
+                <div class="stat-unit">of districts are financial deserts</div>
+                <div class="stat-detail">${s.deserts.toLocaleString()} of ${s.units.toLocaleString()} units</div>
+                <div class="stat-trend">
+                    <svg viewBox="0 0 10 10" fill="currentColor"><polygon points="5,7 1,2 9,2"/></svg>
+                    ${Math.abs(s.decline_pct)}% fewer offices since peak (${s.peak_year})
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ========================================
+// Map
+// ========================================
+const map = L.map('map', { zoomControl: true }).setView([-9.19, -75.02], 4);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CartoDB', maxZoom: 18
+}).addTo(map);
+
+let currentLayers = [];
+let geoCache = {};
+let yearDataCache = {};
+let yearsConfig = {};
+
+const countryConfig = {
+    peru: { file: 'data/peru_map.geojson', yearFile: 'data/peru_by_year.json',
+            center: [-9.19, -75.02], zoom: 5, idField: 'id', matchBy: 'id',
+            nameField: 'NOMBDIST', extraFields: f => `${f.NOMBPROV || ''}, ${f.NOMBDEP || ''}` },
+    brasil: { file: 'data/brasil_map.geojson', yearFile: 'data/brasil_by_year.json',
+              center: [-14.24, -51.93], zoom: 4, idField: 'id', matchBy: 'id',
+              nameField: 'name', extraFields: f => '' },
+    colombia: { file: 'data/colombia_map.geojson', yearFile: 'data/colombia_by_year.json',
+                center: [4.57, -74.30], zoom: 6, idField: 'match_id', matchBy: 'id',
+                nameField: 'name', extraFields: f => f.department || '' }
+};
+
+async function loadGeo(country) {
+    if (!geoCache[country]) geoCache[country] = await fetch(countryConfig[country].file).then(r => r.text());
+    return JSON.parse(geoCache[country]);
+}
+
+async function loadYearData(country) {
+    if (!yearDataCache[country]) yearDataCache[country] = await fetch(countryConfig[country].yearFile).then(r => r.json());
+    return yearDataCache[country];
+}
+
+function norm(s) {
+    s = String(s || '');
+    s = s.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+    return s.toUpperCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ');
+}
+
+async function renderCountry(country, year) {
+    const cfg = countryConfig[country];
+    const geojson = await loadGeo(country);
+    const allYearData = await loadYearData(country);
+    const yearData = allYearData[String(year)] || [];
+
+    const lookup = {};
+    yearData.forEach(d => { lookup[String(d.match_id || d.id)] = d; });
+
+    geojson.features.forEach(f => {
+        const key = f.properties[cfg.idField] != null ? String(f.properties[cfg.idField]) : null;
+        const match = key ? lookup[key] : null;
+        if (match) {
+            f.properties.desert = match.desert;
+            f.properties.offices = match.offices;
+            f.properties._matched = true;
+        } else {
+            f.properties._matched = false;
+        }
+    });
+
+    return L.geoJSON(geojson, {
+        style: f => {
+            if (!f.properties._matched) return { fillColor: '#4B5563', weight: 0.2, opacity: 0.3, color: '#6B7280', fillOpacity: 0.25 };
+            return {
+                fillColor: f.properties.desert === 1 ? '#C0392B' : '#1E8449',
+                weight: 0.3, opacity: 0.7, color: '#6B7280', fillOpacity: 0.75
+            };
+        },
+        onEachFeature: (f, l) => {
+            const p = f.properties;
+            const name = p[cfg.nameField] || p.name || '?';
+            const extra = cfg.extraFields(p);
+            if (!p._matched) {
+                l.bindPopup(`<strong>${name}</strong><br>${extra ? extra+'<br>' : ''}Data not available for this unit<br>Year: ${year}`);
+            } else {
+                const status = p.desert === 1 ? '<span style="color:#C0392B;font-weight:600">Financial Desert</span>' : '<span style="color:#1E8449;font-weight:600">Has Access</span>';
+                l.bindPopup(`<strong>${name}</strong><br>${extra ? extra+'<br>' : ''}Offices: ${p.offices}<br>Status: ${status}<br>Year: ${year}`);
+            }
+        }
+    });
+}
+
+async function updateMap() {
+    const country = document.getElementById('country-select').value;
+    const year = parseInt(document.getElementById('year-select').value);
+    currentLayers.forEach(l => map.removeLayer(l));
+    currentLayers = [];
+
+    const countries = country === 'all' ? ['peru','brasil','colombia'] : [country];
+    for (const c of countries) {
+        const layer = await renderCountry(c, year);
+        layer.addTo(map); currentLayers.push(layer);
+    }
+    map.setView(country === 'all' ? [-5, -60] : countryConfig[country].center, country === 'all' ? 3 : countryConfig[country].zoom);
+
+    let totalDeserts = 0, totalUnits = 0;
+    for (const c of countries) {
+        const yd = yearDataCache[c]?.[String(year)] || [];
+        totalDeserts += yd.filter(d => d.desert === 1).length;
+        totalUnits += yd.length;
+    }
+    document.getElementById('year-label').textContent =
+        totalUnits > 0 ? `${totalDeserts.toLocaleString()} deserts of ${totalUnits.toLocaleString()} (${(totalDeserts/totalUnits*100).toFixed(1)}%)` : '';
+}
+
+function populateYears(country) {
+    const sel = document.getElementById('year-select');
+    const years = yearsConfig[country] || yearsConfig['all'] || [];
+    sel.innerHTML = '';
+    years.forEach(y => { const opt = document.createElement('option'); opt.value = y; opt.textContent = y; if (y === 2024) opt.selected = true; sel.appendChild(opt); });
+}
+
+document.getElementById('country-select').addEventListener('change', function() { populateYears(this.value); });
+
+async function loadMap() {
+    yearsConfig = await fetch('data/years_config.json').then(r => r.json());
+    populateYears('all');
+    await updateMap();
+}
+
+// ========================================
+// COLOR PALETTE FOR CHARTS
+// ========================================
+const COLORS = {
+    peru: '#C0392B',
+    brazil: '#1E8449',
+    colombia: '#D4A017',
+    axis: '#9CA3AF',
+    gridLine: '#F3F4F6',
+    text: '#4B5563',
+    labelBg: '#FAF9F6'
+};
+
+// ========================================
+// Trend chart
+// ========================================
+async function loadTrendChart() {
+    const [peru, brasil, colombia] = await Promise.all([
+        d3.json('data/peru_resumen.json'), d3.json('data/brasil_resumen.json'), d3.json('data/colombia_resumen.json')
+    ]);
+
+    const svg = d3.select('#chart-trend');
+    const containerWidth = svg.node().parentElement.getBoundingClientRect().width - 40;
+    const width = Math.min(containerWidth, 820);
+    const height = 300, margin = {top: 20, right: 100, bottom: 35, left: 50};
+    svg.attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height}`);
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const w = width - margin.left;
+    const h = height - margin.bottom - margin.top;
+    const x = d3.scaleLinear().domain([2002, 2025]).range([0, w]);
+    const y = d3.scaleLinear().domain([0, 100]).range([h, 0]);
+
+    // Grid lines
+    g.selectAll('.grid-line').data(y.ticks(5)).join('line')
+        .attr('class', 'grid-line')
+        .attr('x1', 0).attr('x2', w)
+        .attr('y1', d => y(d)).attr('y2', d => y(d))
+        .attr('stroke', COLORS.gridLine).attr('stroke-width', 1);
+
+    g.append('g').attr('transform', `translate(0,${h})`)
+        .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8).tickSize(0).tickPadding(10))
+        .call(g => g.select('.domain').remove())
+        .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
+
+    g.append('g')
+        .call(d3.axisLeft(y).ticks(5).tickFormat(d=>d+'%').tickSize(0).tickPadding(10))
+        .call(g => g.select('.domain').remove())
+        .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
+
+    const line = d3.line().x(d => x(d.year)).y(d => y(d.pct_desierto ?? d.pct)).curve(d3.curveMonotoneX);
+    [{data:peru,color:COLORS.peru,label:'Peru'},{data:brasil,color:COLORS.brazil,label:'Brazil'},{data:colombia,color:COLORS.colombia,label:'Colombia'}].forEach(ds => {
+        g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',line);
+        // End dot
+        const last = ds.data[ds.data.length-1]; const val = last.pct_desierto ?? last.pct;
+        g.append('circle').attr('cx',x(last.year)).attr('cy',y(val)).attr('r',3.5).attr('fill',ds.color);
+        // Label
+        g.append('text').attr('x',x(last.year)+8).attr('y',y(val))
+            .text(`${ds.label} ${val}%`)
+            .style('fill',ds.color).style('font-size','11px').style('font-weight','600').style('font-family','Inter, system-ui')
+            .attr('dominant-baseline','middle');
+    });
+}
+
+// ========================================
+// Population chart
+// ========================================
+async function loadPopChart() {
+    const popData = await d3.json('data/population_deserts.json');
+    const peru = popData.peru.filter(d => d.year <= 2024);
+    const brasil = popData.brasil.filter(d => d.year <= 2024);
+    const colombia = popData.colombia.filter(d => d.year <= 2024);
+
+    const svg = d3.select('#chart-pop');
+    const containerWidth = svg.node().parentElement.getBoundingClientRect().width - 20;
+    const totalWidth = Math.min(containerWidth, 840);
+    const height = 340, margin = {top: 20, right: 110, bottom: 35, left: 55};
+    const w = totalWidth - margin.left - margin.right;
+    svg.attr('viewBox', `0 0 ${totalWidth} ${height}`);
+
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const x = d3.scaleLinear().domain([2002, 2025]).range([0, w]);
+    const y = d3.scaleLinear().domain([0, 50]).range([height - margin.bottom - margin.top, 0]);
+    const h = height - margin.bottom - margin.top;
+
+    // Grid
+    g.selectAll('.grid-line').data(y.ticks(5)).join('line')
+        .attr('x1', 0).attr('x2', w)
+        .attr('y1', d => y(d)).attr('y2', d => y(d))
+        .attr('stroke', COLORS.gridLine).attr('stroke-width', 1);
+
+    g.append('g').attr('transform', `translate(0,${h})`)
+        .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8).tickSize(0).tickPadding(10))
+        .call(g => g.select('.domain').remove())
+        .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
+
+    g.append('g')
+        .call(d3.axisLeft(y).ticks(5).tickFormat(d => d + '%').tickSize(0).tickPadding(10))
+        .call(g => g.select('.domain').remove())
+        .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
+
+    const linePop = d3.line().x(d => x(d.year)).y(d => y(d.pct_pop)).curve(d3.curveMonotoneX);
+    const datasets = [
+        {data: peru, color: COLORS.peru, label: 'Peru'},
+        {data: brasil, color: COLORS.brazil, label: 'Brazil'},
+        {data: colombia, color: COLORS.colombia, label: 'Colombia'}
+    ];
+
+    datasets.forEach(ds => {
+        g.append('path').datum(ds.data).attr('fill','none')
+            .attr('stroke', ds.color).attr('stroke-width', 2.5).attr('d', linePop);
+        const last = ds.data[ds.data.length - 1];
+        g.append('circle').attr('cx',x(last.year)).attr('cy',y(last.pct_pop)).attr('r',3.5).attr('fill',ds.color);
+        g.append('text')
+            .attr('x', x(last.year) + 8).attr('y', y(last.pct_pop))
+            .text(`${ds.label} ${last.pct_pop}%`)
+            .style('fill', ds.color).style('font-size', '11px').style('font-weight','600').style('font-family','Inter, system-ui')
+            .attr('dominant-baseline', 'middle');
+    });
+
+    // Y-axis label
+    g.append('text').attr('transform','rotate(-90)')
+        .attr('x', -h/2).attr('y', -40)
+        .attr('text-anchor','middle').text('% population in deserts')
+        .style('fill', COLORS.axis).style('font-size','10px').style('font-family','Inter, system-ui');
+}
+
+// ========================================
+// Offices chart
+// ========================================
+async function loadOfficesChart() {
+    const [peru, brasil, colombia] = await Promise.all([
+        d3.json('data/peru_resumen.json'), d3.json('data/brasil_resumen.json'), d3.json('data/colombia_resumen.json')
+    ]);
+
+    const svg = d3.select('#chart-offices');
+    const containerWidth = svg.node().parentElement.getBoundingClientRect().width - 40;
+    const width = Math.min(containerWidth, 820);
+    const height = 300, margin = {top: 20, right: 100, bottom: 35, left: 55};
+    svg.attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height}`);
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const w = width - margin.left;
+    const h = height - margin.bottom - margin.top;
+    const x = d3.scaleLinear().domain([2002, 2025]).range([0, w]);
+    const y = d3.scaleLinear().domain([0, 12000]).range([h, 0]);
+
+    // Grid
+    g.selectAll('.grid-line').data(y.ticks(4)).join('line')
+        .attr('x1', 0).attr('x2', w)
+        .attr('y1', d => y(d)).attr('y2', d => y(d))
+        .attr('stroke', COLORS.gridLine).attr('stroke-width', 1);
+
+    g.append('g').attr('transform',`translate(0,${h})`)
+        .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8).tickSize(0).tickPadding(10))
+        .call(g => g.select('.domain').remove())
+        .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
+
+    g.append('g')
+        .call(d3.axisLeft(y).ticks(4).tickFormat(d=>(d/1000)+'K').tickSize(0).tickPadding(10))
+        .call(g => g.select('.domain').remove())
+        .selectAll('text').style('fill', COLORS.axis).style('font-size','11px').style('font-family','Inter, system-ui');
+
+    [{data:peru,color:COLORS.peru,label:'Peru',key:'oficinas_total'},{data:brasil,color:COLORS.brazil,label:'Brazil',key:'agencias'},{data:colombia,color:COLORS.colombia,label:'Colombia',key:'oficinas_total'}].forEach(ds => {
+        const lineGen = d3.line().x(d=>x(d.year)).y(d=>y(d[ds.key]||0)).curve(d3.curveMonotoneX);
+        g.append('path').datum(ds.data).attr('fill','none').attr('stroke',ds.color).attr('stroke-width',2.5).attr('d',lineGen);
+        const last = ds.data[ds.data.length-1];
+        g.append('circle').attr('cx',x(last.year)).attr('cy',y(last[ds.key]||0)).attr('r',3.5).attr('fill',ds.color);
+        g.append('text').attr('x',x(last.year)+8).attr('y',y(last[ds.key]||0))
+            .text(`${ds.label} ${((last[ds.key]||0)/1000).toFixed(1)}K`)
+            .style('fill',ds.color).style('font-size','11px').style('font-weight','600').style('font-family','Inter, system-ui')
+            .attr('dominant-baseline','middle');
+    });
+}
+
+// ========================================
+// Table
+// ========================================
+async function loadTable() {
+    const summary = await d3.json('data/summary.json');
+    document.getElementById('comparison-table').innerHTML = `
+        <thead><tr><th>Country</th><th>Units</th><th>Deserts</th><th>% Desert</th><th>Offices</th><th>Decline from peak</th></tr></thead>
+        <tbody>${summary.map(s => `<tr>
+            <td>${s.country}</td><td>${s.units.toLocaleString()}</td><td>${s.deserts.toLocaleString()}</td>
+            <td><strong>${s.pct_desert}%</strong></td><td>${s.offices.toLocaleString()}</td>
+            <td><span class="decline-badge"><svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor"><polygon points="5,7 1,2 9,2"/></svg> ${Math.abs(s.decline_pct)}%</span></td>
+        </tr>`).join('')}</tbody>`;
+}
+
+// ========================================
+// Init
+// ========================================
+loadStats(); loadMap(); loadTrendChart(); loadPopChart(); loadOfficesChart(); loadTable();
+</script>
+</body>
+</html>

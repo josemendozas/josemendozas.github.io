@@ -1,0 +1,38 @@
+[
+  {
+    "country": "Peru",
+    "year": 2024,
+    "units": 1891,
+    "with_office": 518,
+    "deserts": 1373,
+    "pct_desert": 72.6,
+    "offices": 3986,
+    "peak_year": 2019,
+    "peak_offices": 4713,
+    "decline_pct": -15.4
+  },
+  {
+    "country": "Brazil",
+    "year": 2024,
+    "units": 5570,
+    "with_office": 3004,
+    "deserts": 2566,
+    "pct_desert": 46.1,
+    "offices": 8311,
+    "peak_year": 2014,
+    "peak_offices": 10985,
+    "decline_pct": -24.3
+  },
+  {
+    "country": "Colombia",
+    "year": 2024,
+    "units": 1121,
+    "with_office": 840,
+    "deserts": 281,
+    "pct_desert": 25.1,
+    "offices": 5425,
+    "peak_year": 2016,
+    "peak_offices": 6540,
+    "decline_pct": -17.0
+  }
+]
