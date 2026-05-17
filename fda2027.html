@@ -743,80 +743,102 @@
         margin: 72px 0;
     }
 
-    .budget-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 16px;
-    }
-
-    .budget-card {
+    .budget-table-wrap {
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: var(--r-lg);
-        padding: 28px;
-        box-shadow: var(--shadow-xs);
-        position: relative;
+        box-shadow: var(--shadow-sm);
         overflow: hidden;
-        transition: box-shadow 0.25s, transform 0.25s;
     }
 
-    .budget-card:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-3px);
+    .budget-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
     }
 
-    .budget-card::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 4px;
-    }
-    .budget-card.london::after { background: var(--london); }
-    .budget-card.paris::after  { background: var(--paris); }
-    .budget-card.rome::after   { background: var(--rome); }
-    .budget-card.total::after  { background: linear-gradient(90deg, var(--london), var(--paris), var(--rome)); }
-
-    .bc-heading {
-        font-family: 'DM Serif Display', serif;
-        font-size: 1.15rem;
-        margin-bottom: 18px;
-        padding-top: 8px;
-    }
-    .budget-card.london .bc-heading { color: var(--london); }
-    .budget-card.paris  .bc-heading { color: var(--paris); }
-    .budget-card.rome   .bc-heading { color: var(--rome); }
-    .budget-card.total  .bc-heading {
-        color: var(--text);
-        font-size: 1rem;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+    .budget-table th {
+        background: var(--surface-warm);
+        padding: 14px 18px;
+        text-align: left;
         font-family: 'DM Sans', sans-serif;
         font-weight: 600;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-mid);
+        border-bottom: 2px solid var(--border);
     }
 
-    .bc-line {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 8px;
-        padding: 6px 0;
-        font-size: 0.82rem;
+    .budget-table th:nth-child(2),
+    .budget-table th:nth-child(3) { text-align: right; }
+
+    .budget-table td {
+        padding: 10px 18px;
         border-bottom: 1px solid var(--surface-warm);
+        color: var(--text-mid);
     }
-    .bc-line:last-of-type { border-bottom: none; }
-    .bc-line .lbl { color: var(--text-muted); flex: 1; font-weight: 300; }
-    .bc-line .amt { color: var(--text-mid); font-weight: 500; text-align: right; white-space: nowrap; }
 
-    .bc-line.subtotal {
-        font-weight: 600;
-        padding-top: 16px;
-        margin-top: 10px;
-        border-top: 1px solid var(--border-mid);
-        border-bottom: none;
-        font-size: 0.9rem;
+    .budget-table td:nth-child(2),
+    .budget-table td:nth-child(3) {
+        text-align: right;
+        font-weight: 500;
+        white-space: nowrap;
+        color: var(--text);
     }
-    .bc-line.subtotal .lbl { color: var(--text); }
-    .bc-line.subtotal .amt { color: var(--text); }
+
+    .budget-table td:first-child { color: var(--text-muted); font-weight: 300; }
+
+    .budget-table tr.city-header-row td {
+        background: var(--surface-warm);
+        font-family: 'DM Serif Display', serif;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .budget-table tr.city-header-row.london td { color: var(--london); }
+    .budget-table tr.city-header-row.paris td { color: var(--paris); }
+    .budget-table tr.city-header-row.rome td { color: var(--rome); }
+
+    .budget-table tr.subtotal-row td {
+        font-weight: 700;
+        color: var(--text);
+        border-top: 1px solid var(--border-mid);
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background: rgba(0,0,0,0.01);
+    }
+
+    .budget-table tr.grand-total td {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text);
+        background: var(--surface-warm);
+        border-top: 3px solid var(--border-mid);
+        padding: 18px;
+    }
+
+    .budget-table tr.per-person td {
+        font-weight: 700;
+        font-size: 1.1rem;
+        background: linear-gradient(90deg, rgba(26,83,92,0.06), rgba(181,100,124,0.06), rgba(196,101,42,0.06));
+        padding: 18px;
+    }
+
+    .bc-note {
+        padding: 16px 18px;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+        .budget-table { font-size: 0.78rem; }
+        .budget-table td, .budget-table th { padding: 8px 12px; }
+    }
 
     .bc-note {
         margin-top: 14px;
@@ -1645,78 +1667,66 @@
             <div class="title-rule"></div>
         </div>
 
-        <!-- LONDON BUDGET -->
-        <div class="budget-grid">
-            <div class="budget-card london">
-                <div class="bc-heading">Londres &mdash; 3 noches</div>
-                <div class="bc-line"><span class="lbl">Alojamiento (hotel o Airbnb, 3 noches)</span><span class="amt">$800&ndash;$1,200</span></div>
-                <div class="bc-line"><span class="lbl">Comida (&pound;20&ndash;25/pers/d&iacute;a &times; 3 d&iacute;as &times; 6 pers)</span><span class="amt">$470&ndash;$590</span></div>
-                <div class="bc-line"><span class="lbl">Heathrow &rarr; centro (Piccadilly Line, 6 pers)</span><span class="amt">$44</span></div>
-                <div class="bc-line"><span class="lbl">Metro 3 d&iacute;as (Oyster &pound;8.10/d&iacute;a &times; 6 pers)</span><span class="amt">$190</span></div>
-                <div class="bc-line"><span class="lbl">Eurostar Londres &rarr; Par&iacute;s (&euro;103/pers &times; 6)</span><span class="amt">$680</span></div>
-                <div class="bc-line subtotal"><span class="lbl">Subtotal Londres (6 pers)</span><span class="amt">$2,184&ndash;$2,704</span></div>
-                <div class="bc-line subtotal"><span class="lbl">Por persona</span><span class="amt">$364&ndash;$451</span></div>
-            </div>
+        <div class="budget-table-wrap">
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Total (6 pers)</th>
+                        <th>Por persona</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- LONDON -->
+                    <tr class="city-header-row london"><td colspan="3">Londres &mdash; 3 noches</td></tr>
+                    <tr><td>Alojamiento (hotel o Airbnb)</td><td>$800&ndash;$1,200</td><td>$133&ndash;$200</td></tr>
+                    <tr><td>Comida (&pound;20&ndash;25/pers/d&iacute;a &times; 3 d&iacute;as)</td><td>$470&ndash;$590</td><td>$78&ndash;$98</td></tr>
+                    <tr><td>Heathrow &rarr; centro (Piccadilly Line)</td><td>$44</td><td>$7</td></tr>
+                    <tr><td>Metro 3 d&iacute;as (Oyster tope diario)</td><td>$190</td><td>$32</td></tr>
+                    <tr><td>Eurostar Londres &rarr; Par&iacute;s (&euro;103/pers)</td><td>$680</td><td>$113</td></tr>
+                    <tr class="subtotal-row"><td>Subtotal Londres</td><td>$2,184&ndash;$2,704</td><td>$364&ndash;$451</td></tr>
 
-            <!-- PARIS BUDGET -->
-            <div class="budget-card paris">
-                <div class="bc-heading">Par&iacute;s &mdash; 5 noches</div>
-                <div class="bc-line"><span class="lbl">Alojamiento (aparthotel Adagio / Hotel L'Union, 5 noches)</span><span class="amt">$1,523&ndash;$1,700</span></div>
-                <div class="bc-line"><span class="lbl">Comida (&euro;22/pers/d&iacute;a &times; 6 d&iacute;as &times; 6 pers)</span><span class="amt">$870</span></div>
-                <div class="bc-line"><span class="lbl">Transporte local metro (6 d&iacute;as &times; 6 pers)</span><span class="amt">$275</span></div>
-                <div class="bc-line"><span class="lbl">Vuelo ITA Airways Par&iacute;s &rarr; Roma (&euro;1,073 + Uber &euro;85)</span><span class="amt">$1,274</span></div>
-                <div class="bc-line"><span class="lbl">Versalles (&euro;25/adulto, menores 18 gratis)</span><span class="amt">$110&ndash;$165</span></div>
-                <div class="bc-line"><span class="lbl">RER C ida+vuelta Versalles (&euro;9.20/pers &times; 6)</span><span class="amt">$61</span></div>
-                <div class="bc-line"><span class="lbl">Louvre (&euro;32/adulto, menores 18 gratis)</span><span class="amt">$140&ndash;$211</span></div>
-                <div class="bc-line"><span class="lbl">Sainte-Chapelle (&euro;13/adulto, menores 18 gratis)</span><span class="amt">$57&ndash;$86</span></div>
-                <div class="bc-line"><span class="lbl">Mus&eacute;e d'Orsay (&euro;16/adulto, menores 18 gratis)</span><span class="amt">$70&ndash;$105</span></div>
-                <div class="bc-line"><span class="lbl">Disneyland 1 parque (~&euro;95/pers &times; 6)</span><span class="amt">$627</span></div>
-                <div class="bc-line"><span class="lbl">RER A ida+vuelta Disney (&euro;10.80/pers &times; 6)</span><span class="amt">$71</span></div>
-                <div class="bc-line subtotal"><span class="lbl">Subtotal Par&iacute;s (6 pers)</span><span class="amt">$5,078&ndash;$5,445</span></div>
-                <div class="bc-line subtotal"><span class="lbl">Por persona</span><span class="amt">$846&ndash;$908</span></div>
-            </div>
+                    <!-- PARIS -->
+                    <tr class="city-header-row paris"><td colspan="3">Par&iacute;s &mdash; 5 noches</td></tr>
+                    <tr><td>Alojamiento (aparthotel Adagio / Hotel L'Union)</td><td>$1,523&ndash;$1,700</td><td>$254&ndash;$283</td></tr>
+                    <tr><td>Comida (&euro;22/pers/d&iacute;a &times; 6 d&iacute;as)</td><td>$870</td><td>$145</td></tr>
+                    <tr><td>Transporte local metro (6 d&iacute;as)</td><td>$275</td><td>$46</td></tr>
+                    <tr><td>Vuelo ITA Airways + Uber XL a CDG</td><td>$1,274</td><td>$212</td></tr>
+                    <tr><td>Versalles (&euro;25/adulto, &lt;18 gratis)</td><td>$110&ndash;$165</td><td>$18&ndash;$28</td></tr>
+                    <tr><td>RER Versalles ida+vuelta</td><td>$61</td><td>$10</td></tr>
+                    <tr><td>Louvre (&euro;32/adulto, &lt;18 gratis)</td><td>$140&ndash;$211</td><td>$23&ndash;$35</td></tr>
+                    <tr><td>Sainte-Chapelle (&euro;13/adulto, &lt;18 gratis)</td><td>$57&ndash;$86</td><td>$10&ndash;$14</td></tr>
+                    <tr><td>Mus&eacute;e d'Orsay (&euro;16/adulto, &lt;18 gratis)</td><td>$70&ndash;$105</td><td>$12&ndash;$18</td></tr>
+                    <tr><td>Disneyland 1 parque (~&euro;95/pers)</td><td>$627</td><td>$105</td></tr>
+                    <tr><td>RER Disney ida+vuelta</td><td>$71</td><td>$12</td></tr>
+                    <tr class="subtotal-row"><td>Subtotal Par&iacute;s</td><td>$5,078&ndash;$5,445</td><td>$846&ndash;$908</td></tr>
 
-            <!-- ROME BUDGET -->
-            <div class="budget-card rome">
-                <div class="bc-heading">Roma &mdash; 7 noches</div>
-                <div class="bc-line"><span class="lbl">Alojamiento (hotel/Airbnb, 7 noches &mdash; estimado)</span><span class="amt">$1,200&ndash;$1,800</span></div>
-                <div class="bc-line"><span class="lbl">Comida (&euro;25&ndash;30/pers/d&iacute;a &times; 8 d&iacute;as &times; 6 pers)</span><span class="amt">$1,320&ndash;$1,584</span></div>
-                <div class="bc-line"><span class="lbl">Leonardo Express aeropuerto ida+vuelta (&euro;14/pers &times; 6 &times; 2)</span><span class="amt">$185</span></div>
-                <div class="bc-line"><span class="lbl">Transporte urbano Roma (pases ROMA 72H &times; 2 + sueltos, 6 pers)</span><span class="amt">$290</span></div>
-                <div class="bc-line"><span class="lbl">Tren Roma&ndash;Florencia ida+vuelta (&euro;15&ndash;30/pers &times; 6 &times; 2)</span><span class="amt">$198&ndash;$396</span></div>
-                <div class="bc-line"><span class="lbl">Tren Roma&ndash;N&aacute;poles ida+vuelta (&euro;20&ndash;40/pers &times; 6 &times; 2)</span><span class="amt">$264&ndash;$528</span></div>
-                <div class="bc-line"><span class="lbl">Circumvesuviana N&aacute;poles&ndash;Pompeya (&euro;3.30/pers &times; 6 &times; 2)</span><span class="amt">$44</span></div>
-                <div class="bc-line"><span class="lbl">Coliseo + Foro + Palatino (&euro;18/pers &times; 6)</span><span class="amt">$119</span></div>
-                <div class="bc-line"><span class="lbl">Museos Vaticanos + Sixtina (&euro;25/pers &times; 6)</span><span class="amt">$165</span></div>
-                <div class="bc-line"><span class="lbl">Bas&iacute;lica de San Pedro</span><span class="amt">Gratis</span></div>
-                <div class="bc-line"><span class="lbl">C&uacute;pula San Pedro (opcional, &euro;10/pers &times; 6)</span><span class="amt">$0&ndash;$66</span></div>
-                <div class="bc-line"><span class="lbl">Pante&oacute;n (&euro;5/pers &times; 6)</span><span class="amt">$33</span></div>
-                <div class="bc-line"><span class="lbl">Bocca della Verit&agrave; (&euro;2/pers &times; 6)</span><span class="amt">$13</span></div>
-                <div class="bc-line"><span class="lbl">Galer&iacute;a Borghese (opcional, &euro;18/pers &times; 6)</span><span class="amt">$0&ndash;$119</span></div>
-                <div class="bc-line"><span class="lbl">Pompeya entrada (&euro;20/pers &times; 6)</span><span class="amt">$132</span></div>
-                <div class="bc-line"><span class="lbl">Galleria dell'Accademia Florencia (opcional, &euro;20/pers &times; 6)</span><span class="amt">$0&ndash;$132</span></div>
-                <div class="bc-line subtotal"><span class="lbl">Subtotal Roma (6 pers)</span><span class="amt">$3,963&ndash;$5,592</span></div>
-                <div class="bc-line subtotal"><span class="lbl">Por persona</span><span class="amt">$661&ndash;$932</span></div>
-            </div>
+                    <!-- ROME -->
+                    <tr class="city-header-row rome"><td colspan="3">Roma &mdash; 7 noches</td></tr>
+                    <tr><td>Alojamiento (estimado)</td><td>$1,200&ndash;$1,800</td><td>$200&ndash;$300</td></tr>
+                    <tr><td>Comida (&euro;25&ndash;30/pers/d&iacute;a &times; 8 d&iacute;as)</td><td>$1,320&ndash;$1,584</td><td>$220&ndash;$264</td></tr>
+                    <tr><td>Leonardo Express aeropuerto ida+vuelta</td><td>$185</td><td>$31</td></tr>
+                    <tr><td>Transporte urbano (pases ROMA 72H + sueltos)</td><td>$290</td><td>$48</td></tr>
+                    <tr><td>Tren Roma&ndash;Florencia ida+vuelta</td><td>$198&ndash;$396</td><td>$33&ndash;$66</td></tr>
+                    <tr><td>Tren Roma&ndash;N&aacute;poles ida+vuelta</td><td>$264&ndash;$528</td><td>$44&ndash;$88</td></tr>
+                    <tr><td>Circumvesuviana N&aacute;poles&ndash;Pompeya ida+vuelta</td><td>$44</td><td>$7</td></tr>
+                    <tr><td>Coliseo + Foro Romano + Palatino (&euro;18/pers)</td><td>$119</td><td>$20</td></tr>
+                    <tr><td>Museos Vaticanos + Sixtina (&euro;25/pers)</td><td>$165</td><td>$28</td></tr>
+                    <tr><td>Bas&iacute;lica de San Pedro</td><td>Gratis</td><td>Gratis</td></tr>
+                    <tr><td>C&uacute;pula San Pedro (opcional, &euro;10/pers)</td><td>$0&ndash;$66</td><td>$0&ndash;$11</td></tr>
+                    <tr><td>Pante&oacute;n (&euro;5/pers)</td><td>$33</td><td>$6</td></tr>
+                    <tr><td>Bocca della Verit&agrave; (&euro;2/pers)</td><td>$13</td><td>$2</td></tr>
+                    <tr><td>Galer&iacute;a Borghese (opcional, &euro;18/pers)</td><td>$0&ndash;$119</td><td>$0&ndash;$20</td></tr>
+                    <tr><td>Pompeya (&euro;20/pers)</td><td>$132</td><td>$22</td></tr>
+                    <tr><td>Galleria dell'Accademia Florencia (opcional, &euro;20/pers)</td><td>$0&ndash;$132</td><td>$0&ndash;$22</td></tr>
+                    <tr class="subtotal-row"><td>Subtotal Roma</td><td>$3,963&ndash;$5,592</td><td>$661&ndash;$932</td></tr>
 
-            <!-- TOTAL -->
-            <div class="budget-card total">
-                <div class="bc-heading">Resumen total del viaje</div>
-
-                <div class="bc-line" style="font-weight:600; margin-bottom:8px;"><span class="lbl" style="color:var(--text);">Total 6 personas</span><span class="amt"></span></div>
-                <div class="bc-line"><span class="lbl">Londres</span><span class="amt">$2,184&ndash;$2,704</span></div>
-                <div class="bc-line"><span class="lbl">Par&iacute;s</span><span class="amt">$5,078&ndash;$5,445</span></div>
-                <div class="bc-line"><span class="lbl">Roma</span><span class="amt">$3,963&ndash;$5,592</span></div>
-                <div class="bc-line subtotal"><span class="lbl">TOTAL (6 personas)</span><span class="amt">$11,225&ndash;$13,741</span></div>
-
-                <div class="bc-line" style="font-weight:600; margin-top:16px; margin-bottom:8px;"><span class="lbl" style="color:var(--text);">Por persona</span><span class="amt"></span></div>
-                <div class="bc-line"><span class="lbl">Londres</span><span class="amt">$364&ndash;$451</span></div>
-                <div class="bc-line"><span class="lbl">Par&iacute;s</span><span class="amt">$846&ndash;$908</span></div>
-                <div class="bc-line"><span class="lbl">Roma</span><span class="amt">$661&ndash;$932</span></div>
-                <div class="bc-line subtotal"><span class="lbl">TOTAL POR PERSONA</span><span class="amt">$1,871&ndash;$2,290</span></div>
-
-                <div class="bc-note">No incluye vuelos internacionales Lima&ndash;Londres / Roma&ndash;Lima (ya comprados por separado) ni equipaje despachado. Los rangos dependen de opciones elegidas (hotel vs Airbnb, atracciones opcionales, precio de trenes seg&uacute;n anticipaci&oacute;n de compra).</div>
-            </div>
+                    <!-- GRAND TOTAL -->
+                    <tr class="grand-total"><td>TOTAL DEL VIAJE</td><td>$11,225&ndash;$13,741</td><td></td></tr>
+                    <tr class="per-person"><td>TOTAL POR PERSONA</td><td></td><td>$1,871&ndash;$2,290</td></tr>
+                </tbody>
+            </table>
+            <div class="bc-note">No incluye vuelos internacionales Lima&ndash;Londres / Roma&ndash;Lima (ya comprados por separado) ni equipaje despachado. Los rangos dependen de opciones elegidas (hotel vs Airbnb, atracciones opcionales, anticipaci&oacute;n de compra de trenes).</div>
         </div>
     </div>
 
