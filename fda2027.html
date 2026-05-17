@@ -1752,55 +1752,89 @@
             </div>
         </div>
 
-        <div class="budget-table-wrap">
+        <div class="budget-table-wrap" style="overflow-x:auto;">
             <table class="budget-table">
                 <thead>
                     <tr>
                         <th>Categor&iacute;a</th>
+                        <th style="color:var(--london);">Londres</th>
+                        <th style="color:var(--paris);">Par&iacute;s</th>
+                        <th style="color:var(--rome);">Roma</th>
                         <th>Total (6 pers)</th>
                         <th>Por persona</th>
-                        <th>% del total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="color:var(--text); font-weight:500;">Alojamiento (15 noches)</td>
+                        <td style="color:var(--text); font-weight:500;">Alojamiento</td>
+                        <td>$800&ndash;$1,200</td>
+                        <td>$1,523&ndash;$1,700</td>
+                        <td>$1,200&ndash;$1,800</td>
                         <td>$3,523&ndash;$4,700</td>
                         <td>$587&ndash;$783</td>
-                        <td>~32&ndash;35%</td>
                     </tr>
                     <tr>
-                        <td style="color:var(--text); font-weight:500;">Comida (16 d&iacute;as)</td>
+                        <td style="color:var(--text); font-weight:500;">Comida</td>
+                        <td>$470&ndash;$590</td>
+                        <td>$870</td>
+                        <td>$1,320&ndash;$1,584</td>
                         <td>$2,660&ndash;$3,044</td>
                         <td>$443&ndash;$507</td>
-                        <td>~22&ndash;24%</td>
                     </tr>
                     <tr>
-                        <td style="color:var(--text); font-weight:500;">Transporte entre ciudades (Eurostar + vuelo ITA)</td>
+                        <td style="color:var(--text); font-weight:500;">Vuelos y transporte entre ciudades</td>
+                        <td>$680<br><small style="color:var(--text-muted);">Eurostar</small></td>
+                        <td>$1,274<br><small style="color:var(--text-muted);">ITA + Uber</small></td>
+                        <td>&mdash;</td>
                         <td>$1,954</td>
                         <td>$326</td>
-                        <td>~15&ndash;18%</td>
                     </tr>
                     <tr>
-                        <td style="color:var(--text); font-weight:500;">Transporte local (metro, trenes day trips, aeropuerto)</td>
-                        <td>$1,296&ndash;$1,919</td>
-                        <td>$216&ndash;$320</td>
-                        <td>~12&ndash;14%</td>
+                        <td style="color:var(--text); font-weight:500;">Transporte local</td>
+                        <td>$234<br><small style="color:var(--text-muted);">Heathrow + metro</small></td>
+                        <td>$407<br><small style="color:var(--text-muted);">Metro + RER</small></td>
+                        <td>$783&ndash;$1,497<br><small style="color:var(--text-muted);">Leonardo + metro + trenes day trips</small></td>
+                        <td>$1,424&ndash;$2,138</td>
+                        <td>$237&ndash;$356</td>
                     </tr>
                     <tr>
                         <td style="color:var(--text); font-weight:500;">Atracciones y entradas</td>
-                        <td>$853&ndash;$1,334</td>
-                        <td>$142&ndash;$222</td>
-                        <td>~8&ndash;10%</td>
+                        <td>&mdash;</td>
+                        <td>$250&ndash;$376<br><small style="color:var(--text-muted);">Versalles, Louvre</small></td>
+                        <td>$330&ndash;$635<br><small style="color:var(--text-muted);">Coliseo, Vaticano, Pompeya, etc.</small></td>
+                        <td>$580&ndash;$1,011</td>
+                        <td>$97&ndash;$169</td>
                     </tr>
                     <tr>
                         <td style="color:var(--text); font-weight:500;">Disneyland Par&iacute;s</td>
+                        <td>&mdash;</td>
+                        <td>$627</td>
+                        <td>&mdash;</td>
                         <td>$627</td>
                         <td>$105</td>
-                        <td>~5&ndash;6%</td>
                     </tr>
-                    <tr class="grand-total"><td>TOTAL DEL VIAJE</td><td>$11,098&ndash;$13,550</td><td></td><td></td></tr>
-                    <tr class="per-person"><td>TOTAL POR PERSONA</td><td></td><td>$1,850&ndash;$2,258</td><td>100%</td></tr>
+                    <tr class="subtotal-row">
+                        <td>Subtotal por ciudad</td>
+                        <td>$2,184&ndash;$2,704</td>
+                        <td>$4,951&ndash;$5,254</td>
+                        <td>$3,963&ndash;$5,592</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="grand-total">
+                        <td>TOTAL DEL VIAJE</td>
+                        <td colspan="3"></td>
+                        <td>$11,098&ndash;$13,550</td>
+                        <td></td>
+                    </tr>
+                    <tr class="per-person">
+                        <td>TOTAL POR PERSONA</td>
+                        <td>$364&ndash;$451</td>
+                        <td>$825&ndash;$876</td>
+                        <td>$661&ndash;$932</td>
+                        <td></td>
+                        <td>$1,850&ndash;$2,258</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
