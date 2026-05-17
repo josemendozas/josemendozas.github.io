@@ -4,22 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viaje Fin de Ano 2026-2027 | Europa en Familia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
         :root {
-            --london: #1a1a2e;
-            --london-light: #16213e;
-            --paris: #e94560;
-            --paris-light: #ff6b6b;
-            --rome: #f5a623;
-            --rome-light: #f7c873;
-            --bg: #0f0f1a;
-            --card: #1a1a2e;
-            --text: #e0e0e0;
-            --text-muted: #8892b0;
-            --accent: #64ffda;
-            --border: #233554;
+            /* City palettes */
+            --london-primary: #2a7f8a;
+            --london-light: #e8f4f6;
+            --london-mid: #b2dde3;
+            --london-dark: #1a5f6a;
+
+            --paris-primary: #c0547a;
+            --paris-light: #fce8ef;
+            --paris-mid: #f0b8cc;
+            --paris-dark: #9b3d5c;
+
+            --rome-primary: #c4742a;
+            --rome-light: #fdf0e3;
+            --rome-mid: #f0c898;
+            --rome-dark: #9e5a1e;
+
+            /* Neutrals */
+            --bg: #faf9f7;
+            --surface: #ffffff;
+            --surface-raised: #f5f3ef;
+            --text: #1a1816;
+            --text-mid: #4a4540;
+            --text-muted: #8c857c;
+            --border: #e8e3dc;
+            --border-strong: #d0c9c0;
+
+            /* Semantic */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.05);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,12 +50,16 @@
             font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* ============================
+           HERO
+        ============================ */
         .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            padding: 60px 20px;
+            background: linear-gradient(150deg, #f0e6d3 0%, #e8d5c0 30%, #ddc9b8 60%, #d4b896 100%);
+            padding: 72px 24px 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -42,381 +68,781 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2364ffda' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 20% 110%, rgba(44,127,138,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% -10%, rgba(192,84,122,0.10) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 40% at 50% 120%, rgba(196,116,42,0.10) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--bg));
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72em;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--rome-dark);
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(196,116,42,0.25);
+            padding: 5px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
         }
 
         .hero h1 {
-            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2em, 5vw, 3.2em);
             font-weight: 700;
-            margin-bottom: 10px;
-            position: relative;
+            color: #2a1f14;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
         }
 
         .hero .route {
-            font-size: 1.3em;
-            color: var(--accent);
-            margin-bottom: 5px;
-            position: relative;
+            font-size: 1.15em;
+            font-weight: 500;
+            color: #5a4a38;
+            margin-bottom: 8px;
+            letter-spacing: 0.01em;
         }
 
+        .hero .route .city-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        .hero .route .dot-london { background: var(--london-primary); }
+        .hero .route .dot-paris  { background: var(--paris-primary); }
+        .hero .route .dot-rome   { background: var(--rome-primary); }
+
         .hero .dates {
-            color: var(--text-muted);
-            font-size: 1em;
-            position: relative;
+            color: #7a6a58;
+            font-size: 0.93em;
+            margin-bottom: 28px;
         }
 
         .hero .passengers {
-            margin-top: 20px;
-            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
 
         .hero .passengers span {
-            display: inline-block;
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin: 3px;
-            font-size: 0.85em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.65);
+            border: 1px solid rgba(255,255,255,0.8);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.83em;
+            font-weight: 500;
+            color: #3a2e24;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
 
+        .hero .passengers span::before {
+            content: '✈';
+            font-size: 0.9em;
+            opacity: 0.6;
+        }
+
+        /* ============================
+           CONTAINER
+        ============================ */
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 32px 20px 48px;
         }
 
+        /* ============================
+           ROUTE SUMMARY BAR
+        ============================ */
+        .route-summary {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .summary-label {
+            font-size: 0.72em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.10em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .summary-bar {
+            display: flex;
+            height: 10px;
+            border-radius: 100px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            gap: 3px;
+        }
+
+        .summary-bar .seg-london { background: var(--london-primary); border-radius: 100px 0 0 100px; }
+        .summary-bar .seg-paris  { background: var(--paris-primary); }
+        .summary-bar .seg-rome   { background: var(--rome-primary); border-radius: 0 100px 100px 0; }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.84em;
+            color: var(--text-mid);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-dot.l-london { background: var(--london-primary); }
+        .legend-dot.l-paris  { background: var(--paris-primary); }
+        .legend-dot.l-rome   { background: var(--rome-primary); }
+
+        .legend-item strong { font-weight: 600; color: var(--text); }
+
+        /* ============================
+           FLIGHT INFO BOXES
+        ============================ */
+        .flight-info {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            margin: 16px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .flight-info h4 {
+            font-size: 0.82em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .flight-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            padding: 7px 0;
+            font-size: 0.88em;
+            border-bottom: 1px solid var(--surface-raised);
+        }
+
+        .flight-row:last-child { border-bottom: none; }
+
+        .flight-row .label {
+            color: var(--text-muted);
+            font-weight: 500;
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .flight-row span:last-child {
+            color: var(--text-mid);
+            text-align: right;
+        }
+
+        /* ============================
+           CITY SECTIONS
+        ============================ */
         .city-section {
-            margin: 40px 0;
+            margin: 48px 0;
         }
 
         .city-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 12px;
+            gap: 18px;
+            padding: 24px 28px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
             position: relative;
-        }
-
-        .city-header.london { background: linear-gradient(135deg, #1a1a2e, #16213e); border-left: 4px solid #4ecdc4; }
-        .city-header.paris { background: linear-gradient(135deg, #2d1b33, #1a1a2e); border-left: 4px solid var(--paris); }
-        .city-header.rome { background: linear-gradient(135deg, #2d2212, #1a1a2e); border-left: 4px solid var(--rome); }
-
-        .city-header .emoji { font-size: 2.5em; }
-        .city-header h2 { font-size: 1.8em; font-weight: 700; }
-        .city-header .city-dates { color: var(--text-muted); font-size: 0.9em; }
-        .city-header .city-nights {
-            position: absolute;
-            right: 20px;
-            background: rgba(100, 255, 218, 0.15);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85em;
-        }
-
-        .day-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            margin-bottom: 15px;
             overflow: hidden;
         }
 
-        .day-card-header {
-            padding: 12px 18px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
+        .city-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .day-card-header:hover { background: rgba(100, 255, 218, 0.03); }
+        .city-header.london {
+            background: linear-gradient(135deg, var(--london-light) 0%, #d8eef1 100%);
+            border: 1px solid var(--london-mid);
+            box-shadow: 0 4px 20px rgba(42,127,138,0.12);
+        }
+
+        .city-header.paris {
+            background: linear-gradient(135deg, var(--paris-light) 0%, #f8d5e2 100%);
+            border: 1px solid var(--paris-mid);
+            box-shadow: 0 4px 20px rgba(192,84,122,0.12);
+        }
+
+        .city-header.rome {
+            background: linear-gradient(135deg, var(--rome-light) 0%, #f8e4c8 100%);
+            border: 1px solid var(--rome-mid);
+            box-shadow: 0 4px 20px rgba(196,116,42,0.12);
+        }
+
+        .city-header .emoji {
+            font-size: 2.8em;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .city-header-text { position: relative; z-index: 1; flex: 1; }
+
+        .city-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9em;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .city-header.london h2 { color: var(--london-dark); }
+        .city-header.paris h2  { color: var(--paris-dark); }
+        .city-header.rome h2   { color: var(--rome-dark); }
+
+        .city-header .city-dates {
+            font-size: 0.88em;
+            margin-top: 3px;
+            font-weight: 400;
+        }
+
+        .city-header.london .city-dates { color: var(--london-primary); }
+        .city-header.paris .city-dates  { color: var(--paris-primary); }
+        .city-header.rome .city-dates   { color: var(--rome-primary); }
+
+        .city-header .city-nights {
+            position: relative;
+            z-index: 1;
+            padding: 7px 16px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.82em;
+            letter-spacing: 0.02em;
+            flex-shrink: 0;
+        }
+
+        .city-header.london .city-nights {
+            background: var(--london-primary);
+            color: #fff;
+        }
+
+        .city-header.paris .city-nights {
+            background: var(--paris-primary);
+            color: #fff;
+        }
+
+        .city-header.rome .city-nights {
+            background: var(--rome-primary);
+            color: #fff;
+        }
+
+        /* ============================
+           DAY CARDS / ACCORDION
+        ============================ */
+        .day-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .day-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .day-card.open {
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-strong);
+        }
+
+        .day-card-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+            transition: background 0.15s ease;
+        }
+
+        .day-card-header:hover { background: var(--surface-raised); }
+        .day-card.open .day-card-header { background: var(--surface-raised); }
 
         .day-card-header .day-title {
             font-weight: 600;
-            font-size: 1em;
+            font-size: 0.93em;
+            color: var(--text);
+            flex: 1;
+            line-height: 1.4;
         }
 
         .day-card-header .day-tag {
-            font-size: 0.75em;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: 500;
+            font-size: 0.70em;
+            padding: 3px 11px;
+            border-radius: 100px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            flex-shrink: 0;
         }
 
-        .day-tag.alta { background: rgba(233, 69, 96, 0.2); color: #ff6b6b; }
-        .day-tag.media { background: rgba(245, 166, 35, 0.2); color: #f5a623; }
-        .day-tag.baja { background: rgba(100, 255, 218, 0.15); color: var(--accent); }
-        .day-tag.viaje { background: rgba(130, 130, 255, 0.2); color: #aab0ff; }
+        .day-tag.alta  { background: #fde8ec; color: #c0354f; border: 1px solid #f8c5cf; }
+        .day-tag.media { background: #fef3e2; color: #b8720a; border: 1px solid #f5d99a; }
+        .day-tag.baja  { background: #e6f4f1; color: #1e7a64; border: 1px solid #b2ddd5; }
+        .day-tag.viaje { background: #ede9f8; color: #5b3fb5; border: 1px solid #c8bde8; }
 
         .day-card-header .arrow {
-            transition: transform 0.3s;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
             color: var(--text-muted);
+            font-size: 0.7em;
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s;
         }
 
-        .day-card.open .arrow { transform: rotate(180deg); }
+        .day-card.open .arrow {
+            transform: rotate(180deg);
+            background: var(--border);
+        }
 
         .day-card-body {
             display: none;
-            padding: 0 18px 18px;
+            padding: 4px 20px 20px;
+            border-top: 1px solid var(--border);
+            animation: slideDown 0.25s ease;
         }
 
-        .day-card.open .day-card-body { display: block; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
+        .day-card.open .day-card-body {
+            display: block;
+        }
+
+        /* ============================
+           TIMELINE
+        ============================ */
         .timeline-item {
-            display: flex;
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(35, 53, 84, 0.5);
+            display: grid;
+            grid-template-columns: 52px 1fr auto;
+            gap: 8px 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--surface-raised);
+            align-items: baseline;
         }
 
         .timeline-item:last-child { border-bottom: none; }
 
         .timeline-item .time {
-            min-width: 50px;
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 0.85em;
+            font-weight: 700;
+            font-size: 0.78em;
+            color: var(--text-muted);
+            letter-spacing: 0.03em;
+            font-variant-numeric: tabular-nums;
+            padding-top: 1px;
         }
 
         .timeline-item .activity {
-            flex: 1;
+            font-size: 0.88em;
+            color: var(--text-mid);
+            line-height: 1.5;
         }
 
         .timeline-item .activity strong {
-            color: #fff;
+            color: var(--text);
+            font-weight: 600;
         }
 
         .timeline-item .cost {
-            color: var(--rome-light);
-            font-size: 0.85em;
-            min-width: 70px;
+            font-size: 0.80em;
+            font-weight: 600;
+            color: var(--rome-dark);
             text-align: right;
+            white-space: nowrap;
+            padding-left: 8px;
         }
 
+        .timeline-item .cost:empty { display: none; }
+
+        /* ============================
+           TIP BOX
+        ============================ */
         .tip-box {
-            background: rgba(100, 255, 218, 0.05);
-            border: 1px solid rgba(100, 255, 218, 0.15);
-            border-radius: 8px;
-            padding: 12px 15px;
-            margin-top: 10px;
-            font-size: 0.85em;
+            background: #fffbf0;
+            border: 1px solid #f5e4a8;
+            border-left: 3px solid #e8b84a;
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            margin-top: 14px;
+            font-size: 0.84em;
+            color: #6b5a30;
+            line-height: 1.55;
+        }
+
+        .tip-box strong {
+            color: #8a6c1e;
+            font-weight: 700;
+        }
+
+        /* ============================
+           SECTION HEADERS
+        ============================ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9em;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .section-header p {
+            font-size: 0.88em;
             color: var(--text-muted);
         }
 
-        .tip-box strong { color: var(--accent); }
-
-        .transport-badge {
-            display: inline-block;
-            background: rgba(100, 255, 218, 0.1);
-            color: var(--accent);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75em;
-            margin-left: 5px;
+        .section-divider {
+            width: 40px;
+            height: 3px;
+            border-radius: 100px;
+            background: linear-gradient(90deg, var(--london-primary), var(--paris-primary), var(--rome-primary));
+            margin: 10px auto 0;
         }
 
-        .flight-info {
-            background: linear-gradient(135deg, rgba(100, 255, 218, 0.05), rgba(100, 255, 218, 0.02));
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 10px;
-            padding: 18px;
-            margin: 15px 0;
-        }
-
-        .flight-info h4 { color: var(--accent); margin-bottom: 8px; }
-
-        .flight-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
-            font-size: 0.9em;
-        }
-
-        .flight-row .label { color: var(--text-muted); }
-
+        /* ============================
+           BUDGET SECTION
+        ============================ */
         .budget-section {
-            margin: 50px 0;
-        }
-
-        .budget-section h2 {
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            text-align: center;
-            color: var(--accent);
+            margin: 56px 0;
         }
 
         .budget-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
         }
 
         .budget-card {
-            background: var(--card);
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: var(--radius-md);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
         }
+
+        .budget-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+        }
+
+        .budget-card.london::before { background: linear-gradient(90deg, var(--london-primary), var(--london-mid)); }
+        .budget-card.paris::before  { background: linear-gradient(90deg, var(--paris-primary), var(--paris-mid)); }
+        .budget-card.rome::before   { background: linear-gradient(90deg, var(--rome-primary), var(--rome-mid)); }
+        .budget-card.total-card::before { background: linear-gradient(90deg, var(--london-primary), var(--paris-primary), var(--rome-primary)); }
 
         .budget-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.1em;
+            font-size: 0.92em;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-top: 2px;
         }
 
-        .budget-card.london h3 { color: #4ecdc4; }
-        .budget-card.paris h3 { color: var(--paris-light); }
-        .budget-card.rome h3 { color: var(--rome-light); }
-        .budget-card.total-card { border-color: var(--accent); }
-        .budget-card.total-card h3 { color: var(--accent); }
+        .budget-card.london h3    { color: var(--london-dark); }
+        .budget-card.paris h3     { color: var(--paris-dark); }
+        .budget-card.rome h3      { color: var(--rome-dark); }
+        .budget-card.total-card h3 { color: var(--text); font-size: 1em; }
 
         .budget-line {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
             padding: 6px 0;
+            font-size: 0.85em;
+            border-bottom: 1px solid var(--surface-raised);
+        }
+
+        .budget-line:last-of-type { border-bottom: none; }
+        .budget-line .label { color: var(--text-muted); flex: 1; }
+        .budget-line span:last-child { font-weight: 500; color: var(--text-mid); text-align: right; }
+
+        .budget-line.subtotal {
+            font-weight: 700;
+            color: var(--text);
+            padding-top: 12px;
+            margin-top: 6px;
+            border-top: 2px solid var(--border);
+            border-bottom: none;
             font-size: 0.9em;
-            border-bottom: 1px solid rgba(35, 53, 84, 0.4);
         }
 
-        .budget-line:last-child { border-bottom: none; }
-        .budget-line .label { color: var(--text-muted); }
-        .budget-line.subtotal { font-weight: 600; color: #fff; padding-top: 10px; margin-top: 5px; border-top: 1px solid var(--border); }
+        .budget-line.subtotal .label { color: var(--text); }
+        .budget-line.subtotal span:last-child { color: var(--text); }
 
+        .budget-note {
+            margin-top: 12px;
+            font-size: 0.78em;
+            color: var(--text-muted);
+            line-height: 1.5;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ============================
+           CHECKLIST SECTION
+        ============================ */
         .checklist-section {
-            margin: 50px 0;
+            margin: 56px 0;
         }
 
-        .checklist-section h2 {
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            text-align: center;
-            color: var(--accent);
+        .checklist-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .checklist-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 12px 18px;
-            background: var(--card);
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            margin-bottom: 8px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
+        }
+
+        .checklist-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
         }
 
         .checklist-item .priority {
-            min-width: 28px;
-            height: 28px;
+            min-width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 0.8em;
+            font-weight: 800;
+            font-size: 0.78em;
+            flex-shrink: 0;
+            margin-top: 1px;
         }
 
-        .priority.urgent { background: rgba(233, 69, 96, 0.3); color: #ff6b6b; }
-        .priority.soon { background: rgba(245, 166, 35, 0.3); color: var(--rome); }
-        .priority.later { background: rgba(100, 255, 218, 0.15); color: var(--accent); }
+        .priority.urgent { background: #fde8ec; color: #c0354f; border: 2px solid #f8c5cf; }
+        .priority.soon   { background: #fef3e2; color: #b8720a; border: 2px solid #f5d99a; }
+        .priority.later  { background: #e6f4f1; color: #1e7a64; border: 2px solid #b2ddd5; }
 
         .checklist-item .details { flex: 1; }
-        .checklist-item .details .title { font-weight: 600; margin-bottom: 2px; }
-        .checklist-item .details .when { font-size: 0.8em; color: var(--text-muted); }
-
-        .summary-bar {
-            display: flex;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 20px 0;
+        .checklist-item .details .title {
+            font-weight: 600;
+            font-size: 0.92em;
+            color: var(--text);
+            margin-bottom: 3px;
         }
 
-        .summary-bar .seg-london { background: #4ecdc4; }
-        .summary-bar .seg-paris { background: var(--paris); }
-        .summary-bar .seg-rome { background: var(--rome); }
-
-        .legend {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 30px;
-            font-size: 0.85em;
+        .checklist-item .details .when {
+            font-size: 0.79em;
+            color: var(--text-muted);
         }
 
-        .legend span::before {
-            content: '';
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-            margin-right: 6px;
-            vertical-align: middle;
+        .checklist-urgency-label {
+            font-size: 0.68em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.10em;
+            padding: 2px 9px;
+            border-radius: 100px;
+            flex-shrink: 0;
+            align-self: flex-start;
+            margin-top: 3px;
         }
 
-        .legend .l-london::before { background: #4ecdc4; }
-        .legend .l-paris::before { background: var(--paris); }
-        .legend .l-rome::before { background: var(--rome); }
+        .urgency-urgent { background: #fde8ec; color: #c0354f; }
+        .urgency-soon   { background: #fef3e2; color: #b8720a; }
+        .urgency-later  { background: #e6f4f1; color: #1e7a64; }
 
+        /* ============================
+           FOOTER
+        ============================ */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            font-size: 0.8em;
+            padding: 44px 24px 36px;
+            background: var(--surface);
             border-top: 1px solid var(--border);
-            margin-top: 50px;
         }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8em; }
-            .hero .route { font-size: 1em; }
-            .city-header .city-nights { position: static; margin-top: 8px; display: inline-block; }
-            .city-header { flex-wrap: wrap; }
+        .footer-inner {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .footer-flag {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 0.83em;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .footer strong {
+            color: var(--text-mid);
+            font-weight: 600;
+        }
+
+        /* ============================
+           RESPONSIVE
+        ============================ */
+        @media (max-width: 640px) {
+            .hero { padding: 52px 16px 64px; }
+            .hero h1 { font-size: 1.9em; }
+            .hero .route { font-size: 0.95em; }
+            .container { padding: 24px 14px 40px; }
+            .city-header { flex-wrap: wrap; gap: 12px; }
+            .city-header .city-nights { width: 100%; text-align: center; }
             .budget-grid { grid-template-columns: 1fr; }
             .flight-row { flex-direction: column; gap: 2px; }
-            .timeline-item { flex-wrap: wrap; }
-            .timeline-item .cost { min-width: auto; text-align: left; width: 100%; padding-left: 62px; }
+            .flight-row span:last-child { text-align: left; }
+            .timeline-item { grid-template-columns: 46px 1fr; }
+            .timeline-item .cost { grid-column: 2; text-align: left; padding-left: 0; font-size: 0.75em; }
+            .route-summary { padding: 18px; }
+            .legend { gap: 12px; }
+        }
+
+        @media (max-width: 400px) {
+            .hero .passengers span { font-size: 0.78em; padding: 5px 11px; }
         }
     </style>
 </head>
 <body>
 
 <div class="hero">
-    <h1>Viaje Fin de Ano 2026-2027</h1>
-    <div class="route">Londres &rarr; Paris &rarr; Roma</div>
-    <div class="dates">26 diciembre 2026 &mdash; 10 enero 2027 &bull; 15 noches</div>
-    <div class="passengers">
-        <span>Jose Antonio Mendoza</span>
-        <span>Danna Rosario Rodriguez</span>
-        <span>Jose Carlos Quintana</span>
-        <span>Mishell Stefanie Rodriguez</span>
-        <span>Luis Alberto Rodriguez</span>
-        <span>Raquel Del Aguila</span>
+    <div class="hero-inner">
+        <div class="hero-eyebrow">Itinerario Familiar &bull; Europa 2026 - 2027</div>
+        <h1>Viaje Fin de Ano 2026-2027</h1>
+        <div class="route">
+            Londres
+            <span class="city-dot dot-london"></span>
+            Paris
+            <span class="city-dot dot-paris"></span>
+            Roma
+        </div>
+        <div class="dates">26 diciembre 2026 &mdash; 10 enero 2027 &bull; 15 noches</div>
+        <div class="passengers">
+            <span>Jose Antonio Mendoza</span>
+            <span>Danna Rosario Rodriguez</span>
+            <span>Jose Carlos Quintana</span>
+            <span>Mishell Stefanie Rodriguez</span>
+            <span>Luis Alberto Rodriguez</span>
+            <span>Raquel Del Aguila</span>
+        </div>
     </div>
 </div>
 
 <div class="container">
 
-    <!-- ROUTE BAR -->
-    <div class="summary-bar">
-        <div class="seg-london" style="width: 20%"></div>
-        <div class="seg-paris" style="width: 33.3%"></div>
-        <div class="seg-rome" style="width: 46.7%"></div>
-    </div>
-    <div class="legend">
-        <span class="l-london">Londres (3 noches)</span>
-        <span class="l-paris">Paris (5 noches)</span>
-        <span class="l-rome">Roma (7 noches)</span>
+    <!-- ROUTE SUMMARY -->
+    <div class="route-summary">
+        <div class="summary-label">Distribucion del viaje</div>
+        <div class="summary-bar">
+            <div class="seg-london" style="width: 20%"></div>
+            <div class="seg-paris" style="width: 33.3%"></div>
+            <div class="seg-rome" style="width: 46.7%"></div>
+        </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot l-london"></div>
+                <span><strong>Londres</strong> &mdash; 3 noches</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot l-paris"></div>
+                <span><strong>Paris</strong> &mdash; 5 noches</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot l-rome"></div>
+                <span><strong>Roma</strong> &mdash; 7 noches</span>
+            </div>
+        </div>
     </div>
 
     <!-- ==================== VUELOS ==================== -->
     <div class="flight-info">
-        <h4>Vuelos Internacionales (Air Canada)</h4>
+        <h4>&#9992;&#65039; Vuelos Internacionales &mdash; Air Canada</h4>
         <div class="flight-row"><span class="label">Ida</span><span>Vie 25 dic &mdash; LIM 08:00 &rarr; YYZ 16:00 &rarr; LHR 06:30 (26 dic)</span></div>
         <div class="flight-row"><span class="label">Vuelta</span><span>Dom 10 ene &mdash; FCO 13:15 &rarr; YUL 16:20 &rarr; LIM 03:15 (11 ene)</span></div>
         <div class="flight-row"><span class="label">Reserva 1</span><span>958497340700 (CBKHJE) &mdash; Jose, Danna, Jose Carlos, Mishell</span></div>
@@ -425,7 +851,7 @@
     </div>
 
     <div class="flight-info">
-        <h4>Transporte entre ciudades</h4>
+        <h4>&#128652; Transporte entre ciudades</h4>
         <div class="flight-row"><span class="label">Londres &rarr; Paris</span><span>Eurostar 07:01 (29 dic) &mdash; Llegada 10:29 Gare du Nord &mdash; &euro;103/pers (&euro;618 total)</span></div>
         <div class="flight-row"><span class="label">Paris &rarr; Roma</span><span>ITA Airways AZ317 06:10 CDG &rarr; 08:15 FCO (3 ene) &mdash; &euro;1,073 total (6 pers) + Uber XL &euro;85</span></div>
     </div>
@@ -434,7 +860,7 @@
     <div class="city-section">
         <div class="city-header london">
             <div class="emoji">&#127468;&#127463;</div>
-            <div>
+            <div class="city-header-text">
                 <h2>Londres</h2>
                 <div class="city-dates">26 &ndash; 29 diciembre 2026</div>
             </div>
@@ -442,7 +868,7 @@
         </div>
 
         <div class="flight-info">
-            <h4>Alojamiento Londres</h4>
+            <h4>&#127968; Alojamiento Londres</h4>
             <div class="flight-row"><span class="label">Zona recomendada</span><span>King's Cross / St. Pancras (cerca del Eurostar)</span></div>
             <div class="flight-row"><span class="label">Rango presupuesto</span><span>$800 &ndash; $1,200 USD (hotel) / $1,059 &ndash; $1,200 (Airbnb)</span></div>
         </div>
@@ -527,7 +953,7 @@
     <div class="city-section">
         <div class="city-header paris">
             <div class="emoji">&#127467;&#127479;</div>
-            <div>
+            <div class="city-header-text">
                 <h2>Paris</h2>
                 <div class="city-dates">29 diciembre 2026 &ndash; 3 enero 2027</div>
             </div>
@@ -535,7 +961,7 @@
         </div>
 
         <div class="flight-info">
-            <h4>Alojamiento Paris</h4>
+            <h4>&#127968; Alojamiento Paris</h4>
             <div class="flight-row"><span class="label">Opciones</span><span>Adagio Access La Villette / Adagio Cite de la Musique (19e) / Hotel de L'Union (20e)</span></div>
             <div class="flight-row"><span class="label">Rango presupuesto</span><span>$1,523 &ndash; $1,700 USD (5 noches, 6 personas)</span></div>
         </div>
@@ -654,7 +1080,7 @@
     <div class="city-section">
         <div class="city-header rome">
             <div class="emoji">&#127470;&#127481;</div>
-            <div>
+            <div class="city-header-text">
                 <h2>Roma</h2>
                 <div class="city-dates">3 &ndash; 10 enero 2027</div>
             </div>
@@ -662,7 +1088,7 @@
         </div>
 
         <div class="flight-info">
-            <h4>Alojamiento Roma</h4>
+            <h4>&#127968; Alojamiento Roma</h4>
             <div class="flight-row"><span class="label">Zona recomendada</span><span>Cerca de Termini / Monti / Trastevere</span></div>
             <div class="flight-row"><span class="label">Rango presupuesto (estimado)</span><span>$1,200 &ndash; $1,800 USD (7 noches, 6 personas)</span></div>
             <div class="flight-row"><span class="label">Nota</span><span>Enero es temporada baja en Roma &mdash; precios mas accesibles</span></div>
@@ -821,7 +1247,11 @@
 
     <!-- ==================== PRESUPUESTO ==================== -->
     <div class="budget-section">
-        <h2>Presupuesto estimado</h2>
+        <div class="section-header">
+            <h2>Presupuesto estimado</h2>
+            <p>Todos los valores en USD. Rangos min &mdash; max segun opciones elegidas.</p>
+            <div class="section-divider"></div>
+        </div>
 
         <div class="budget-grid">
             <div class="budget-card london">
@@ -868,21 +1298,27 @@
                 <div class="budget-line"><span class="label">Roma</span><span>$4,082 &ndash; $5,840</span></div>
                 <div class="budget-line subtotal"><span>TOTAL (6 personas)</span><span>$11,332 &ndash; $14,214</span></div>
                 <div class="budget-line subtotal"><span>POR PERSONA</span><span>$1,889 &ndash; $2,369</span></div>
-                <div style="margin-top: 10px; font-size: 0.8em; color: var(--text-muted);">* No incluye vuelos internacionales Lima-Londres / Roma-Lima (ya comprados) ni equipaje despachado.</div>
+                <div class="budget-note">* No incluye vuelos internacionales Lima-Londres / Roma-Lima (ya comprados) ni equipaje despachado.</div>
             </div>
         </div>
     </div>
 
     <!-- ==================== CHECKLIST ==================== -->
     <div class="checklist-section">
-        <h2>Checklist de reservas</h2>
+        <div class="section-header">
+            <h2>Checklist de reservas</h2>
+            <p>Ordenado por urgencia. Las marcadas en rojo requieren accion inmediata.</p>
+            <div class="section-divider"></div>
+        </div>
 
+        <div class="checklist-categories">
         <div class="checklist-item">
             <div class="priority urgent">1</div>
             <div class="details">
                 <div class="title">Trenes Florencia y Napoles (Italo/Trenitalia)</div>
                 <div class="when">Reservar YA &mdash; mientras mas temprano, mas barato</div>
             </div>
+            <span class="checklist-urgency-label urgency-urgent">Urgente</span>
         </div>
         <div class="checklist-item">
             <div class="priority urgent">2</div>
@@ -890,6 +1326,7 @@
                 <div class="title">Eurostar Londres &rarr; Paris (07:01, 29 dic)</div>
                 <div class="when">Reservar YA &mdash; precios suben cerca de la fecha</div>
             </div>
+            <span class="checklist-urgency-label urgency-urgent">Urgente</span>
         </div>
         <div class="checklist-item">
             <div class="priority urgent">3</div>
@@ -897,6 +1334,7 @@
                 <div class="title">Vuelo ITA Airways Paris &rarr; Roma (3 ene)</div>
                 <div class="when">Reservar YA</div>
             </div>
+            <span class="checklist-urgency-label urgency-urgent">Urgente</span>
         </div>
         <div class="checklist-item">
             <div class="priority urgent">4</div>
@@ -904,6 +1342,7 @@
                 <div class="title">Alojamiento (Londres, Paris, Roma)</div>
                 <div class="when">Reservar YA &mdash; temporada alta Navidad/Ano Nuevo</div>
             </div>
+            <span class="checklist-urgency-label urgency-urgent">Urgente</span>
         </div>
         <div class="checklist-item">
             <div class="priority soon">5</div>
@@ -911,6 +1350,7 @@
                 <div class="title">Museos Vaticanos + Capilla Sixtina (5 ene)</div>
                 <div class="when">Reserva abre ~60 dias antes (~6 noviembre 2026) en museivaticani.va</div>
             </div>
+            <span class="checklist-urgency-label urgency-soon">Pronto</span>
         </div>
         <div class="checklist-item">
             <div class="priority soon">6</div>
@@ -918,6 +1358,7 @@
                 <div class="title">Coliseo + Foro Romano + Palatino (4 ene)</div>
                 <div class="when">Reserva abre 30 dias antes (~5 diciembre 2026) en ticketing.colosseo.it</div>
             </div>
+            <span class="checklist-urgency-label urgency-soon">Pronto</span>
         </div>
         <div class="checklist-item">
             <div class="priority soon">7</div>
@@ -925,6 +1366,7 @@
                 <div class="title">Versalles (30 dic)</div>
                 <div class="when">Reserva con creneau horaire obligatoria en chateauversailles.fr</div>
             </div>
+            <span class="checklist-urgency-label urgency-soon">Pronto</span>
         </div>
         <div class="checklist-item">
             <div class="priority soon">8</div>
@@ -932,6 +1374,7 @@
                 <div class="title">Louvre (31 dic)</div>
                 <div class="when">Reserva online obligatoria en louvre.fr</div>
             </div>
+            <span class="checklist-urgency-label urgency-soon">Pronto</span>
         </div>
         <div class="checklist-item">
             <div class="priority soon">9</div>
@@ -939,6 +1382,7 @@
                 <div class="title">Disneyland Paris (1 ene)</div>
                 <div class="when">Comprar tickets online (mas barato que taquilla)</div>
             </div>
+            <span class="checklist-urgency-label urgency-soon">Pronto</span>
         </div>
         <div class="checklist-item">
             <div class="priority later">10</div>
@@ -946,6 +1390,7 @@
                 <div class="title">Galeria Borghese (6 ene, opcional)</div>
                 <div class="when">Reserva abre 10 dias antes (~27 dic 2026)</div>
             </div>
+            <span class="checklist-urgency-label urgency-later">Despues</span>
         </div>
         <div class="checklist-item">
             <div class="priority later">11</div>
@@ -953,6 +1398,7 @@
                 <div class="title">Galleria dell'Accademia Florencia (7 ene)</div>
                 <div class="when">Reservar online con anticipacion</div>
             </div>
+            <span class="checklist-urgency-label urgency-later">Despues</span>
         </div>
         <div class="checklist-item">
             <div class="priority later">12</div>
@@ -960,6 +1406,7 @@
                 <div class="title">Winter Wonderland Hyde Park (28 dic)</div>
                 <div class="when">Entrada gratuita pero requiere reserva con franja horaria</div>
             </div>
+            <span class="checklist-urgency-label urgency-later">Despues</span>
         </div>
         <div class="checklist-item">
             <div class="priority later">13</div>
@@ -967,14 +1414,20 @@
                 <div class="title">Tower of London (27 dic)</div>
                 <div class="when">Reservar online (ahorro ~10%) en hrp.org.uk</div>
             </div>
+            <span class="checklist-urgency-label urgency-later">Despues</span>
         </div>
+        </div><!-- end checklist-categories -->
     </div>
 
 </div>
 
 <div class="footer">
-    <p>Viaje Fin de Ano 2026-2027 &bull; Familia Mendoza-Rodriguez &bull; 15 noches en Europa</p>
-    <p>Ultima actualizacion: Mayo 2026</p>
+    <div class="footer-inner">
+        <div class="footer-flag">&#127758;</div>
+        <p><strong>Viaje Fin de Ano 2026-2027</strong></p>
+        <p>Familia Mendoza-Rodriguez &bull; 15 noches en Europa</p>
+        <p style="margin-top: 6px; font-size: 0.78em;">Ultima actualizacion: Mayo 2026</p>
+    </div>
 </div>
 
 <script>
