@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje Fin de Ano 2026-2027 | Europa en Familia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --london: #1a1a2e;
+            --london-light: #16213e;
+            --paris: #e94560;
+            --paris-light: #ff6b6b;
+            --rome: #f5a623;
+            --rome-light: #f7c873;
+            --bg: #0f0f1a;
+            --card: #1a1a2e;
+            --text: #e0e0e0;
+            --text-muted: #8892b0;
+            --accent: #64ffda;
+            --border: #233554;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2364ffda' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .hero .route {
+            font-size: 1.3em;
+            color: var(--accent);
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .hero .dates {
+            color: var(--text-muted);
+            font-size: 1em;
+            position: relative;
+        }
+
+        .hero .passengers {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .hero .passengers span {
+            display: inline-block;
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin: 3px;
+            font-size: 0.85em;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .city-section {
+            margin: 40px 0;
+        }
+
+        .city-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .city-header.london { background: linear-gradient(135deg, #1a1a2e, #16213e); border-left: 4px solid #4ecdc4; }
+        .city-header.paris { background: linear-gradient(135deg, #2d1b33, #1a1a2e); border-left: 4px solid var(--paris); }
+        .city-header.rome { background: linear-gradient(135deg, #2d2212, #1a1a2e); border-left: 4px solid var(--rome); }
+
+        .city-header .emoji { font-size: 2.5em; }
+        .city-header h2 { font-size: 1.8em; font-weight: 700; }
+        .city-header .city-dates { color: var(--text-muted); font-size: 0.9em; }
+        .city-header .city-nights {
+            position: absolute;
+            right: 20px;
+            background: rgba(100, 255, 218, 0.15);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .day-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .day-card-header {
+            padding: 12px 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .day-card-header:hover { background: rgba(100, 255, 218, 0.03); }
+
+        .day-card-header .day-title {
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .day-card-header .day-tag {
+            font-size: 0.75em;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .day-tag.alta { background: rgba(233, 69, 96, 0.2); color: #ff6b6b; }
+        .day-tag.media { background: rgba(245, 166, 35, 0.2); color: #f5a623; }
+        .day-tag.baja { background: rgba(100, 255, 218, 0.15); color: var(--accent); }
+        .day-tag.viaje { background: rgba(130, 130, 255, 0.2); color: #aab0ff; }
+
+        .day-card-header .arrow {
+            transition: transform 0.3s;
+            color: var(--text-muted);
+        }
+
+        .day-card.open .arrow { transform: rotate(180deg); }
+
+        .day-card-body {
+            display: none;
+            padding: 0 18px 18px;
+        }
+
+        .day-card.open .day-card-body { display: block; }
+
+        .timeline-item {
+            display: flex;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(35, 53, 84, 0.5);
+        }
+
+        .timeline-item:last-child { border-bottom: none; }
+
+        .timeline-item .time {
+            min-width: 50px;
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.85em;
+        }
+
+        .timeline-item .activity {
+            flex: 1;
+        }
+
+        .timeline-item .activity strong {
+            color: #fff;
+        }
+
+        .timeline-item .cost {
+            color: var(--rome-light);
+            font-size: 0.85em;
+            min-width: 70px;
+            text-align: right;
+        }
+
+        .tip-box {
+            background: rgba(100, 255, 218, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: var(--text-muted);
+        }
+
+        .tip-box strong { color: var(--accent); }
+
+        .transport-badge {
+            display: inline-block;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-left: 5px;
+        }
+
+        .flight-info {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.05), rgba(100, 255, 218, 0.02));
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .flight-info h4 { color: var(--accent); margin-bottom: 8px; }
+
+        .flight-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 0.9em;
+        }
+
+        .flight-row .label { color: var(--text-muted); }
+
+        .budget-section {
+            margin: 50px 0;
+        }
+
+        .budget-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .budget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .budget-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .budget-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .budget-card.london h3 { color: #4ecdc4; }
+        .budget-card.paris h3 { color: var(--paris-light); }
+        .budget-card.rome h3 { color: var(--rome-light); }
+        .budget-card.total-card { border-color: var(--accent); }
+        .budget-card.total-card h3 { color: var(--accent); }
+
+        .budget-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.9em;
+            border-bottom: 1px solid rgba(35, 53, 84, 0.4);
+        }
+
+        .budget-line:last-child { border-bottom: none; }
+        .budget-line .label { color: var(--text-muted); }
+        .budget-line.subtotal { font-weight: 600; color: #fff; padding-top: 10px; margin-top: 5px; border-top: 1px solid var(--border); }
+
+        .checklist-section {
+            margin: 50px 0;
+        }
+
+        .checklist-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .checklist-item .priority {
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8em;
+        }
+
+        .priority.urgent { background: rgba(233, 69, 96, 0.3); color: #ff6b6b; }
+        .priority.soon { background: rgba(245, 166, 35, 0.3); color: var(--rome); }
+        .priority.later { background: rgba(100, 255, 218, 0.15); color: var(--accent); }
+
+        .checklist-item .details { flex: 1; }
+        .checklist-item .details .title { font-weight: 600; margin-bottom: 2px; }
+        .checklist-item .details .when { font-size: 0.8em; color: var(--text-muted); }
+
+        .summary-bar {
+            display: flex;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .summary-bar .seg-london { background: #4ecdc4; }
+        .summary-bar .seg-paris { background: var(--paris); }
+        .summary-bar .seg-rome { background: var(--rome); }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            font-size: 0.85em;
+        }
+
+        .legend span::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .legend .l-london::before { background: #4ecdc4; }
+        .legend .l-paris::before { background: var(--paris); }
+        .legend .l-rome::before { background: var(--rome); }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.8em;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8em; }
+            .hero .route { font-size: 1em; }
+            .city-header .city-nights { position: static; margin-top: 8px; display: inline-block; }
+            .city-header { flex-wrap: wrap; }
+            .budget-grid { grid-template-columns: 1fr; }
+            .flight-row { flex-direction: column; gap: 2px; }
+            .timeline-item { flex-wrap: wrap; }
+            .timeline-item .cost { min-width: auto; text-align: left; width: 100%; padding-left: 62px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Viaje Fin de Ano 2026-2027</h1>
+    <div class="route">Londres &rarr; Paris &rarr; Roma</div>
+    <div class="dates">26 diciembre 2026 &mdash; 10 enero 2027 &bull; 15 noches</div>
+    <div class="passengers">
+        <span>Jose Antonio Mendoza</span>
+        <span>Danna Rosario Rodriguez</span>
+        <span>Jose Carlos Quintana</span>
+        <span>Mishell Stefanie Rodriguez</span>
+        <span>Luis Alberto Rodriguez</span>
+        <span>Raquel Del Aguila</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ROUTE BAR -->
+    <div class="summary-bar">
+        <div class="seg-london" style="width: 20%"></div>
+        <div class="seg-paris" style="width: 33.3%"></div>
+        <div class="seg-rome" style="width: 46.7%"></div>
+    </div>
+    <div class="legend">
+        <span class="l-london">Londres (3 noches)</span>
+        <span class="l-paris">Paris (5 noches)</span>
+        <span class="l-rome">Roma (7 noches)</span>
+    </div>
+
+    <!-- ==================== VUELOS ==================== -->
+    <div class="flight-info">
+        <h4>Vuelos Internacionales (Air Canada)</h4>
+        <div class="flight-row"><span class="label">Ida</span><span>Vie 25 dic &mdash; LIM 08:00 &rarr; YYZ 16:00 &rarr; LHR 06:30 (26 dic)</span></div>
+        <div class="flight-row"><span class="label">Vuelta</span><span>Dom 10 ene &mdash; FCO 13:15 &rarr; YUL 16:20 &rarr; LIM 03:15 (11 ene)</span></div>
+        <div class="flight-row"><span class="label">Reserva 1</span><span>958497340700 (CBKHJE) &mdash; Jose, Danna, Jose Carlos, Mishell</span></div>
+        <div class="flight-row"><span class="label">Reserva 2</span><span>437736340700 (CCDR2X) &mdash; Luis Alberto, Raquel</span></div>
+        <div class="flight-row"><span class="label">Equipaje</span><span>Mochila + equipaje de mano. Sin maleta despachada.</span></div>
+    </div>
+
+    <div class="flight-info">
+        <h4>Transporte entre ciudades</h4>
+        <div class="flight-row"><span class="label">Londres &rarr; Paris</span><span>Eurostar 07:01 (29 dic) &mdash; Llegada 10:29 Gare du Nord &mdash; &euro;103/pers (&euro;618 total)</span></div>
+        <div class="flight-row"><span class="label">Paris &rarr; Roma</span><span>ITA Airways AZ317 06:10 CDG &rarr; 08:15 FCO (3 ene) &mdash; &euro;1,073 total (6 pers) + Uber XL &euro;85</span></div>
+    </div>
+
+    <!-- ==================== LONDRES ==================== -->
+    <div class="city-section">
+        <div class="city-header london">
+            <div class="emoji">&#127468;&#127463;</div>
+            <div>
+                <h2>Londres</h2>
+                <div class="city-dates">26 &ndash; 29 diciembre 2026</div>
+            </div>
+            <div class="city-nights">3 noches</div>
+        </div>
+
+        <div class="flight-info">
+            <h4>Alojamiento Londres</h4>
+            <div class="flight-row"><span class="label">Zona recomendada</span><span>King's Cross / St. Pancras (cerca del Eurostar)</span></div>
+            <div class="flight-row"><span class="label">Rango presupuesto</span><span>$800 &ndash; $1,200 USD (hotel) / $1,059 &ndash; $1,200 (Airbnb)</span></div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 1 &mdash; Vie 26 dic &mdash; Llegada + Westminster</span>
+                <span class="day-tag baja">Suave</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">06:30</span><span class="activity">Llegan a Heathrow. Piccadilly Line al hotel (~55 min)</span><span class="cost">&pound;5.50/pers</span></div>
+                <div class="timeline-item"><span class="time">08:45</span><span class="activity">Dejan maletas, desayuno, se refrescan</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">10:00</span><span class="activity"><strong>Big Ben + Westminster + Westminster Bridge</strong> (con luz)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">11:00</span><span class="activity"><strong>Buckingham Palace</strong> (exterior) + <strong>St. James's Park</strong></span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity"><strong>Trafalgar Square</strong> (arbol de Navidad noruego)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">12:30</span><span class="activity"><strong>National Gallery</strong> visita express (Van Gogh, Velazquez, Monet)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">13:15</span><span class="activity">Almuerzo en <strong>Chinatown</strong></span><span class="cost">~&pound;10/pers</span></div>
+                <div class="timeline-item"><span class="time">14:15</span><span class="activity"><strong>Piccadilly Circus + Carnaby Street</strong> (luces navidenas)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity"><strong>DESCANSO en hotel</strong> (obligatorio post-vuelo)</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">16:30</span><span class="activity"><strong>Covent Garden</strong> (artistas, mercado navideno)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity"><strong>Leicester Square</strong> luces de noche</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">18:00</span><span class="activity">Cena supermercado + descanso total</span><span class="cost">~&pound;10/pers</span></div>
+                <div class="tip-box"><strong>Tip:</strong> Descargar la app Tesco Clubcard para ahorrar en meal deals (&pound;3.85 c/u). Boxing Day = tiendas con rebajas pero mucha gente.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 2 &mdash; Sab 27 dic &mdash; Camden + South Bank + Tower</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">09:15</span><span class="activity"><strong>Camden Market</strong> + street food brunch</span><span class="cost">~&pound;8/pers</span></div>
+                <div class="timeline-item"><span class="time">10:45</span><span class="activity">Caminata a <strong>Primrose Hill</strong> (vista panoramica de Londres)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity">Metro a <strong>South Bank</strong> (~15 min). Paseo por la ribera</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">12:30</span><span class="activity">Almuerzo street food South Bank</span><span class="cost">~&pound;8/pers</span></div>
+                <div class="timeline-item"><span class="time">13:30</span><span class="activity"><strong>Tate Modern</strong> visita rapida (Turbine Hall + terraza piso 10)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity"><strong>Millennium Bridge</strong> &rarr; <strong>St. Paul's Cathedral</strong> exterior</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity"><strong>Tower of London</strong> (llegar antes de 15:30, ultima entrada)</span><span class="cost">&pound;34/pers</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity"><strong>Tower Bridge</strong> iluminado de noche (fotos)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">18:00</span><span class="activity">Cena por la zona + regreso hotel</span><span class="cost">~&pound;10/pers</span></div>
+                <div class="tip-box"><strong>Tip:</strong> Borough Market puede tener horario especial navideno en domingo &mdash; verificar antes de ir. Si esta cerrado, almorzar en South Bank.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 3 &mdash; Dom 28 dic &mdash; British Museum + Hyde Park + Winter Wonderland</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">09:15</span><span class="activity"><strong>British Museum</strong> (Rosetta Stone, momias, Partenon, ajedrez de Lewis)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity">Almuerzo zona Borough Market o London Bridge (verificar si abre)</span><span class="cost">~&pound;10/pers</span></div>
+                <div class="timeline-item"><span class="time">14:15</span><span class="activity"><strong>Hyde Park</strong> paseo con luz natural</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">15:00</span><span class="activity"><strong>Winter Wonderland</strong> (espectacular despues de las 16:00 con luces)</span><span class="cost">Gratis entrada + &pound;30-50 atracciones</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity">Regreso hotel</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">18:30</span><span class="activity">Cena de despedida. Opcion: paseo nocturno por Regent Street + Carnaby Street luces</span><span class="cost">~&pound;12/pers</span></div>
+                <div class="timeline-item"><span class="time">21:00</span><span class="activity">Empacar maletas para manana</span><span class="cost"></span></div>
+                <div class="tip-box"><strong>Tip:</strong> Winter Wonderland requiere reserva online gratuita con franja horaria. Reservar en hydeparkwinterwonderland.com</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 4 &mdash; Lun 29 dic &mdash; Eurostar a Paris</span>
+                <span class="day-tag viaje">Viaje</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">06:00</span><span class="activity">Despertar, desayuno, check-out</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">06:30</span><span class="activity">Caminar a St. Pancras (buscar hotel en King's Cross = 5 min)</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">07:01</span><span class="activity"><strong>Eurostar a Paris</strong></span><span class="cost">&euro;103/pers</span></div>
+                <div class="timeline-item"><span class="time">10:29</span><span class="activity">Llegada a <strong>Gare du Nord, Paris</strong></span><span class="cost"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PARIS ==================== -->
+    <div class="city-section">
+        <div class="city-header paris">
+            <div class="emoji">&#127467;&#127479;</div>
+            <div>
+                <h2>Paris</h2>
+                <div class="city-dates">29 diciembre 2026 &ndash; 3 enero 2027</div>
+            </div>
+            <div class="city-nights">5 noches</div>
+        </div>
+
+        <div class="flight-info">
+            <h4>Alojamiento Paris</h4>
+            <div class="flight-row"><span class="label">Opciones</span><span>Adagio Access La Villette / Adagio Cite de la Musique (19e) / Hotel de L'Union (20e)</span></div>
+            <div class="flight-row"><span class="label">Rango presupuesto</span><span>$1,523 &ndash; $1,700 USD (5 noches, 6 personas)</span></div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 4 &mdash; Mar 29 dic &mdash; Montmartre + Notre Dame + Barrio Latino</span>
+                <span class="day-tag media">Media</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">10:29</span><span class="activity">Llegan Gare du Nord</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">10:45</span><span class="activity">Metro al hotel, dejan maletas (~45 min ida y vuelta)</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity"><strong>Sacre-Coeur + Montmartre</strong> (Place du Tertre, pintores, callejuelas)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">13:00</span><span class="activity">Almuerzo Montmartre (creperies ~&euro;8-10/pers)</span><span class="cost">~&euro;10/pers</span></div>
+                <div class="timeline-item"><span class="time">14:00</span><span class="activity">Metro a <strong>Ile de la Cite</strong> &mdash; <strong>Notre Dame</strong> exterior + <strong>Sainte-Chapelle</strong></span><span class="cost">&euro;13/adulto</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity">Cruzar a <strong>Ile Saint-Louis</strong> (paseo, helado Berthillon)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">16:00</span><span class="activity"><strong>Barrio Latino</strong> &mdash; Bd Saint-Michel, librerias, Panteon exterior</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity">Cena Barrio Latino (kebab/crepes ~&euro;8-12/pers)</span><span class="cost">~&euro;10/pers</span></div>
+                <div class="timeline-item"><span class="time">18:30</span><span class="activity">Metro al hotel</span><span class="cost"></span></div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 5 &mdash; Mie 30 dic &mdash; Versalles + Torre Eiffel</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">07:00</span><span class="activity">Salida, desayuno panaderia (~&euro;5/pers)</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">08:30</span><span class="activity">RER C a Versailles (~45 min)</span><span class="cost">&euro;4.60/pers ida</span></div>
+                <div class="timeline-item"><span class="time">09:00</span><span class="activity"><strong>Chateau de Versailles</strong> (Galeria de los Espejos, jardines, Petit Trianon)</span><span class="cost">&euro;25/adulto, &lt;18 gratis</span></div>
+                <div class="timeline-item"><span class="time">13:30</span><span class="activity">Almuerzo Versalles pueblo</span><span class="cost">~&euro;12/pers</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity">RER C regreso (~45 min)</span><span class="cost">&euro;4.60/pers</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity"><strong>Pont Alexandre III</strong> (el puente mas bonito de Paris)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">16:30</span><span class="activity"><strong>Trocadero &mdash; Vista Torre Eiffel iluminada</strong> (destellos cada hora)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">18:00</span><span class="activity">Cena + hotel</span><span class="cost">~&euro;12/pers</span></div>
+                <div class="tip-box"><strong>Tip:</strong> Reserva obligatoria online en chateauversailles.fr. Llegar a las 8:45 para ser de los primeros. Jardines gratis en invierno.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 6 &mdash; Jue 31 dic &mdash; Louvre + Ano Nuevo</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">08:30</span><span class="activity">Metro al Louvre</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">09:00</span><span class="activity"><strong>Louvre</strong> (Mona Lisa, Venus de Milo, Victoria de Samotracia). Entrar por Passage Richelieu.</span><span class="cost">&euro;32/adulto, &lt;18 gratis</span></div>
+                <div class="timeline-item"><span class="time">12:45</span><span class="activity">Almuerzo zona Louvre / Rue de Rivoli</span><span class="cost">~&euro;12/pers</span></div>
+                <div class="timeline-item"><span class="time">13:30</span><span class="activity"><strong>Palais Royal</strong> (columnas Buren, jardin, fotos)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity">Regreso hotel, <strong>descanso obligatorio</strong></span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">18:00</span><span class="activity">Cena temprana en el barrio</span><span class="cost">~&euro;12/pers</span></div>
+                <div class="timeline-item"><span class="time">18:30</span><span class="activity">Salen a <strong>Champs-Elysees</strong> (metro GRATIS desde 17:00)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">00:00</span><span class="activity"><strong>Fuegos artificiales Arco del Triunfo</strong> + Torre Eiffel destellando</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">00:30</span><span class="activity">Regreso hotel (metro gratis toda la noche)</span><span class="cost"></span></div>
+                <div class="tip-box"><strong>Seguridad Ano Nuevo:</strong> No llevar botellas de vidrio ni mochilas grandes. Bolsillos delanteros, rinnonera. Ninos siempre de la mano. Usar bano ANTES de ir. Abrigarse mucho (2-5&deg;C).</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 7 &mdash; Vie 1 ene &mdash; Disneyland Paris</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">07:30</span><span class="activity">Salida hotel. Metro L5/L1 &rarr; RER A (~70-80 min)</span><span class="cost">~&euro;5.40/pers</span></div>
+                <div class="timeline-item"><span class="time">09:30</span><span class="activity"><strong>Disneyland Paris</strong> apertura. Directo a Big Thunder Mountain y Peter Pan.</span><span class="cost">~&euro;90-100/adulto</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity">Almuerzo (llevar sandwiches en mochila &mdash; permitido)</span><span class="cost">~&euro;5/pers</span></div>
+                <div class="timeline-item"><span class="time">20:00</span><span class="activity">Espectaculo nocturno frente al castillo</span><span class="cost">Incluido</span></div>
+                <div class="timeline-item"><span class="time">21:00</span><span class="activity">RER A regreso</span><span class="cost">~&euro;5.40/pers</span></div>
+                <div class="timeline-item"><span class="time">22:30</span><span class="activity">Hotel</span><span class="cost"></span></div>
+                <div class="tip-box"><strong>Disney hack:</strong> Llevar comida en mochila (permitido, no vidrio). Usar app Disneyland Paris para ver tiempos de espera. Ir DIRECTO a las atracciones populares al abrir.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 8 &mdash; Sab 2 ene &mdash; Le Marais + Orsay + Saint-Germain</span>
+                <span class="day-tag media">Media</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">09:30</span><span class="activity">Salida hotel, metro a <strong>Le Marais</strong></span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">10:00</span><span class="activity"><strong>Le Marais</strong>: Place des Vosges, Rue des Francs-Bourgeois, tiendas</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity">Almuerzo &mdash; <strong>L'As du Fallafel</strong> (Rue des Rosiers, ~&euro;8-10/pers)</span><span class="cost">~&euro;10/pers</span></div>
+                <div class="timeline-item"><span class="time">13:15</span><span class="activity"><strong>Ile Saint-Louis</strong> (paseo, Berthillon helados) + vista Notre Dame</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity"><strong>Musee d'Orsay</strong> (Monet, Van Gogh, Renoir)</span><span class="cost">&euro;16/adulto, &lt;18 gratis</span></div>
+                <div class="timeline-item"><span class="time">16:30</span><span class="activity"><strong>Saint-Germain-des-Pres</strong> &mdash; chocolat chaud en Cafe de Flore</span><span class="cost">~&euro;8-10/pers</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity">Metro al hotel</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">18:00</span><span class="activity">Cena supermercado, <strong>empacar maletas</strong></span><span class="cost">~&euro;8/pers</span></div>
+                <div class="timeline-item"><span class="time">21:00</span><span class="activity"><strong>Dormir temprano.</strong> Alarma: 2:30am</span><span class="cost"></span></div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 9 &mdash; Dom 3 ene &mdash; Vuelo a Roma</span>
+                <span class="day-tag viaje">Viaje</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">02:30</span><span class="activity">Despertar</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">03:00</span><span class="activity">Check-out, Uber XL al aeropuerto CDG</span><span class="cost">~&euro;85 total</span></div>
+                <div class="timeline-item"><span class="time">04:10</span><span class="activity">Llegada CDG, check-in ITA Airways</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">06:10</span><span class="activity"><strong>Vuelo ITA Airways AZ317</strong> CDG &rarr; FCO</span><span class="cost">&euro;1,073 total</span></div>
+                <div class="timeline-item"><span class="time">08:15</span><span class="activity">Llegada a <strong>Roma Fiumicino</strong></span><span class="cost"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ROMA ==================== -->
+    <div class="city-section">
+        <div class="city-header rome">
+            <div class="emoji">&#127470;&#127481;</div>
+            <div>
+                <h2>Roma</h2>
+                <div class="city-dates">3 &ndash; 10 enero 2027</div>
+            </div>
+            <div class="city-nights">7 noches</div>
+        </div>
+
+        <div class="flight-info">
+            <h4>Alojamiento Roma</h4>
+            <div class="flight-row"><span class="label">Zona recomendada</span><span>Cerca de Termini / Monti / Trastevere</span></div>
+            <div class="flight-row"><span class="label">Rango presupuesto (estimado)</span><span>$1,200 &ndash; $1,800 USD (7 noches, 6 personas)</span></div>
+            <div class="flight-row"><span class="label">Nota</span><span>Enero es temporada baja en Roma &mdash; precios mas accesibles</span></div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 9 &mdash; Sab 3 ene &mdash; Llegada + Centro Historico</span>
+                <span class="day-tag baja">Suave</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">08:15</span><span class="activity">Llegan a FCO. Leonardo Express a Roma Termini (32 min)</span><span class="cost">&euro;14/pers</span></div>
+                <div class="timeline-item"><span class="time">10:45</span><span class="activity">Hotel: dejan maletas / check-in</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">11:30</span><span class="activity">Almuerzo: <strong>Antico Forno Roscioli</strong> (pizza al taglio)</span><span class="cost">~&euro;8/pers</span></div>
+                <div class="timeline-item"><span class="time">12:30</span><span class="activity"><strong>Panteon</strong></span><span class="cost">&euro;5/pers</span></div>
+                <div class="timeline-item"><span class="time">13:30</span><span class="activity"><strong>Piazza Navona</strong> (Fuente de los Cuatro Rios de Bernini)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">14:45</span><span class="activity"><strong>Fontana di Trevi</strong> (tirar la moneda)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity"><strong>Piazza di Spagna</strong> + Escalinata</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">16:15</span><span class="activity"><strong>Piazza del Popolo</strong></span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">19:30</span><span class="activity">Cena trattoria local</span><span class="cost">~&euro;18/pers</span></div>
+                <div class="tip-box"><strong>Comida barata Roma:</strong> Pizza al taglio (&euro;3-5/porcion), suppli (&euro;2-3, croqueta de arroz). Evitar restaurantes con fotos en el menu o jaladores en la puerta.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 10 &mdash; Dom 4 ene &mdash; Coliseo + Foro + Trastevere</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">08:30</span><span class="activity"><strong>Coliseo</strong> (reserva obligatoria, llegar al abrir)</span><span class="cost">&euro;18/pers</span></div>
+                <div class="timeline-item"><span class="time">10:15</span><span class="activity"><strong>Foro Romano</strong> (Via Sacra, Templo de Saturno, Arco de Tito)</span><span class="cost">Incluido</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity"><strong>Palatino</strong> (vistas del Foro desde arriba)</span><span class="cost">Incluido</span></div>
+                <div class="timeline-item"><span class="time">13:00</span><span class="activity">Almuerzo: <strong>Luzzi</strong> (pasta desde &euro;8)</span><span class="cost">~&euro;12/pers</span></div>
+                <div class="timeline-item"><span class="time">14:15</span><span class="activity">Circo Maximo + <strong>Bocca della Verita</strong></span><span class="cost">&euro;2/pers</span></div>
+                <div class="timeline-item"><span class="time">15:15</span><span class="activity"><strong>Isla Tiberina</strong> &rarr; <strong>Trastevere</strong></span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity">Merienda: <strong>Suppli Roma</strong> (suppli al telefono &euro;2)</span><span class="cost">~&euro;5/pers</span></div>
+                <div class="timeline-item"><span class="time">19:00</span><span class="activity">Cena en Trastevere: <strong>Da Enzo al 29</strong> (cacio e pepe legendario)</span><span class="cost">~&euro;18/pers</span></div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 11 &mdash; Lun 5 ene &mdash; Vaticano completo</span>
+                <span class="day-tag alta">Alta</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">08:15</span><span class="activity">Metro A a Ottaviano. Llegar a <strong>Museos Vaticanos</strong></span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">09:00</span><span class="activity"><strong>Museos Vaticanos + Capilla Sixtina</strong> (Galeria Mapas, Estancias de Rafael)</span><span class="cost">&euro;25/pers</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity">Salida directa a <strong>Basilica de San Pedro</strong> (La Pieta, baldaquino Bernini)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">13:00</span><span class="activity"><strong>Cupula de San Pedro</strong> (opcional, vista 360&deg;)</span><span class="cost">&euro;8-10/pers</span></div>
+                <div class="timeline-item"><span class="time">13:45</span><span class="activity"><strong>Plaza de San Pedro</strong></span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">14:15</span><span class="activity">Almuerzo: <strong>Pizzarium Bonci</strong> (mejor pizza al taglio de Roma)</span><span class="cost">~&euro;10/pers</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity"><strong>Castel Sant'Angelo</strong> exterior + <strong>Puente de los Angeles</strong></span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">17:00</span><span class="activity">San Pedro iluminado desde el puente (foto obligada)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">19:30</span><span class="activity">Cena zona Prati</span><span class="cost">~&euro;18/pers</span></div>
+                <div class="tip-box"><strong>Importante:</strong> Museos Vaticanos CIERRAN el 6 ene (Epifania). Hacerlo el 5 ene obligatoriamente. Reservar en museivaticani.va (60 dias antes).</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 12 &mdash; Mar 6 ene &mdash; Epifania: Villa Borghese + Piazza Navona</span>
+                <span class="day-tag baja">Relajado</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">09:00</span><span class="activity">Desayuno tranquilo (sin prisa)</span><span class="cost">~&euro;5/pers</span></div>
+                <div class="timeline-item"><span class="time">10:00</span><span class="activity"><strong>Villa Borghese</strong> (jardines, Piazzale del Pincio con vista)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">11:00</span><span class="activity"><strong>Galeria Borghese</strong> (opcional, reserva obligatoria: Bernini, Caravaggio)</span><span class="cost">&euro;18/pers</span></div>
+                <div class="timeline-item"><span class="time">13:00</span><span class="activity">Almuerzo zona Piazza del Popolo</span><span class="cost">~&euro;12/pers</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity"><strong>Piazza Navona</strong> &mdash; ultimo dia mercado de Epifania / La Befana</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">15:30</span><span class="activity">Paseo: Via dei Coronari + <strong>Campo de' Fiori</strong></span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">16:00</span><span class="activity">Merienda: <strong>Forno Campo de' Fiori</strong> (pizza bianca con mortadella)</span><span class="cost">~&euro;4/pers</span></div>
+                <div class="timeline-item"><span class="time">19:30</span><span class="activity">Cena especial de Epifania</span><span class="cost">~&euro;20/pers</span></div>
+                <div class="tip-box"><strong>La Befana:</strong> Tradicion italiana donde una bruja buena trae dulces a los ninos. Piazza Navona estara llena de vida. Feriado nacional pero restaurantes y atracciones turisticas abren.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 13 &mdash; Mie 7 ene &mdash; Day trip: Florencia</span>
+                <span class="day-tag viaje">Day trip</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">07:00</span><span class="activity">Tren Roma Termini &rarr; Firenze S.M.N. (Frecciarossa, 1h30)</span><span class="cost">&euro;15-30/pers</span></div>
+                <div class="timeline-item"><span class="time">08:30</span><span class="activity">Llegada Florencia. Todo es caminable.</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">08:45</span><span class="activity"><strong>Duomo</strong> (exterior). Opcional: Campanile de Giotto (414 escalones, vistas)</span><span class="cost">Gratis ext. / &euro;20 campanario</span></div>
+                <div class="timeline-item"><span class="time">10:00</span><span class="activity"><strong>Galleria dell'Accademia</strong> (El David de Miguel Angel)</span><span class="cost">&euro;16/pers + &euro;4 reserva</span></div>
+                <div class="timeline-item"><span class="time">11:15</span><span class="activity"><strong>Piazza della Signoria</strong> + Loggia dei Lanzi (esculturas gratis)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">12:00</span><span class="activity">Almuerzo: <strong>All'Antico Vinaio</strong> (sandwiches mas famosos de Italia, &euro;5-7)</span><span class="cost">~&euro;8/pers</span></div>
+                <div class="timeline-item"><span class="time">13:15</span><span class="activity"><strong>Ponte Vecchio</strong> + Oltrarno</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity">Paseo libre: Mercado San Lorenzo, gelato</span><span class="cost">Variable</span></div>
+                <div class="timeline-item"><span class="time">16:30</span><span class="activity"><strong>Piazzale Michelangelo</strong> (panoramica de Florencia al atardecer)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">19:00</span><span class="activity">Tren regreso a Roma (~20:30 llegada)</span><span class="cost">&euro;15-30/pers</span></div>
+                <div class="timeline-item"><span class="time">21:00</span><span class="activity">Cena ligera en Roma</span><span class="cost">~&euro;10/pers</span></div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 14 &mdash; Jue 8 ene &mdash; Day trip: Pompeya + Napoles</span>
+                <span class="day-tag viaje">Day trip</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">07:00</span><span class="activity">Tren Roma &rarr; Napoles Centrale (Frecciarossa, 1h10)</span><span class="cost">&euro;20-40/pers</span></div>
+                <div class="timeline-item"><span class="time">08:30</span><span class="activity">Circumvesuviana Napoles &rarr; Pompei Scavi (36 min)</span><span class="cost">&euro;3.30/pers</span></div>
+                <div class="timeline-item"><span class="time">09:15</span><span class="activity"><strong>Pompeya</strong> (Foro, Casa del Fauno, Lupanar, Teatro, Anfiteatro)</span><span class="cost">&euro;20/pers</span></div>
+                <div class="timeline-item"><span class="time">12:30</span><span class="activity">Circumvesuviana regreso a Napoles</span><span class="cost">&euro;3.30/pers</span></div>
+                <div class="timeline-item"><span class="time">14:15</span><span class="activity"><strong>Pizza napolitana: Da Michele</strong> (la de Eat Pray Love, margherita &euro;5-6)</span><span class="cost">~&euro;8/pers</span></div>
+                <div class="timeline-item"><span class="time">15:15</span><span class="activity"><strong>Spaccanapoli</strong> (calle historica, nacimientos artesanales)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">16:15</span><span class="activity"><strong>Lungomare</strong> (vista del Vesubio sobre la bahia)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">18:00</span><span class="activity">Tren Napoles &rarr; Roma (1h10)</span><span class="cost">&euro;20-40/pers</span></div>
+                <div class="timeline-item"><span class="time">20:00</span><span class="activity">Cena ligera en Roma</span><span class="cost">~&euro;10/pers</span></div>
+                <div class="tip-box"><strong>Seguridad Napoles:</strong> Cuidar pertenencias en el centro y en el Circumvesuviana &mdash; carteristas activos. Mochilas siempre adelante.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 15 &mdash; Vie 9 ene &mdash; Ultimo dia: Monti + compras + despedida</span>
+                <span class="day-tag media">Media</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">09:00</span><span class="activity"><strong>Galeria Borghese</strong> (si no fueron el dia 6) o <strong>Termas de Caracalla</strong></span><span class="cost">&euro;12-18/pers</span></div>
+                <div class="timeline-item"><span class="time">11:00</span><span class="activity">Compras <strong>Via del Corso</strong> (ropa italiana, souvenirs)</span><span class="cost">Variable</span></div>
+                <div class="timeline-item"><span class="time">12:30</span><span class="activity">Almuerzo de despedida: <strong>Roscioli Salumeria</strong> (la mejor carbonara de Roma)</span><span class="cost">~&euro;20/pers</span></div>
+                <div class="timeline-item"><span class="time">14:30</span><span class="activity"><strong>Barrio de Monti</strong> (vintage shops, cafes, arte callejero)</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">16:00</span><span class="activity">Ultimas fotos: <strong>Coliseo iluminandose</strong> desde Via dei Fori Imperiali</span><span class="cost">Gratis</span></div>
+                <div class="timeline-item"><span class="time">17:30</span><span class="activity">Regreso hotel, preparar maletas</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">19:30</span><span class="activity"><strong>Cena de despedida:</strong> Felice a Testaccio (carbonara definitiva) o Armando al Pantheon</span><span class="cost">~&euro;25/pers</span></div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-card-header" onclick="this.parentElement.classList.toggle('open')">
+                <span class="day-title">Dia 16 &mdash; Sab 10 ene &mdash; Vuelo de regreso</span>
+                <span class="day-tag viaje">Viaje</span>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="day-card-body">
+                <div class="timeline-item"><span class="time">07:30</span><span class="activity">Despertar, desayuno, check-out</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">09:00</span><span class="activity">Salir hacia Termini</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">09:30</span><span class="activity"><strong>Leonardo Express</strong> &rarr; Fiumicino (32 min)</span><span class="cost">&euro;14/pers</span></div>
+                <div class="timeline-item"><span class="time">10:05</span><span class="activity">Llegada FCO, check-in</span><span class="cost"></span></div>
+                <div class="timeline-item"><span class="time">13:15</span><span class="activity"><strong>Vuelo FCO &rarr; YUL &rarr; LIM</strong> (llegan 11 ene 03:15)</span><span class="cost"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PRESUPUESTO ==================== -->
+    <div class="budget-section">
+        <h2>Presupuesto estimado</h2>
+
+        <div class="budget-grid">
+            <div class="budget-card london">
+                <h3>&#127468;&#127463; Londres (3 noches)</h3>
+                <div class="budget-line"><span class="label">Alojamiento</span><span>$800 &ndash; $1,200</span></div>
+                <div class="budget-line"><span class="label">Comida (&pound;20-25/pers/dia)</span><span>$470 &ndash; $590</span></div>
+                <div class="budget-line"><span class="label">Transporte local</span><span>$234</span></div>
+                <div class="budget-line"><span class="label">Eurostar a Paris</span><span>$680</span></div>
+                <div class="budget-line"><span class="label">Atracciones (Tower + opcionales)</span><span>$260 &ndash; $497</span></div>
+                <div class="budget-line subtotal"><span>Subtotal Londres</span><span>$2,444 &ndash; $3,201</span></div>
+            </div>
+
+            <div class="budget-card paris">
+                <h3>&#127467;&#127479; Paris (5 noches)</h3>
+                <div class="budget-line"><span class="label">Alojamiento</span><span>$1,523 &ndash; $1,700</span></div>
+                <div class="budget-line"><span class="label">Comida (&euro;22/pers/dia x 5 dias)</span><span>$730</span></div>
+                <div class="budget-line"><span class="label">Transporte local</span><span>$275</span></div>
+                <div class="budget-line"><span class="label">Vuelo a Roma (ITA)</span><span>$1,274</span></div>
+                <div class="budget-line"><span class="label">Versalles</span><span>$110 &ndash; $165</span></div>
+                <div class="budget-line"><span class="label">Louvre</span><span>$140 &ndash; $211</span></div>
+                <div class="budget-line"><span class="label">Sainte-Chapelle</span><span>$57 &ndash; $86</span></div>
+                <div class="budget-line"><span class="label">Disneyland (~&euro;95/pers)</span><span>$627</span></div>
+                <div class="budget-line"><span class="label">Orsay</span><span>$70 &ndash; $105</span></div>
+                <div class="budget-line subtotal"><span>Subtotal Paris</span><span>$4,806 &ndash; $5,173</span></div>
+            </div>
+
+            <div class="budget-card rome">
+                <h3>&#127470;&#127481; Roma (7 noches)</h3>
+                <div class="budget-line"><span class="label">Alojamiento (estimado)</span><span>$1,200 &ndash; $1,800</span></div>
+                <div class="budget-line"><span class="label">Comida (&euro;25-30/pers/dia x 8 dias)</span><span>$1,320 &ndash; $1,584</span></div>
+                <div class="budget-line"><span class="label">Transporte urbano + aeropuerto</span><span>$330 &ndash; $460</span></div>
+                <div class="budget-line"><span class="label">Trenes Florencia (ida+vuelta x6)</span><span>$198 &ndash; $396</span></div>
+                <div class="budget-line"><span class="label">Trenes Pompeya/Napoles (x6)</span><span>$308 &ndash; $550</span></div>
+                <div class="budget-line"><span class="label">Atracciones Roma</span><span>$594 &ndash; $726</span></div>
+                <div class="budget-line"><span class="label">Atracciones Florencia</span><span>$0 &ndash; $192</span></div>
+                <div class="budget-line"><span class="label">Pompeya entrada</span><span>$132</span></div>
+                <div class="budget-line subtotal"><span>Subtotal Roma</span><span>$4,082 &ndash; $5,840</span></div>
+            </div>
+
+            <div class="budget-card total-card">
+                <h3>TOTAL VIAJE</h3>
+                <div class="budget-line"><span class="label">Londres</span><span>$2,444 &ndash; $3,201</span></div>
+                <div class="budget-line"><span class="label">Paris</span><span>$4,806 &ndash; $5,173</span></div>
+                <div class="budget-line"><span class="label">Roma</span><span>$4,082 &ndash; $5,840</span></div>
+                <div class="budget-line subtotal"><span>TOTAL (6 personas)</span><span>$11,332 &ndash; $14,214</span></div>
+                <div class="budget-line subtotal"><span>POR PERSONA</span><span>$1,889 &ndash; $2,369</span></div>
+                <div style="margin-top: 10px; font-size: 0.8em; color: var(--text-muted);">* No incluye vuelos internacionales Lima-Londres / Roma-Lima (ya comprados) ni equipaje despachado.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CHECKLIST ==================== -->
+    <div class="checklist-section">
+        <h2>Checklist de reservas</h2>
+
+        <div class="checklist-item">
+            <div class="priority urgent">1</div>
+            <div class="details">
+                <div class="title">Trenes Florencia y Napoles (Italo/Trenitalia)</div>
+                <div class="when">Reservar YA &mdash; mientras mas temprano, mas barato</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority urgent">2</div>
+            <div class="details">
+                <div class="title">Eurostar Londres &rarr; Paris (07:01, 29 dic)</div>
+                <div class="when">Reservar YA &mdash; precios suben cerca de la fecha</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority urgent">3</div>
+            <div class="details">
+                <div class="title">Vuelo ITA Airways Paris &rarr; Roma (3 ene)</div>
+                <div class="when">Reservar YA</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority urgent">4</div>
+            <div class="details">
+                <div class="title">Alojamiento (Londres, Paris, Roma)</div>
+                <div class="when">Reservar YA &mdash; temporada alta Navidad/Ano Nuevo</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority soon">5</div>
+            <div class="details">
+                <div class="title">Museos Vaticanos + Capilla Sixtina (5 ene)</div>
+                <div class="when">Reserva abre ~60 dias antes (~6 noviembre 2026) en museivaticani.va</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority soon">6</div>
+            <div class="details">
+                <div class="title">Coliseo + Foro Romano + Palatino (4 ene)</div>
+                <div class="when">Reserva abre 30 dias antes (~5 diciembre 2026) en ticketing.colosseo.it</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority soon">7</div>
+            <div class="details">
+                <div class="title">Versalles (30 dic)</div>
+                <div class="when">Reserva con creneau horaire obligatoria en chateauversailles.fr</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority soon">8</div>
+            <div class="details">
+                <div class="title">Louvre (31 dic)</div>
+                <div class="when">Reserva online obligatoria en louvre.fr</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority soon">9</div>
+            <div class="details">
+                <div class="title">Disneyland Paris (1 ene)</div>
+                <div class="when">Comprar tickets online (mas barato que taquilla)</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority later">10</div>
+            <div class="details">
+                <div class="title">Galeria Borghese (6 ene, opcional)</div>
+                <div class="when">Reserva abre 10 dias antes (~27 dic 2026)</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority later">11</div>
+            <div class="details">
+                <div class="title">Galleria dell'Accademia Florencia (7 ene)</div>
+                <div class="when">Reservar online con anticipacion</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority later">12</div>
+            <div class="details">
+                <div class="title">Winter Wonderland Hyde Park (28 dic)</div>
+                <div class="when">Entrada gratuita pero requiere reserva con franja horaria</div>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="priority later">13</div>
+            <div class="details">
+                <div class="title">Tower of London (27 dic)</div>
+                <div class="when">Reservar online (ahorro ~10%) en hrp.org.uk</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Viaje Fin de Ano 2026-2027 &bull; Familia Mendoza-Rodriguez &bull; 15 noches en Europa</p>
+    <p>Ultima actualizacion: Mayo 2026</p>
+</div>
+
+<script>
+    // Open first card by default
+    document.querySelector('.day-card').classList.add('open');
+</script>
+
+</body>
+</html>
