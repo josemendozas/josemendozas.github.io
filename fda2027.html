@@ -1046,30 +1046,57 @@
 =============================================================== -->
 <div class="route-map-section">
     <div class="route-map-card">
-        <div style="position:relative; width:100%; border-radius:12px; overflow:hidden; background:var(--surface-warm);">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Europe_laea_location_map.svg/1200px-Europe_laea_location_map.svg.png" alt="Mapa de Europa" style="width:100%; height:320px; object-fit:cover; object-position: center 35%; display:block; opacity:0.85;" loading="lazy">
-            <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;" viewBox="0 0 600 320">
-                <!-- Route line London-Paris -->
-                <line x1="267" y1="88" x2="285" y2="108" stroke="#1a535c" stroke-width="3" stroke-dasharray="8,5" opacity="0.8"/>
-                <!-- Route line Paris-Rome -->
-                <line x1="285" y1="108" x2="330" y2="162" stroke="#b5647c" stroke-width="3" stroke-dasharray="8,5" opacity="0.8"/>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <div id="route-map" style="width:100%; height:350px; border-radius:12px; z-index:1;"></div>
+        <script>
+        (function(){
+            var map = L.map('route-map', {scrollWheelZoom: false, zoomControl: true}).setView([47.5, 5], 5);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap'
+            }).addTo(map);
 
-                <!-- London -->
-                <circle cx="267" cy="88" r="10" fill="#1a535c" stroke="white" stroke-width="3"/>
-                <rect x="218" y="62" width="98" height="22" rx="11" fill="white" opacity="0.9"/>
-                <text x="267" y="77" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#1a535c">Londres</text>
+            var cities = [
+                {name: 'Londres', lat: 51.507, lng: -0.128, color: '#1a535c', nights: '3 noches'},
+                {name: 'Par\u00eds', lat: 48.857, lng: 2.352, color: '#b5647c', nights: '5 noches'},
+                {name: 'Roma', lat: 41.903, lng: 12.496, color: '#c4652a', nights: '7 noches'}
+            ];
 
-                <!-- Paris -->
-                <circle cx="285" cy="108" r="10" fill="#b5647c" stroke="white" stroke-width="3"/>
-                <rect x="296" y="97" width="70" height="22" rx="11" fill="white" opacity="0.9"/>
-                <text x="331" y="112" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#b5647c">Par&iacute;s</text>
+            var routeCoords = cities.map(function(c){ return [c.lat, c.lng]; });
+            L.polyline(routeCoords, {color: '#4a433c', weight: 3, dashArray: '10, 8', opacity: 0.6}).addTo(map);
 
-                <!-- Rome -->
-                <circle cx="330" cy="162" r="10" fill="#c4652a" stroke="white" stroke-width="3"/>
-                <rect x="341" y="151" width="65" height="22" rx="11" fill="white" opacity="0.9"/>
-                <text x="373" y="166" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#c4652a">Roma</text>
-            </svg>
-        </div>
+            cities.forEach(function(c){
+                var icon = L.divIcon({
+                    className: '',
+                    html: '<div style="width:20px;height:20px;border-radius:50%;background:'+c.color+';border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>',
+                    iconSize: [20,20],
+                    iconAnchor: [10,10]
+                });
+                L.marker([c.lat, c.lng], {icon: icon}).addTo(map)
+                    .bindTooltip('<strong style="color:'+c.color+'">'+c.name+'</strong><br>'+c.nights, {
+                        permanent: true,
+                        direction: 'top',
+                        offset: [0, -14],
+                        className: 'leaflet-tooltip-custom'
+                    });
+            });
+
+            map.fitBounds(routeCoords, {padding: [40, 40]});
+        })();
+        </script>
+        <style>
+            .leaflet-tooltip-custom {
+                background: white;
+                border: 1px solid #e8e2d9;
+                border-radius: 8px;
+                padding: 6px 10px;
+                font-family: 'DM Sans', sans-serif;
+                font-size: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                line-height: 1.4;
+            }
+            .leaflet-tooltip-custom::before { border-top-color: #e8e2d9; }
+        </style>
         <div class="rv-bar">
             <div class="rv-bar-london"></div>
             <div class="rv-bar-paris"></div>
