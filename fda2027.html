@@ -1046,7 +1046,23 @@
 =============================================================== -->
 <div class="route-map-section">
     <div class="route-map-card">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m40!1m12!1m3!1d12226527.739498854!2d-1.5!3d46.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C+Reino+Unido!3m2!1d51.5072178!2d-0.1275862!4m5!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sPar%C3%ADs%2C+Francia!3m2!1d48.856614!2d2.3522219!4m5!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2sRoma%2C+Italia!3m2!1d41.9027835!2d12.4963655!5e0!3m2!1ses!2s!4v1700000000000!5m2!1ses!2s" width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div style="position:relative; width:100%; height:300px; border-radius:12px; overflow:hidden; background:#e8e2d9;">
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-5.0%2C40.0%2C16.0%2C53.0&layer=mapnik&marker=51.507,-0.128" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
+            <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;" viewBox="0 0 1000 500">
+                <!-- London dot -->
+                <circle cx="430" cy="155" r="8" fill="#1a535c" stroke="white" stroke-width="3"/>
+                <text x="430" y="140" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="14" font-weight="700" fill="#1a535c">Londres</text>
+                <!-- Paris dot -->
+                <circle cx="470" cy="220" r="8" fill="#b5647c" stroke="white" stroke-width="3"/>
+                <text x="470" y="205" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="14" font-weight="700" fill="#b5647c">Par&iacute;s</text>
+                <!-- Rome dot -->
+                <circle cx="590" cy="340" r="8" fill="#c4652a" stroke="white" stroke-width="3"/>
+                <text x="590" y="325" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="14" font-weight="700" fill="#c4652a">Roma</text>
+                <!-- Route lines -->
+                <line x1="430" y1="155" x2="470" y2="220" stroke="#1a535c" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+                <line x1="470" y1="220" x2="590" y2="340" stroke="#b5647c" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+            </svg>
+        </div>
         <div class="rv-bar">
             <div class="rv-bar-london"></div>
             <div class="rv-bar-paris"></div>
