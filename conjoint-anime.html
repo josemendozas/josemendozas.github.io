@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiencia Anime en Cine - Estudio Conjoint</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh;padding:20px}
+.container{max-width:750px;margin:0 auto}
+h1{font-size:1.5rem;text-align:center;margin-bottom:8px;color:#ff6b9d}
+.subtitle{text-align:center;color:#8b949e;margin-bottom:24px;font-size:.9rem}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-bottom:16px}
+.card h2{font-size:1.1rem;margin-bottom:16px;color:#ff6b9d}
+label{display:block;margin-bottom:12px;cursor:pointer}
+label:hover{color:#ff6b9d}
+input[type=radio]{margin-right:8px;accent-color:#ff6b9d}
+input[type=text],select{background:#0d1117;border:1px solid #30363d;color:#e6edf3;padding:8px 12px;border-radius:6px;width:100%;font-size:1rem}
+.btn{background:#ff6b9d;color:#0d1117;border:none;padding:12px 32px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;display:block;margin:20px auto 0}
+.btn:hover{background:#ff85b1}
+.btn:disabled{background:#30363d;color:#8b949e;cursor:not-allowed}
+.progress{text-align:center;color:#8b949e;margin-bottom:12px;font-size:.85rem}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.profile{background:#0d1117;border:2px solid #30363d;border-radius:10px;padding:16px;cursor:pointer;transition:.2s}
+.profile:hover{border-color:#ff6b9d}
+.profile.selected{border-color:#ff6b9d;background:#1a1025}
+.profile h3{text-align:center;margin-bottom:12px;color:#ff85b1;font-size:1rem}
+.attr-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1c2128;font-size:.85rem}
+.attr-row:last-child{border-bottom:none}
+.attr-name{color:#8b949e;flex:0 0 35%}
+.attr-val{color:#e6edf3;text-align:right;flex:0 0 60%}
+.price-tag{text-align:center;font-size:1.4rem;font-weight:700;color:#ff6b9d;margin-top:10px}
+.none-opt{background:#0d1117;border:2px solid #30363d;border-radius:10px;padding:16px;cursor:pointer;text-align:center;transition:.2s;color:#8b949e;font-size:.95rem}
+.none-opt:hover{border-color:#ff6b9d}
+.none-opt.selected{border-color:#ff6b9d;background:#1a1025;color:#e6edf3}
+.hidden{display:none}
+.final{text-align:center;padding:40px}
+.final h2{color:#ff6b9d;margin-bottom:16px}
+.msg-ok{color:#3fb950;margin-top:12px}
+.msg-err{color:#f85149;margin-top:12px}
+.spinner{display:inline-block;width:18px;height:18px;border:3px solid #30363d;border-top-color:#ff6b9d;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:500px){.choice-grid{grid-template-columns:1fr}.attr-row{font-size:.8rem}}
+</style>
+</head>
+<body>
+<div class="container" id="app">
+<!-- Intro -->
+<div id="sec-intro">
+<h1>Experiencia Anime en Cine</h1>
+<p class="subtitle">Estudio de preferencias - PUCP 2026</p>
+<div class="card">
+<h2>Antes de empezar</h2>
+<div style="margin-bottom:14px">
+<label style="margin-bottom:4px;font-weight:600">Tu nombre o codigo:</label>
+<input type="text" id="resp_id" placeholder="Ej: Juan P. o 20201234">
+</div>
+<div style="margin-bottom:14px">
+<label style="font-weight:600">Edad:</label>
+<input type="text" id="resp_age" placeholder="Ej: 21" style="width:80px">
+</div>
+<div style="margin-bottom:14px">
+<label style="font-weight:600">Genero:</label>
+<select id="resp_gender">
+<option value="">Selecciona</option>
+<option value="M">Masculino</option>
+<option value="F">Femenino</option>
+<option value="NB">No binario</option>
+<option value="NR">Prefiero no decir</option>
+</select>
+</div>
+</div>
+
+<div class="card">
+<h2>Screening</h2>
+<p style="margin-bottom:12px;color:#8b949e">1. Te consideras fan del anime? (ves anime regularmente, lees manga, etc.)</p>
+<label><input type="radio" name="s1" value="Si">Si</label>
+<label><input type="radio" name="s1" value="Algo">Algo, veo de vez en cuando</label>
+<label><input type="radio" name="s1" value="No">No</label>
+
+<p style="margin-bottom:12px;margin-top:16px;color:#8b949e">2. Has ido al cine en el ultimo anio?</p>
+<label><input type="radio" name="s2" value="Si, varias veces">Si, varias veces (3+)</label>
+<label><input type="radio" name="s2" value="Si, 1-2 veces">Si, 1 o 2 veces</label>
+<label><input type="radio" name="s2" value="No">No he ido</label>
+
+<p style="margin-bottom:12px;margin-top:16px;color:#8b949e">3. Has ido al cine a ver una pelicula de anime?</p>
+<label><input type="radio" name="s3" value="Si, ultimo 6 meses">Si, en los ultimos 6 meses</label>
+<label><input type="radio" name="s3" value="Si, ultimo anio">Si, en el ultimo anio</label>
+<label><input type="radio" name="s3" value="Si, hace mas de un anio">Si, pero hace mas de un anio</label>
+<label><input type="radio" name="s3" value="Nunca">Nunca he ido al cine a ver anime</label>
+
+<p style="margin-bottom:12px;margin-top:16px;color:#8b949e">4. A que cadena de cine vas mas seguido?</p>
+<label><input type="radio" name="s4" value="Cineplanet">Cineplanet</label>
+<label><input type="radio" name="s4" value="Cinemark">Cinemark</label>
+<label><input type="radio" name="s4" value="Cinepolis">Cinepolis</label>
+<label><input type="radio" name="s4" value="Otra">Otra</label>
+<label><input type="radio" name="s4" value="No voy al cine">No voy al cine</label>
+</div>
+<button class="btn" onclick="startConjoint()">Comenzar el experimento</button>
+</div>
+
+<!-- Conjoint tasks -->
+<div id="sec-conjoint" class="hidden">
+<h1>Experiencia Anime en Cine</h1>
+<div class="progress" id="progress"></div>
+<div class="card">
+<h2 id="task-q">Si estas fueran tus unicas opciones para ir al cine a ver anime, cual elegirias?</h2>
+<div class="choice-grid" id="profiles"></div>
+<div class="none-opt" id="none-opt" onclick="selectNone()">No iria a ninguna de las dos</div>
+</div>
+<button class="btn" id="btn-next" onclick="nextTask()" disabled>Siguiente</button>
+</div>
+
+<!-- Final -->
+<div id="sec-final" class="hidden">
+<div class="card final">
+<h2>Gracias por participar!</h2>
+<p style="color:#8b949e;margin-bottom:8px">Enviando tus respuestas...</p>
+<p id="send-status"><span class="spinner"></span> Guardando...</p>
+<p style="color:#8b949e;margin-top:16px;font-size:.8rem" id="summary"></p>
+</div>
+</div>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = "https://script.google.com/a/macros/lavictoria.pe/s/AKfycbztFA_xlmhqGRHyNa0vTndZN8A3XLJLI6E9ul09NKvcO8eQstwO7OV8yuw0xH-cqnKN/exec";
+
+const ATTRIBUTES = {
+  estreno: {
+    name: "Estreno",
+    levels: ["Dia del estreno mundial","Primera semana","Reestreno o maraton"]
+  },
+  audio: {
+    name: "Audio",
+    levels: ["Japones + subtitulos","Doblado al espanol"]
+  },
+  sala: {
+    name: "Sala",
+    levels: ["Sala estandar","Sala Premium (IMAX/Dolby)"]
+  },
+  extra: {
+    name: "Extra incluido",
+    levels: ["Sin extras","Merchandise exclusivo","Combo tematico anime","Evento cosplay en sala"]
+  },
+  precio: {
+    name: "Precio",
+    levels: [18, 30, 45, 60]
+  }
+};
+
+const N_TASKS = 8;
+let tasks = [];
+let currentTask = 0;
+let responses = [];
+let screening = {};
+let respondent = {};
+
+function randLevel(attr) {
+  const lvls = ATTRIBUTES[attr].levels;
+  return lvls[Math.floor(Math.random() * lvls.length)];
+}
+
+function genProfile() {
+  let p = {};
+  for (let a in ATTRIBUTES) p[a] = randLevel(a);
+  return p;
+}
+
+function profilesDiffer(a, b) {
+  for (let k in a) if (a[k] !== b[k]) return true;
+  return false;
+}
+
+function genTask() {
+  let a = genProfile();
+  let b = genProfile();
+  let tries = 0;
+  while (!profilesDiffer(a, b) && tries < 20) { b = genProfile(); tries++; }
+  return [a, b];
+}
+
+function generateAllTasks() {
+  tasks = [];
+  for (let i = 0; i < N_TASKS; i++) tasks.push(genTask());
+}
+
+function getVal(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : "";
+}
+
+function startConjoint() {
+  respondent.id = document.getElementById('resp_id').value.trim();
+  respondent.age = document.getElementById('resp_age').value.trim();
+  respondent.gender = document.getElementById('resp_gender').value;
+
+  if (!respondent.id) { alert("Ingresa tu nombre o codigo"); return; }
+
+  screening.s1 = getVal('s1');
+  screening.s2 = getVal('s2');
+  screening.s3 = getVal('s3');
+  screening.s4 = getVal('s4');
+
+  if (!screening.s1 || !screening.s2 || !screening.s3 || !screening.s4) {
+    alert("Responde todas las preguntas de screening"); return;
+  }
+
+  generateAllTasks();
+  currentTask = 0;
+  responses = [];
+  document.getElementById('sec-intro').classList.add('hidden');
+  document.getElementById('sec-conjoint').classList.remove('hidden');
+  renderTask();
+}
+
+function renderTask() {
+  document.getElementById('progress').textContent = `Tarea ${currentTask + 1} de ${N_TASKS}`;
+  const grid = document.getElementById('profiles');
+  const pair = tasks[currentTask];
+  grid.innerHTML = '';
+
+  pair.forEach((prof, idx) => {
+    const div = document.createElement('div');
+    div.className = 'profile';
+    div.onclick = () => selectProfile(idx);
+    div.id = 'prof-' + idx;
+    let html = `<h3>Opcion ${idx === 0 ? 'A' : 'B'}</h3>`;
+    for (let a in ATTRIBUTES) {
+      if (a === 'precio') {
+        html += `<div class="price-tag">S/${prof[a]}</div>`;
+      } else {
+        html += `<div class="attr-row"><span class="attr-name">${ATTRIBUTES[a].name}</span><span class="attr-val">${prof[a]}</span></div>`;
+      }
+    }
+    div.innerHTML = html;
+    grid.appendChild(div);
+  });
+
+  document.getElementById('none-opt').classList.remove('selected');
+  document.getElementById('btn-next').disabled = true;
+}
+
+let selectedChoice = null;
+
+function selectProfile(idx) {
+  document.querySelectorAll('.profile').forEach(p => p.classList.remove('selected'));
+  document.getElementById('prof-' + idx).classList.add('selected');
+  document.getElementById('none-opt').classList.remove('selected');
+  selectedChoice = idx === 0 ? 'A' : 'B';
+  document.getElementById('btn-next').disabled = false;
+}
+
+function selectNone() {
+  document.querySelectorAll('.profile').forEach(p => p.classList.remove('selected'));
+  document.getElementById('none-opt').classList.add('selected');
+  selectedChoice = 'Ninguna';
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextTask() {
+  const pair = tasks[currentTask];
+  responses.push({
+    task: currentTask + 1,
+    choice: selectedChoice,
+    profA: {...pair[0]},
+    profB: {...pair[1]}
+  });
+
+  currentTask++;
+  selectedChoice = null;
+
+  if (currentTask >= N_TASKS) {
+    document.getElementById('sec-conjoint').classList.add('hidden');
+    document.getElementById('sec-final').classList.remove('hidden');
+    document.getElementById('summary').textContent = `${responses.length} tareas completadas. ID: ${respondent.id}`;
+    sendToSheet();
+  } else {
+    renderTask();
+  }
+}
+
+function sendToSheet() {
+  const ts = new Date().toISOString();
+  const attrKeys = Object.keys(ATTRIBUTES);
+
+  const rows = responses.map(r => {
+    let row = [
+      ts, respondent.id, respondent.age, respondent.gender,
+      screening.s1, screening.s2, screening.s3, screening.s4,
+      r.task
+    ];
+    attrKeys.forEach(a => row.push(r.profA[a]));
+    attrKeys.forEach(a => row.push(r.profB[a]));
+    row.push(r.choice, r.choice === 'Ninguna' ? 1 : 0);
+    return row;
+  });
+
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({rows: rows})
+  })
+  .then(() => {
+    document.getElementById('send-status').innerHTML =
+      '<span class="msg-ok">Respuestas guardadas correctamente.</span>';
+  })
+  .catch(err => {
+    document.getElementById('send-status').innerHTML =
+      '<span class="msg-err">Error al enviar. Contacta al profesor.</span>';
+    console.error(err);
+  });
+}
+</script>
+</body>
+</html>
