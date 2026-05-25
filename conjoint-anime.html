@@ -171,12 +171,39 @@ function profilesDiffer(a, b) {
   return false;
 }
 
+// Ranking de niveles para chequeo de dominancia (mayor = mejor)
+const RANK = {
+  estreno: {"Reestreno o maraton":0,"Primera semana":1,"Dia del estreno mundial":2},
+  audio: {"Doblado al espanol":0,"Japones + subtitulos":1},
+  sala: {"Sala estandar":0,"Sala Premium (IMAX/Dolby)":1},
+  extra: {"Sin extras":0,"Combo tematico anime":1,"Merchandise exclusivo":2,"Evento cosplay en sala":2},
+  precio: {60:0, 45:1, 30:2, 18:3}
+};
+
+function isDominant(a, b) {
+  // returns true if a dominates b (a >= b in all, a > b in at least one)
+  let dominated = true;
+  let strictlyBetter = false;
+  for (let k in RANK) {
+    const ra = RANK[k][a[k]], rb = RANK[k][b[k]];
+    if (ra < rb) { dominated = false; break; }
+    if (ra > rb) strictlyBetter = true;
+  }
+  return dominated && strictlyBetter;
+}
+
 function genTask() {
-  let a = genProfile();
-  let b = genProfile();
   let tries = 0;
-  while (!profilesDiffer(a, b) && tries < 20) { b = genProfile(); tries++; }
-  return [a, b];
+  while (tries < 50) {
+    let a = genProfile();
+    let b = genProfile();
+    tries++;
+    if (!profilesDiffer(a, b)) continue;
+    if (isDominant(a, b) || isDominant(b, a)) continue;
+    return [a, b];
+  }
+  // fallback (very unlikely)
+  return [genProfile(), genProfile()];
 }
 
 function generateAllTasks() {
@@ -295,21 +322,33 @@ function sendToSheet() {
     return row;
   });
 
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({rows: rows})
-  })
-  .then(() => {
-    document.getElementById('send-status').innerHTML =
-      '<span class="msg-ok">Respuestas guardadas correctamente.</span>';
-  })
-  .catch(err => {
-    document.getElementById('send-status').innerHTML =
-      '<span class="msg-err">Error al enviar. Contacta al profesor.</span>';
-    console.error(err);
-  });
+  // Enviar via form POST redirect (evita problemas CORS)
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = APPS_SCRIPT_URL;
+  form.target = 'submit-frame';
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = 'data';
+  input.value = JSON.stringify({rows: rows});
+  form.appendChild(input);
+
+  // iframe oculto para no redirigir la pagina
+  let iframe = document.getElementById('submit-frame');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.name = 'submit-frame';
+    iframe.id = 'submit-frame';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+  form.remove();
+
+  document.getElementById('send-status').innerHTML =
+    '<span class="msg-ok">Respuestas guardadas correctamente.</span>';
 }
 </script>
 </body>
