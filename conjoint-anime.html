@@ -123,7 +123,7 @@ input[type=text],select{background:#0d1117;border:1px solid #30363d;color:#e6edf
 </div>
 
 <script>
-const APPS_SCRIPT_URL = "https://script.google.com/a/macros/lavictoria.pe/s/AKfycbza98Bqw5N3_zQZvtmZTdMLWfXN5X8zlJqnnB9s2e-p_8iZqbST19hOIe1JKp9uk-vS/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/a/macros/lavictoria.pe/s/AKfycbzSeu7ToWblHSGZrACqDNCYcEC5DEPQNu-8ghUYqyYURbMY_SEpP1Gt8Z6fYwlMC_vk/exec";
 
 const ATTRIBUTES = {
   estreno: {
@@ -322,33 +322,44 @@ function sendToSheet() {
     return row;
   });
 
-  // Enviar via form POST redirect (evita problemas CORS)
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = APPS_SCRIPT_URL;
-  form.target = 'submit-frame';
-  const input = document.createElement('input');
-  input.type = 'hidden';
-  input.name = 'data';
-  input.value = JSON.stringify({rows: rows});
-  form.appendChild(input);
+  // Enviar cada fila como request independiente via GET (evita CORS)
+  let sent = 0;
+  const total = rows.length;
 
-  // iframe oculto para no redirigir la pagina
-  let iframe = document.getElementById('submit-frame');
-  if (!iframe) {
-    iframe = document.createElement('iframe');
-    iframe.name = 'submit-frame';
-    iframe.id = 'submit-frame';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-  }
+  rows.forEach((row, i) => {
+    const params = new URLSearchParams();
+    params.set('ts', row[0]);
+    params.set('id', row[1]);
+    params.set('age', row[2]);
+    params.set('gender', row[3]);
+    params.set('s1', row[4]);
+    params.set('s2', row[5]);
+    params.set('s3', row[6]);
+    params.set('s4', row[7]);
+    params.set('task', row[8]);
+    params.set('a_estreno', row[9]);
+    params.set('a_audio', row[10]);
+    params.set('a_sala', row[11]);
+    params.set('a_extra', row[12]);
+    params.set('a_precio', row[13]);
+    params.set('b_estreno', row[14]);
+    params.set('b_audio', row[15]);
+    params.set('b_sala', row[16]);
+    params.set('b_extra', row[17]);
+    params.set('b_precio', row[18]);
+    params.set('choice', row[19]);
+    params.set('chose_none', row[20]);
 
-  document.body.appendChild(form);
-  form.submit();
-  form.remove();
-
-  document.getElementById('send-status').innerHTML =
-    '<span class="msg-ok">Respuestas guardadas correctamente.</span>';
+    const img = new Image();
+    img.onload = img.onerror = () => {
+      sent++;
+      if (sent === total) {
+        document.getElementById('send-status').innerHTML =
+          '<span class="msg-ok">Respuestas guardadas correctamente.</span>';
+      }
+    };
+    img.src = APPS_SCRIPT_URL + '?' + params.toString();
+  });
 }
 </script>
 </body>
