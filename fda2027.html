@@ -1031,6 +1031,24 @@
     .berlin    .tab-btn.active { background: var(--berlin); }
     .rv-seg { height: 100%; }
     </style>
+
+    <style>
+    :root {
+        --amsterdam: #2f6db5; --amsterdam-light: #edf3fb; --amsterdam-mid: #a9c6ea;
+        --berlin: #4b5563;    --berlin-light: #f1f2f4;    --berlin-mid: #c3c8d0;
+    }
+    .route-city.amsterdam { color: var(--amsterdam-mid); }
+    .route-city.berlin    { color: var(--berlin-mid); }
+    .rv-city-name.amsterdam { color: var(--amsterdam); }
+    .rv-city-name.berlin    { color: var(--berlin); }
+    .amsterdam .city-hero-eyebrow { color: var(--amsterdam-mid); }
+    .berlin    .city-hero-eyebrow { color: var(--berlin-mid); }
+    .amsterdam .city-hero-nights { background: rgba(47,109,181,0.8); }
+    .berlin    .city-hero-nights { background: rgba(75,85,99,0.85); }
+    .amsterdam .tab-btn.active { background: var(--amsterdam); }
+    .berlin    .tab-btn.active { background: var(--berlin); }
+    .rv-seg { height: 100%; }
+    </style>
 </head>
 <body>
 
@@ -1177,7 +1195,7 @@
     <div class="flights-section">
         <div class="section-title">
             <h2>Vuelos y traslados</h2>
-            <p>Todo ya comprado</p>
+            <p>Todo ya comprado. Horarios del plan: aproximados, el ritmo lo pone el grupo.</p>
             <div class="title-rule"></div>
         </div>
 
@@ -1237,16 +1255,30 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">06:30</span><span class="tl-act">Llegada a Heathrow &rarr; hotel, dejar maletas</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Buckingham</strong> &rarr; St James's Park &rarr; Horse Guards &rarr; Downing St</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Abad&iacute;a de Westminster</strong> (fuera) &rarr; <strong>Big Ben</strong> &rarr; London Eye</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Southbank &rarr; <strong>Tate Modern</strong> y Globe &rarr; Catedral de Southwark &rarr; HMS Belfast</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Tower Bridge</strong> &rarr; Torre de Londres (fuera) &rarr; St Katharine Docks</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">~15:15</span><span class="tl-act"><strong>Sky Garden</strong> (mirador)</span><span class="tl-cost">Reserva gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Leadenhall &rarr; Bank &rarr; <strong>St Paul's</strong> &rarr; bus 15 a Trafalgar</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Covent Garden &rarr; Leicester Sq y Chinatown &rarr; Piccadilly &rarr; Regent St &rarr; Green Park</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">06:30</span><span class="tl-act">Llegada a Heathrow &rarr; metro al hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act">Hotel: dejar maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:45</span><span class="tl-act"><strong>Palacio de Buckingham</strong> (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">St James's Park</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act">Horse Guards &rarr; Downing St</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Abad&iacute;a de Westminster</strong> (fuera) &rarr; <strong>Big Ben</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:30</span><span class="tl-act">Puente de Westminster &rarr; <strong>London Eye</strong> (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act">Southbank Centre</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:45</span><span class="tl-act"><strong>Tate Modern</strong> &rarr; Globe</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:45</span><span class="tl-act">Almuerzo barato &rarr; Catedral de Southwark</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act">HMS Belfast (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:00</span><span class="tl-act"><strong>Tower Bridge</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">Torre de Londres (fuera) &rarr; St Katharine Docks</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>Sky Garden</strong> (mirador al atardecer)</span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:15</span><span class="tl-act">Leadenhall Market &rarr; Bank</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:00</span><span class="tl-act"><strong>Catedral de St Paul's</strong> (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Bus 15 a Trafalgar</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act"><strong>Trafalgar Square</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:30</span><span class="tl-act">Covent Garden</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:15</span><span class="tl-act">Leicester Sq y Chinatown (cena)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">20:30</span><span class="tl-act">Piccadilly Circus &rarr; Regent St &rarr; Green Park</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-act">Hotel</span><span class="tl-cost"></span></div>
                 </div>
-                <div class="tip"><strong>Tip:</strong> Plan B del mirador: Horizon 22 (tambi&eacute;n gratis).</div>
+                <div class="tip"><strong>Tip:</strong> Plan B del mirador: Horizon 22 (tambi&eacute;n gratis). Horarios aproximados: el ritmo lo pone el grupo.</div>
             </div>
         </div>
 
@@ -1260,12 +1292,20 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Metro a <strong>Notting Hill</strong> &rarr; Portobello Road</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Jard&iacute;n Kyoto &rarr; <strong>Palacio de Kensington</strong> &rarr; Serpentine &rarr; Wellington Arch</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act"><strong>Cambio de guardia</strong> en Buckingham</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">08:00</span><span class="tl-act">Metro a Notting Hill</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:15</span><span class="tl-act"><strong>Portobello Road</strong> y las casas de colores</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:15</span><span class="tl-act">Holland Park: <strong>Jard&iacute;n Kyoto</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Palacio de Kensington</strong> (fuera) &rarr; Serpentine</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:30</span><span class="tl-act">Wellington Arch</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:45</span><span class="tl-act"><strong>Cambio de guardia</strong> en Buckingham (11:00)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Metro a South Kensington &rarr; almuerzo</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act"><strong>Natural History Museum</strong></span><span class="tl-cost">Reserva gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>V&amp;A</strong> (entrar antes de 17:15) &rarr; Royal Albert Hall</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Hyde Park &rarr; Marble Arch &rarr; Oxford St &rarr; Carnaby &rarr; Soho</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>V&amp;A</strong> (entrar antes de 17:15)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:45</span><span class="tl-act">Royal Albert Hall</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:15</span><span class="tl-act">Hyde Park</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Marble Arch &rarr; Oxford St</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">Carnaby &rarr; Soho (cena)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act">Metro al hotel</span><span class="tl-cost"></span></div>
                 </div>
             </div>
         </div>
@@ -1280,13 +1320,23 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Check-out, maletas en el hotel</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Warwick Ave &rarr; <strong>Little Venice</strong> &rarr; <strong>Abbey Road</strong> &rarr; Primrose Hill</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Camden</strong> &rarr; Regent's Park &rarr; Baker St</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act">Check-out, maletas en el hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:45</span><span class="tl-act">Metro a Warwick Ave</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Little Venice</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:45</span><span class="tl-act"><strong>Abbey Road</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:30</span><span class="tl-act">Primrose Hill (vista)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act"><strong>Camden</strong> (brunch)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Regent's Park &rarr; Baker St</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act">Bus al British Museum</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act"><strong>British Museum</strong></span><span class="tl-cost">Reserva gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">15:45</span><span class="tl-act"><strong>National Gallery</strong> (tras Covent Garden)</span><span class="tl-cost">Reserva gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Embankment &rarr; Golden Jubilee Bridge &rarr; mercado de South Bank &rarr; Westminster</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">23:00</span><span class="tl-act"><strong>FlixBus a Par&iacute;s</strong> desde Victoria Coach Station</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act">Covent Garden</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:45</span><span class="tl-act"><strong>National Gallery</strong></span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Embankment &rarr; Golden Jubilee Bridge</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Mercado de South Bank (cena)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">19:30</span><span class="tl-act">Westminster de noche</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">20:30</span><span class="tl-act">Hotel: recoger maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">22:30</span><span class="tl-act">Victoria Coach Station</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">23:00</span><span class="tl-act"><strong>FlixBus a Par&iacute;s</strong></span><span class="tl-cost">Pagado</span></div>
                 </div>
             </div>
         </div>
@@ -1329,11 +1379,19 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:40</span><span class="tl-act">Llegada a Bercy &rarr; metro al hotel (maletas)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>P&egrave;re Lachaise</strong> &rarr; Bastille &rarr; <strong>Place des Vosges</strong> &rarr; Carnavalet</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Pompidou (fuera) &rarr; H&ocirc;tel de Ville &rarr; &Icirc;le St-Louis</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Notre-Dame</strong></span><span class="tl-cost">Reserva gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Sainte-Chapelle (fuera) &rarr; Pont Neuf &rarr; St-Michel y Shakespeare &amp; Co &rarr; Rue Mouffetard</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:40</span><span class="tl-act">Llegada a Bercy &rarr; comprar Navigo Easy &rarr; metro</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:15</span><span class="tl-act">Hotel: dejar maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:45</span><span class="tl-act"><strong>Cementerio P&egrave;re Lachaise</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Bastille &rarr; almuerzo</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act"><strong>Place des Vosges</strong> y casa de Victor Hugo</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act">Museo Carnavalet</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:00</span><span class="tl-act">Centro Pompidou (fuera) &rarr; H&ocirc;tel de Ville</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:40</span><span class="tl-act">&Icirc;le St-Louis</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:15</span><span class="tl-act"><strong>Notre-Dame</strong></span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:15</span><span class="tl-act">Sainte-Chapelle (fuera) &rarr; Pont Neuf</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:50</span><span class="tl-act">St-Michel &rarr; Shakespeare &amp; Co</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:30</span><span class="tl-act"><strong>Rue Mouffetard</strong> (cena)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">20:00</span><span class="tl-act">Metro al hotel</span><span class="tl-cost"></span></div>
                 </div>
                 <div class="tip"><strong>Tip:</strong> Notre-Dame: la reserva abre ~72 h antes (s&aacute;b 26 dic).</div>
             </div>
@@ -1350,9 +1408,19 @@
                 </div>
                 <div class="tl">
                     <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act"><strong>Louvre</strong> (Pir&aacute;mide o Carrusel, llevar pasaporte)</span><span class="tl-cost">Pagado</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Tuller&iacute;as &rarr; Rivoli &rarr; Vend&ocirc;me &rarr; <strong>&Oacute;pera</strong> y terraza de Galeries Lafayette</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Madeleine &rarr; Concorde &rarr; Grand y Petit Palais &rarr; Pont Alexandre III</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Campos El&iacute;seos</strong> &rarr; Arco del Triunfo &rarr; Trocad&eacute;ro &rarr; <strong>Torre Eiffel de noche</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:45</span><span class="tl-act"><strong>Jard&iacute;n de las Tuller&iacute;as</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act">Rue de Rivoli (almuerzo)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act">Place Vend&ocirc;me</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act"><strong>&Oacute;pera Garnier</strong> (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">Galeries Lafayette: c&uacute;pula y terraza</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act">Madeleine</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:40</span><span class="tl-act"><strong>Place de la Concorde</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">Grand y Petit Palais &rarr; Pont Alexandre III</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:00</span><span class="tl-act"><strong>Campos El&iacute;seos</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act"><strong>Arco del Triunfo</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:45</span><span class="tl-act">Trocad&eacute;ro (vista de la torre)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:15</span><span class="tl-act"><strong>Torre Eiffel de noche</strong> (destella cada hora en punto) &rarr; cena</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act">Metro al hotel</span><span class="tl-cost"></span></div>
                 </div>
             </div>
         </div>
@@ -1367,8 +1435,16 @@
                     <span class="day-badge badge-media">Media</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Sacr&eacute;-C&oelig;ur</strong> &rarr; Place du Tertre &rarr; Moulin de la Galette &rarr; Abbesses &rarr; Moulin Rouge</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Canal St-Martin &rarr; R&eacute;publique</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act">Metro a Anvers</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:15</span><span class="tl-act"><strong>Sacr&eacute;-C&oelig;ur</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act">Place du Tertre</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:30</span><span class="tl-act">Moulin de la Galette</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Abbesses y Muro de los Te quiero (almuerzo)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act"><strong>Moulin Rouge</strong> (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:00</span><span class="tl-act"><strong>Canal St-Martin</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">R&eacute;publique</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:00</span><span class="tl-act">Hotel: descanso y cena</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-act">Salida al punto de A&ntilde;o Nuevo</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">00:00</span><span class="tl-act"><strong>A&ntilde;o Nuevo</strong>: Trocad&eacute;ro, Campos El&iacute;seos o Sacr&eacute;-C&oelig;ur (se decide all&aacute;)</span><span class="tl-cost">Gratis</span></div>
                 </div>
                 <div class="tip"><strong>Tip:</strong> Metro gratis desde las 17:00 del 31 hasta las 12:00 del 1. L&iacute;nea 9 directo de Trocad&eacute;ro al hotel.</div>
@@ -1385,8 +1461,9 @@
                     <span class="day-badge badge-media">Media</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">RER A desde Nation (gratis hasta las 12:00)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Disneyland Par&iacute;s</strong></span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act">RER A desde Nation (gratis hasta las 12:00)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act"><strong>Disneyland Par&iacute;s</strong> hasta el cierre</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time">noche</span><span class="tl-act">RER A de vuelta al hotel</span><span class="tl-cost"></span></div>
                 </div>
             </div>
         </div>
@@ -1401,12 +1478,23 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Check-out &rarr; maletas a consigna en Porte Maillot</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">RER C (cambio en Champ de Mars, tren &ldquo;Versailles Ch&acirc;teau Rive Gauche&rdquo;)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">07:00</span><span class="tl-act">Check-out &rarr; L9 a Nation &rarr; L1 a Porte Maillot</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">07:45</span><span class="tl-act">Dejar maletas en consigna (Porte Maillot)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:00</span><span class="tl-act">RER C (cambio en Champ de Mars, tren &ldquo;Versailles Ch&acirc;teau Rive Gauche&rdquo;)</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Palacio de Versalles</strong> (entrada A, acceso 09:00&ndash;09:30)</span><span class="tl-cost">Pagado</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">RER C a St-Michel &rarr; Pante&oacute;n &rarr; <strong>Jardines de Luxemburgo</strong> &rarr; St-Sulpice</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">St-Germain &rarr; Pont des Arts &rarr; Orsay (fuera) &rarr; <strong>Inv&aacute;lidos</strong> &rarr; Rue Cler &rarr; Bir-Hakeim</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">23:25</span><span class="tl-act"><strong>FlixBus a &Aacute;msterdam</strong> desde Porte Maillot</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Jardines de Versalles</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act">RER C directo a St-Michel (almuerzo)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">14:45</span><span class="tl-act"><strong>Pante&oacute;n</strong> (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>Jardines de Luxemburgo</strong> (cierran al atardecer)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:15</span><span class="tl-act">Saint-Sulpice</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:45</span><span class="tl-act">Saint-Germain-des-Pr&eacute;s</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:15</span><span class="tl-act">Pont des Arts</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Museo d'Orsay (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act"><strong>Inv&aacute;lidos</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:45</span><span class="tl-act">Rue Cler (cena)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">20:00</span><span class="tl-act">Bir-Hakeim (vista de la torre)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">20:30</span><span class="tl-act">RER C a Porte Maillot &rarr; recoger maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">23:25</span><span class="tl-act"><strong>FlixBus a &Aacute;msterdam</strong> (estar 23:10)</span><span class="tl-cost">Pagado</span></div>
                 </div>
             </div>
         </div>
@@ -1446,13 +1534,27 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">08:55</span><span class="tl-act">Llegada a Centraal &rarr; hotel (maletas)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Ferry gratis</strong> ida y vuelta (vista del puerto) &rarr; NEMO (fuera)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Biblioteca OBA</strong> (vista desde arriba)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Oudeschans &rarr; <strong>Nieuwmarkt</strong> &rarr; Zeedijk y Chinatown &rarr; Barrio Rojo</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Damrak &rarr; <strong>Dam</strong> &rarr; <strong>Begijnhof</strong> &rarr; Spui &rarr; Bloemenmarkt</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Rembrandtplein &rarr; Reguliersgracht (7 puentes) &rarr; <strong>Magere Brug</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Festival de luces</strong> &rarr; cena &rarr; bar (Wynand Fockink / In de Wildeman)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:55</span><span class="tl-act">Llegada a Centraal</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:15</span><span class="tl-act">Hotel: dejar maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act"><strong>Ferry gratis</strong> ida y vuelta (vista del puerto)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act">NEMO (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:15</span><span class="tl-act"><strong>Biblioteca OBA</strong> (vista desde arriba)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act">Oudeschans y Montelbaanstoren</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:20</span><span class="tl-act"><strong>Nieuwmarkt</strong> y la Waag</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:40</span><span class="tl-act">Zeedijk y Chinatown (almuerzo)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">12:45</span><span class="tl-act"><strong>Barrio Rojo</strong> y Oude Kerk</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act">Damrak (casas que bailan)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act"><strong>Plaza Dam</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:00</span><span class="tl-act"><strong>Begijnhof</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">Spui (papas fritas)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">14:50</span><span class="tl-act">Bloemenmarkt</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act">Rembrandtplein</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:35</span><span class="tl-act">Reguliersgracht (7 puentes)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act"><strong>Magere Brug</strong> y el Amstel</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:00</span><span class="tl-act"><strong>Festival de luces</strong> a pie</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">Cena barata</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">20:30</span><span class="tl-act">Bar: Wynand Fockink / In de Wildeman</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">22:00</span><span class="tl-act">Hotel (check-in)</span><span class="tl-cost"></span></div>
                 </div>
                 <div class="tip"><strong>Tip:</strong> Barrio Rojo: prohibido fotografiar las vitrinas y beber en la calle.</div>
             </div>
@@ -1468,15 +1570,26 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Check-out, maletas en el hotel</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Tren a <strong>Zaanse Schans</strong>: molinos, queser&iacute;a y zuecos</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Jordaan: Brouwersgracht &rarr; Singel 7 &rarr; canales chicos &rarr; hofjes</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">tarde</span><span class="tl-act"><strong>Casa de Ana Frank</strong> &rarr; Westerkerk &rarr; Nueve Calles</span><span class="tl-cost">Reserva</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Tram a Leidseplein &rarr; luces &rarr; caf&eacute; marr&oacute;n &rarr; cena en Chinatown</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">22:30</span><span class="tl-act">Recoger maletas &rarr; and&eacute;n H</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">Check-out, maletas en el hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:20</span><span class="tl-act">Tren Centraal &rarr; Zaandijk Zaanse Schans</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:45</span><span class="tl-act"><strong>Zaanse Schans</strong>: molinos, queser&iacute;a y zuecos</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act">Tren de vuelta a Centraal</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act">Singel 7 (casa angosta)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act"><strong>Brouwersgracht</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act">Lindengracht &rarr; hofjes</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">Egelantiersgracht y Bloemgracht</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:00</span><span class="tl-act"><strong>Casa de Ana Frank</strong></span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">16:15</span><span class="tl-act">Westerkerk y Homomonument</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:30</span><span class="tl-act"><strong>Nueve Calles</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Tram a Leidseplein</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Luces por la Herengracht</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">Caf&eacute; marr&oacute;n (bitterballen)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">20:30</span><span class="tl-act">Cena en Chinatown / Zeedijk</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">22:30</span><span class="tl-act">Hotel: recoger maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">22:55</span><span class="tl-act">And&eacute;n H (detr&aacute;s de Centraal)</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">23:15</span><span class="tl-act"><strong>FlixBus a Berl&iacute;n</strong></span><span class="tl-cost">Pagado</span></div>
                 </div>
-                <div class="tip"><strong>Tip:</strong> Ana Frank: entradas salen mar 24 nov a las 04:00 (hora Lima).</div>
+                <div class="tip"><strong>Tip:</strong> Ana Frank: entradas salen mar 24 nov a las 04:00 (hora Lima). Pedir turno ~15:00.</div>
             </div>
         </div>
     </div>
@@ -1515,13 +1628,23 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:10</span><span class="tl-act">Llegada a ZOB &rarr; U2 al hotel (maletas)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Catedral e Isla de los Museos (fuera) &rarr; Unter den Linden &rarr; Bebelplatz &rarr; Gendarmenmarkt</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Checkpoint Charlie (solo pasar) &rarr; <strong>Memorial del Holocausto</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Puerta de Brandeburgo</strong> &rarr; Memorial Sovi&eacute;tico &rarr; Tiergarten &rarr; Siegess&auml;ule</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Iglesia del Recuerdo</strong> &rarr; bus 100</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">~18:00</span><span class="tl-act"><strong>C&uacute;pula del Reichstag</strong> (llevar pasaporte)</span><span class="tl-cost">Reserva gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">U5 de vuelta a Alexanderplatz</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:10</span><span class="tl-act">Llegada a ZOB &rarr; U2 (desde Kaiserdamm)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:15</span><span class="tl-act">Hotel: dejar maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:45</span><span class="tl-act"><strong>Catedral de Berl&iacute;n</strong> e Isla de los Museos (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:15</span><span class="tl-act">Unter den Linden y Neue Wache</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:30</span><span class="tl-act">Bebelplatz</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:50</span><span class="tl-act">Gendarmenmarkt</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:15</span><span class="tl-act">Checkpoint Charlie (solo pasar)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:45</span><span class="tl-act">Almuerzo</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act"><strong>Memorial del Holocausto</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:00</span><span class="tl-act"><strong>Puerta de Brandeburgo</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:20</span><span class="tl-act">Memorial Sovi&eacute;tico</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:40</span><span class="tl-act">Tiergarten</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>Siegess&auml;ule</strong> (Columna de la Victoria)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act"><strong>Iglesia del Recuerdo</strong> (atardecer)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:45</span><span class="tl-act">Bus 100 al Reichstag</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act"><strong>C&uacute;pula del Reichstag</strong> (llevar pasaporte)</span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:15</span><span class="tl-act">U5 a Alexanderplatz &rarr; cena</span><span class="tl-cost"></span></div>
                 </div>
             </div>
         </div>
@@ -1536,13 +1659,18 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">ma&ntilde;ana</span><span class="tl-act">Tren a Oranienburg &rarr; <strong>Memorial de Sachsenhausen</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Memorial del Muro</strong> en Bernauer Stra&szlig;e</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Hackesche H&ouml;fe &rarr; Torre de TV (fuera) &rarr; Alexanderplatz</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Kreuzberg: puente Oberbaum iluminado &rarr; cena barata</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Dormir temprano: vuelo jueves 06:00</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">07:45</span><span class="tl-act">Tren a Oranienburg (boleto con zona C)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Memorial de Sachsenhausen</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">12:45</span><span class="tl-act">Tren de vuelta a Berl&iacute;n (Nordbahnhof)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:40</span><span class="tl-act"><strong>Memorial del Muro</strong> en Bernauer Stra&szlig;e (almuerzo cerca)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act">Hackesche H&ouml;fe y Hackescher Markt</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">Torre de TV (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:20</span><span class="tl-act">Alexanderplatz y Reloj Mundial</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:15</span><span class="tl-act">Puente Oberbaum iluminado</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Kreuzberg: cena barata (d&ouml;ner / currywurst)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">19:30</span><span class="tl-act">Hotel y dormir temprano</span><span class="tl-cost"></span></div>
                 </div>
-                <div class="tip"><strong>Tip:</strong> Boleto con zona C para Sachsenhausen y para el aeropuerto BER.</div>
+                <div class="tip"><strong>Tip:</strong> Jueves 7: salida al aeropuerto BER ~03:30 (transporte de madrugada por confirmar).</div>
             </div>
         </div>
     </div>
@@ -1583,13 +1711,20 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">06:00</span><span class="tl-act"><strong>Vuelo easyJet</strong> BER &rarr; FCO (llega 08:10)</span><span class="tl-cost">Pagado</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Leonardo Express a Termini &rarr; bus 40/64 &rarr; hotel (maletas)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">06:00</span><span class="tl-act"><strong>Vuelo easyJet</strong> BER &rarr; FCO</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time">08:10</span><span class="tl-act">Llegada a Fiumicino (maleta facturada)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">Leonardo Express a Termini</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:45</span><span class="tl-act">Bus 40/64 &rarr; hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:30</span><span class="tl-act">Hotel: dejar maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">11:20</span><span class="tl-act">A pie al Vaticano</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act"><strong>Museos Vaticanos + Capilla Sixtina</strong></span><span class="tl-cost">Reserva</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Bas&iacute;lica de San Pedro</strong> y la plaza</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">~16:55</span><span class="tl-act"><strong>Castel Sant'Angelo</strong> al atardecer &rarr; Piazza Navona</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">~17:45</span><span class="tl-act"><strong>Pante&oacute;n</strong></span><span class="tl-cost">Reserva</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Sant'Ignazio &rarr; cena y dormir temprano</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>Bas&iacute;lica de San Pedro</strong> y la plaza</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:45</span><span class="tl-act"><strong>Castel Sant'Angelo</strong> y su puente al atardecer</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:15</span><span class="tl-act"><strong>Piazza Navona</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:45</span><span class="tl-act"><strong>Pante&oacute;n</strong></span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">18:15</span><span class="tl-act">Sant'Ignazio (techo en falsa perspectiva)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">Cena barata</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">20:30</span><span class="tl-act">Hotel y dormir</span><span class="tl-cost"></span></div>
                 </div>
                 <div class="tip"><strong>Tip:</strong> Vaticano e iglesias: hombros y rodillas cubiertos.</div>
             </div>
@@ -1605,12 +1740,21 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">08:00</span><span class="tl-act">San Pietro in Vincoli: <strong>Mois&eacute;s de Miguel &Aacute;ngel</strong> (cierra al mediod&iacute;a)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Coliseo</strong> &rarr; Foro Romano &rarr; Palatino</span><span class="tl-cost">Reserva</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Campidoglio (terraza al Foro) &rarr; Altare della Patria &rarr; Gueto jud&iacute;o</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Boca de la Verdad &rarr; Circo M&aacute;ximo</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">~16:55</span><span class="tl-act"><strong>Aventino</strong>: Jard&iacute;n de los Naranjos y cerradura de los Caballeros de Malta</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Isla Tiberina &rarr; <strong>Trastevere</strong> (cena) &rarr; Ponte Sisto &rarr; Campo de' Fiori</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">07:20</span><span class="tl-act">Salida a pie</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:00</span><span class="tl-act">San Pietro in Vincoli: <strong>Mois&eacute;s de Miguel &Aacute;ngel</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Coliseo</strong></span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">10:30</span><span class="tl-act"><strong>Foro Romano</strong></span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">11:45</span><span class="tl-act">Palatino</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act">Almuerzo</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act"><strong>Campidoglio</strong> y terraza con vista al Foro</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act">Altare della Patria</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">14:45</span><span class="tl-act">Gueto jud&iacute;o (solo pasear)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act">Boca de la Verdad (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:50</span><span class="tl-act">Circo M&aacute;ximo</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">16:30</span><span class="tl-act"><strong>Aventino</strong>: Jard&iacute;n de los Naranjos y cerradura de Malta</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Isla Tiberina</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act"><strong>Trastevere</strong> (cena)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act">Ponte Sisto &rarr; Campo de' Fiori &rarr; hotel</span><span class="tl-cost">Gratis</span></div>
                 </div>
             </div>
         </div>
@@ -1625,12 +1769,16 @@
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">07:15</span><span class="tl-act"><strong>Tren r&aacute;pido</strong> Termini &rarr; N&aacute;poles</span><span class="tl-cost">Reserva</span></div>
-                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Circumvesuviana a Pompei Scavi</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">~09:45</span><span class="tl-act"><strong>Pompeya</strong>: Foro, Graneros del Foro (moldes), Lupanar, Teatro, Huerto de los Fugitivos (moldes)</span><span class="tl-cost">Reserva</span></div>
-                    <div class="tl-item"><span class="tl-time">~15:15</span><span class="tl-act">N&aacute;poles: Ges&ugrave; Nuovo &rarr; <strong>Spaccanapoli</strong> &rarr; San Gregorio Armeno &rarr; Duomo</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">~17:30</span><span class="tl-act"><strong>Pizza napolitana</strong></span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">~18:30</span><span class="tl-act">Tren r&aacute;pido a Roma</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">06:30</span><span class="tl-act">Bus 40/64 a Termini</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">07:15</span><span class="tl-act"><strong>Tren r&aacute;pido</strong> a N&aacute;poles</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">08:45</span><span class="tl-act">Circumvesuviana a Pompei Scavi</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:45</span><span class="tl-act"><strong>Pompeya</strong>: Foro, Graneros del Foro (moldes), Lupanar, Teatro, Huerto de los Fugitivos (moldes)</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act">Salida por el Anfiteatro &rarr; estaci&oacute;n</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">Circumvesuviana a N&aacute;poles</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act">Ges&ugrave; Nuovo &rarr; <strong>Spaccanapoli</strong> &rarr; San Gregorio Armeno &rarr; Duomo</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act"><strong>Pizza napolitana</strong></span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">18:30</span><span class="tl-act">Tren r&aacute;pido a Roma</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">20:00</span><span class="tl-act">Hotel y dormir temprano</span><span class="tl-cost"></span></div>
                 </div>
             </div>
         </div>
@@ -1645,9 +1793,14 @@
                     <span class="day-badge badge-viaje">Viaje</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">03:30</span><span class="tl-act">Navona vac&iacute;a &rarr; Pante&oacute;n iluminado &rarr; <strong>Fontana di Trevi sin gente</strong> &rarr; Plaza de Espa&ntilde;a</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">03:30</span><span class="tl-act">Salida a pie: Navona vac&iacute;a</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">03:45</span><span class="tl-act">Pante&oacute;n iluminado (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">04:00</span><span class="tl-act"><strong>Fontana di Trevi sin gente</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">04:20</span><span class="tl-act">Plaza de Espa&ntilde;a</span><span class="tl-cost">Gratis</span></div>
                     <div class="tl-item"><span class="tl-time">04:45</span><span class="tl-act">Hotel a dormir</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">08:00</span><span class="tl-act">Desayuno y check-out</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">Bus 40/64 &rarr; Leonardo Express a Fiumicino</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">10:15</span><span class="tl-act">Fiumicino</span><span class="tl-cost"></span></div>
                     <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act"><strong>Vuelo FCO &rarr; YUL &rarr; LIM</strong> (llega lun 11, 03:15)</span><span class="tl-cost">Pagado</span></div>
                 </div>
                 <div class="tip"><strong>Tip:</strong> Trevi: no sentarse en el borde (multa). La moneda s&iacute;.</div>
