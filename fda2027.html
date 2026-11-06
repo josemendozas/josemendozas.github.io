@@ -1013,6 +1013,24 @@
         .route-arrow { display: none; }
     }
     </style>
+
+    <style>
+    :root {
+        --amsterdam: #2f6db5; --amsterdam-light: #edf3fb; --amsterdam-mid: #a9c6ea;
+        --berlin: #4b5563;    --berlin-light: #f1f2f4;    --berlin-mid: #c3c8d0;
+    }
+    .route-city.amsterdam { color: var(--amsterdam-mid); }
+    .route-city.berlin    { color: var(--berlin-mid); }
+    .rv-city-name.amsterdam { color: var(--amsterdam); }
+    .rv-city-name.berlin    { color: var(--berlin); }
+    .amsterdam .city-hero-eyebrow { color: var(--amsterdam-mid); }
+    .berlin    .city-hero-eyebrow { color: var(--berlin-mid); }
+    .amsterdam .city-hero-nights { background: rgba(47,109,181,0.8); }
+    .berlin    .city-hero-nights { background: rgba(75,85,99,0.85); }
+    .amsterdam .tab-btn.active { background: var(--amsterdam); }
+    .berlin    .tab-btn.active { background: var(--berlin); }
+    .rv-seg { height: 100%; }
+    </style>
 </head>
 <body>
 
@@ -1025,16 +1043,20 @@
     <div class="hero-inner">
         <div class="hero-label">Itinerario &bull; Europa 2026&ndash;2027</div>
         <h1>Fin de <em>A&ntilde;o</em><br>en Europa</h1>
-        <div class="hero-sub">Londres &mdash; Par&iacute;s &mdash; Roma</div>
+        <div class="hero-sub">Londres &mdash; Par&iacute;s &mdash; &Aacute;msterdam &mdash; Berl&iacute;n &mdash; Roma</div>
         <div class="hero-dates">26 diciembre 2026 &mdash; 10 enero 2027 &bull; 15 noches</div>
         <div class="hero-route">
             <span class="route-city london">Londres</span>
             <span class="route-arrow">&#8594;</span>
             <span class="route-city paris">Par&iacute;s</span>
             <span class="route-arrow">&#8594;</span>
+            <span class="route-city amsterdam">&Aacute;msterdam</span>
+            <span class="route-arrow">&#8594;</span>
+            <span class="route-city berlin">Berl&iacute;n</span>
+            <span class="route-arrow">&#8594;</span>
             <span class="route-city rome">Roma</span>
         </div>
-        <div class="hero-passengers">6 viajeros &bull; Air Canada</div>
+        <div class="hero-passengers">6 viajeros &bull; a pie, al aire libre y barato</div>
     </div>
     <div class="hero-scroll">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -1051,15 +1073,17 @@
         <div id="route-map" style="width:100%; height:350px; border-radius:12px; z-index:1;"></div>
         <script>
         (function(){
-            var map = L.map('route-map', {scrollWheelZoom: false, zoomControl: true}).setView([47.5, 5], 5);
+            var map = L.map('route-map', {scrollWheelZoom: false, zoomControl: true}).setView([48, 6], 5);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(map);
 
             var cities = [
-                {name: 'Londres', lat: 51.507, lng: -0.128, color: '#1a535c', nights: '3 noches'},
-                {name: 'Par\u00eds', lat: 48.857, lng: 2.352, color: '#b5647c', nights: '5 noches'},
-                {name: 'Roma', lat: 41.903, lng: 12.496, color: '#c4652a', nights: '7 noches'}
+                {name: 'Londres', lat: 51.507, lng: -0.128, color: '#1a535c', nights: '2 noches'},
+                {name: 'Par\u00eds', lat: 48.857, lng: 2.352, color: '#b5647c', nights: '4 noches'},
+                {name: '\u00c1msterdam', lat: 52.373, lng: 4.893, color: '#2f6db5', nights: '1 noche'},
+                {name: 'Berl\u00edn', lat: 52.52, lng: 13.405, color: '#4b5563', nights: '2 noches'},
+                {name: 'Roma', lat: 41.903, lng: 12.496, color: '#c4652a', nights: '3 noches'}
             ];
 
             var routeCoords = cities.map(function(c){ return [c.lat, c.lng]; });
@@ -1098,45 +1122,48 @@
             .leaflet-tooltip-custom::before { border-top-color: #e8e2d9; }
         </style>
         <div class="rv-bar">
-            <div class="rv-bar-london"></div>
-            <div class="rv-bar-paris"></div>
-            <div class="rv-bar-rome"></div>
+            <div class="rv-seg" style="background:var(--london);width:18.8%"></div>
+            <div class="rv-seg" style="background:var(--paris);width:31.2%"></div>
+            <div class="rv-seg" style="background:var(--amsterdam);width:12.5%"></div>
+            <div class="rv-seg" style="background:var(--berlin);width:12.5%"></div>
+            <div class="rv-seg" style="background:var(--rome);width:25.0%"></div>
         </div>
         <div class="rv-cities">
             <div class="rv-city">
                 <div class="rv-city-name london">Londres</div>
-                <div class="rv-city-nights">3 noches</div>
-                <div class="rv-city-dates">26&ndash;29 dic</div>
+                <div class="rv-city-nights">2 noches</div>
+                <div class="rv-city-dates">26&ndash;28 dic</div>
             </div>
             <div class="rv-city">
                 <div class="rv-city-name paris">Par&iacute;s</div>
-                <div class="rv-city-nights">5 noches</div>
-                <div class="rv-city-dates">29 dic&ndash;3 ene</div>
+                <div class="rv-city-nights">4 noches</div>
+                <div class="rv-city-dates">29 dic&ndash;2 ene</div>
+            </div>
+            <div class="rv-city">
+                <div class="rv-city-name amsterdam">&Aacute;msterdam</div>
+                <div class="rv-city-nights">1 noche</div>
+                <div class="rv-city-dates">3&ndash;4 ene</div>
+            </div>
+            <div class="rv-city">
+                <div class="rv-city-name berlin">Berl&iacute;n</div>
+                <div class="rv-city-nights">2 noches</div>
+                <div class="rv-city-dates">5&ndash;6 ene</div>
             </div>
             <div class="rv-city">
                 <div class="rv-city-name rome">Roma</div>
-                <div class="rv-city-nights">7 noches</div>
-                <div class="rv-city-dates">3&ndash;10 ene</div>
+                <div class="rv-city-nights">3 noches</div>
+                <div class="rv-city-dates">7&ndash;10 ene</div>
             </div>
         </div>
         <div class="route-map-info">
             <div>
                 <div class="route-map-label">Ruta completa</div>
-                <div class="route-map-title">Londres &rarr; Par&iacute;s &rarr; Roma</div>
+                <div class="route-map-title">Londres &rarr; Par&iacute;s &rarr; &Aacute;msterdam &rarr; Berl&iacute;n &rarr; Roma</div>
             </div>
             <div class="route-stats">
-                <div class="route-stat">
-                    <div class="route-stat-value" style="color:var(--london)">3</div>
-                    <div class="route-stat-label">ciudades</div>
-                </div>
-                <div class="route-stat">
-                    <div class="route-stat-value" style="color:var(--paris)">15</div>
-                    <div class="route-stat-label">noches</div>
-                </div>
-                <div class="route-stat">
-                    <div class="route-stat-value" style="color:var(--rome)">16</div>
-                    <div class="route-stat-label">d&iacute;as</div>
-                </div>
+                <div class="route-stat"><div class="route-stat-value" style="color:var(--london)">5</div><div class="route-stat-label">ciudades</div></div>
+                <div class="route-stat"><div class="route-stat-value" style="color:var(--paris)">15</div><div class="route-stat-label">noches</div></div>
+                <div class="route-stat"><div class="route-stat-value" style="color:var(--rome)">3</div><div class="route-stat-label">buses nocturnos</div></div>
             </div>
         </div>
     </div>
@@ -1150,7 +1177,7 @@
     <div class="flights-section">
         <div class="section-title">
             <h2>Vuelos y traslados</h2>
-            <p>Informaci&oacute;n de reservas y conexiones entre ciudades</p>
+            <p>Todo ya comprado</p>
             <div class="title-rule"></div>
         </div>
 
@@ -1161,9 +1188,6 @@
             </div>
             <div class="info-row"><span class="lbl">Ida</span><span class="val">Vie 25 dic &mdash; LIM 08:00 &rarr; YYZ 16:00 &rarr; LHR 06:30 (26 dic)</span></div>
             <div class="info-row"><span class="lbl">Vuelta</span><span class="val">Dom 10 ene &mdash; FCO 13:15 &rarr; YUL 16:20 &rarr; LIM 03:15 (11 ene)</span></div>
-            <div class="info-row"><span class="lbl">Reserva 1</span><span class="val">958497340700 &mdash; CBKHJE &mdash; 4 pasajeros</span></div>
-            <div class="info-row"><span class="lbl">Reserva 2</span><span class="val">437736340700 &mdash; CCDR2X &mdash; 2 pasajeros</span></div>
-            <div class="info-row"><span class="lbl">Equipaje</span><span class="val">Mochila + equipaje de mano. Sin maleta despachada.</span></div>
         </div>
 
         <div class="info-card">
@@ -1171,960 +1195,638 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a2 2 0 01-2-2V8a2 2 0 012-2h3.93a2 2 0 011.66.9l.82 1.2a2 2 0 001.66.9H21a2 2 0 012 2v7a2 2 0 01-2 2h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
                 Transporte entre ciudades
             </div>
-            <div class="info-row"><span class="lbl">Londres &rarr; Par&iacute;s</span><span class="val">Eurostar 07:01 (29 dic) &mdash; Gare du Nord 10:29 &mdash; &euro;103/pers (&euro;618 total)</span></div>
-            <div class="info-row"><span class="lbl">Par&iacute;s &rarr; Roma</span><span class="val">ITA Airways AZ317 06:10 CDG &rarr; 08:15 FCO (3 ene) &mdash; &euro;1,073 total + Uber XL &euro;85</span></div>
+            <div class="info-row"><span class="lbl">Londres &rarr; Par&iacute;s</span><span class="val">FlixBus lun 28 dic 23:00 Victoria &rarr; Bercy 09:40</span></div>
+            <div class="info-row"><span class="lbl">Par&iacute;s &rarr; &Aacute;msterdam</span><span class="val">FlixBus s&aacute;b 2 ene 23:25 Porte Maillot &rarr; Centraal 08:55</span></div>
+            <div class="info-row"><span class="lbl">&Aacute;msterdam &rarr; Berl&iacute;n</span><span class="val">FlixBus lun 4 ene 23:15 and&eacute;n H &rarr; ZOB 09:10</span></div>
+            <div class="info-row"><span class="lbl">Berl&iacute;n &rarr; Roma</span><span class="val">easyJet jue 7 ene 06:00 BER &rarr; FCO 08:10</span></div>
         </div>
     </div>
 
-    <!-- ===========================
-         LONDON
-    =========================== -->
+    <!-- =========================== LONDON =========================== -->
     <div class="city-section london" id="london">
         <div class="city-hero">
             <div class="city-hero-img" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800')"></div>
             <div class="city-hero-overlay"></div>
-            <div class="city-hero-nights">3 noches</div>
+            <div class="city-hero-nights">2 noches</div>
             <div class="city-hero-content">
                 <div class="city-hero-eyebrow">Cap&iacute;tulo I</div>
                 <div class="city-hero-title">Londres</div>
-                <div class="city-hero-dates">26 &ndash; 29 diciembre 2026</div>
+                <div class="city-hero-dates">26 &ndash; 28 diciembre 2026</div>
             </div>
         </div>
 
         <div class="accommodation-card">
             <div class="info-card-label">Alojamiento &mdash; Londres</div>
-            <div class="info-row"><span class="lbl">Zona</span><span class="val">King's Cross / St. Pancras (cerca del Eurostar)</span></div>
-            <div class="info-row"><span class="lbl">Presupuesto</span><span class="val">$800&ndash;$1,200 USD (hotel) &bull; $1,059&ndash;$1,200 (Airbnb)</span></div>
+            <div class="info-row"><span class="lbl">Hotel</span><span class="val">Z Hotel Victoria &mdash; 5 Lower Belgrave St (a 250 m de Victoria)</span></div>
+            <div class="info-row"><span class="lbl">Check-in / out</span><span class="val">S&aacute;b 26 15:00 &mdash; Lun 28 11:00 (pedir guardar maletas)</span></div>
         </div>
 
-        <!-- TABS -->
         <div class="tabs-nav" data-city="london">
-            <button class="tab-btn active" data-tab="london-1">D&iacute;a 1 <span class="tab-date">26 dic</span></button>
-            <button class="tab-btn" data-tab="london-2">D&iacute;a 2 <span class="tab-date">27 dic</span></button>
-            <button class="tab-btn" data-tab="london-3">D&iacute;a 3 <span class="tab-date">28 dic</span></button>
-            <button class="tab-btn" data-tab="london-4">D&iacute;a 4 <span class="tab-date">29 dic</span></button>
+            <button class="tab-btn active" data-tab="london-1">S&aacute;b <span class="tab-date">26 dic</span></button>
+            <button class="tab-btn" data-tab="london-2">Dom <span class="tab-date">27 dic</span></button>
+            <button class="tab-btn" data-tab="london-3">Lun <span class="tab-date">28 dic</span></button>
         </div>
 
-        <!-- Day 1 -->
         <div class="tab-panel active" id="london-1">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800" alt="London skyline with Big Ben" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Westminster &mdash; Llegada</div>
-                        <div class="day-date-main">Viernes 26 diciembre</div>
+                        <div class="day-title-main">Westminster &mdash; South Bank &mdash; City &mdash; West End</div>
+                        <div class="day-date-main">S&aacute;bado 26 diciembre</div>
                     </div>
-                    <span class="day-badge badge-baja">Suave</span>
+                    <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">06:30</span><span class="tl-act">Llegan a Heathrow. Piccadilly Line al hotel (~55 min)</span><span class="tl-cost">&pound;5.50/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">08:45</span><span class="tl-act">Dejan maletas, desayuno, se refrescan</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Big Ben + Westminster + Westminster Bridge</strong> (con luz)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act"><strong>Buckingham Palace</strong> (exterior) + <strong>St. James's Park</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act"><strong>Trafalgar Square</strong> (&aacute;rbol de Navidad noruego)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act"><strong>National Gallery</strong> visita express (Van Gogh, Vel&aacute;zquez, Monet)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act">Almuerzo en <strong>Chinatown</strong></span><span class="tl-cost">~&pound;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act"><strong>Piccadilly Circus + Carnaby Street</strong> (luces navide&ntilde;as)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act"><strong>Descanso en hotel</strong> (obligatorio post-vuelo)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">16:30</span><span class="tl-act"><strong>Covent Garden</strong> (artistas, mercado navide&ntilde;o)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act"><strong>Leicester Square</strong> luces de noche</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Cena supermercado + descanso total</span><span class="tl-cost">~&pound;10/pers</span></div>
+                    <div class="tl-item"><span class="tl-time">06:30</span><span class="tl-act">Llegada a Heathrow &rarr; hotel, dejar maletas</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Buckingham</strong> &rarr; St James's Park &rarr; Horse Guards &rarr; Downing St</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Abad&iacute;a de Westminster</strong> (fuera) &rarr; <strong>Big Ben</strong> &rarr; London Eye</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Southbank &rarr; <strong>Tate Modern</strong> y Globe &rarr; Catedral de Southwark &rarr; HMS Belfast</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Tower Bridge</strong> &rarr; Torre de Londres (fuera) &rarr; St Katharine Docks</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">~15:15</span><span class="tl-act"><strong>Sky Garden</strong> (mirador)</span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Leadenhall &rarr; Bank &rarr; <strong>St Paul's</strong> &rarr; bus 15 a Trafalgar</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Covent Garden &rarr; Leicester Sq y Chinatown &rarr; Piccadilly &rarr; Regent St &rarr; Green Park</span><span class="tl-cost">Gratis</span></div>
                 </div>
-                <div class="tip"><strong>Tip:</strong> Descargar la app Tesco Clubcard para ahorrar en meal deals (&pound;3.85 c/u). Boxing Day = tiendas con rebajas pero mucha gente.</div>
+                <div class="tip"><strong>Tip:</strong> Plan B del mirador: Horizon 22 (tambi&eacute;n gratis).</div>
             </div>
         </div>
 
-        <!-- Day 2 -->
         <div class="tab-panel" id="london-2">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1520986606214-8b456906c813?w=800" alt="Tower Bridge London" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Camden &mdash; South Bank &mdash; Tower</div>
-                        <div class="day-date-main">S&aacute;bado 27 diciembre</div>
+                        <div class="day-title-main">Notting Hill &mdash; Kensington &mdash; museos &mdash; Soho</div>
+                        <div class="day-date-main">Domingo 27 diciembre</div>
                     </div>
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:15</span><span class="tl-act"><strong>Camden Market</strong> + street food brunch</span><span class="tl-cost">~&pound;8/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">10:45</span><span class="tl-act">Caminata a <strong>Primrose Hill</strong> (vista panor&aacute;mica de Londres)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Metro a <strong>South Bank</strong> (~15 min). Paseo por la ribera</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act">Almuerzo street food South Bank</span><span class="tl-cost">~&pound;8/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act"><strong>Tate Modern</strong> visita r&aacute;pida (Turbine Hall + terraza piso 10)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act"><strong>Millennium Bridge</strong> &rarr; <strong>St. Paul's Cathedral</strong> exterior</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act"><strong>Tower of London</strong> (llegar antes de 15:30, &uacute;ltima entrada)</span><span class="tl-cost">&pound;34/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act"><strong>Tower Bridge</strong> iluminado de noche (fotos)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Cena por la zona + regreso hotel</span><span class="tl-cost">~&pound;10/pers</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Metro a <strong>Notting Hill</strong> &rarr; Portobello Road</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Jard&iacute;n Kyoto &rarr; <strong>Palacio de Kensington</strong> &rarr; Serpentine &rarr; Wellington Arch</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act"><strong>Cambio de guardia</strong> en Buckingham</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act"><strong>Natural History Museum</strong></span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>V&amp;A</strong> (entrar antes de 17:15) &rarr; Royal Albert Hall</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Hyde Park &rarr; Marble Arch &rarr; Oxford St &rarr; Carnaby &rarr; Soho</span><span class="tl-cost">Gratis</span></div>
                 </div>
-                <div class="tip"><strong>Tip:</strong> Borough Market puede tener horario especial navide&ntilde;o en domingo &mdash; verificar antes de ir. Si est&aacute; cerrado, almorzar en South Bank.</div>
             </div>
         </div>
 
-        <!-- Day 3 -->
         <div class="tab-panel" id="london-3">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800" alt="British Museum area London" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">British Museum &mdash; Hyde Park &mdash; Winter Wonderland</div>
-                        <div class="day-date-main">Domingo 28 diciembre</div>
+                        <div class="day-title-main">Canales y Camden &mdash; museos &mdash; bus a Par&iacute;s</div>
+                        <div class="day-date-main">Lunes 28 diciembre</div>
                     </div>
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:15</span><span class="tl-act"><strong>British Museum</strong> (Rosetta Stone, momias, Parten&oacute;n, ajedrez de Lewis)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Almuerzo zona Borough Market o London Bridge (verificar si abre)</span><span class="tl-cost">~&pound;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act"><strong>Hyde Park</strong> paseo con luz natural</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">15:00</span><span class="tl-act"><strong>Winter Wonderland</strong> (espectacular despu&eacute;s de las 16:00 con luces)</span><span class="tl-cost">Gratis entrada + &pound;30&ndash;50 atracciones</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Regreso hotel</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">18:30</span><span class="tl-act">Cena de despedida. Opci&oacute;n: paseo nocturno por Regent St + Carnaby Street</span><span class="tl-cost">~&pound;12/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act">Empacar maletas para ma&ntilde;ana</span><span class="tl-cost"></span></div>
-                </div>
-                <div class="tip"><strong>Tip:</strong> Winter Wonderland requiere reserva online gratuita con franja horaria. Reservar en hydeparkwinterwonderland.com</div>
-            </div>
-        </div>
-
-        <!-- Day 4 (travel) -->
-        <div class="tab-panel" id="london-4">
-            <div class="day-content">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Eurostar a Par&iacute;s</div>
-                        <div class="day-date-main">Lunes 29 diciembre</div>
-                    </div>
-                    <span class="day-badge badge-viaje">Viaje</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">06:00</span><span class="tl-act">Despertar, desayuno, check-out</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">06:30</span><span class="tl-act">Caminar a St. Pancras (hotel King's Cross = 5 min)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">07:01</span><span class="tl-act"><strong>Eurostar a Par&iacute;s</strong></span><span class="tl-cost">&euro;103/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">10:29</span><span class="tl-act">Llegada a <strong>Gare du Nord, Par&iacute;s</strong></span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Check-out, maletas en el hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Warwick Ave &rarr; <strong>Little Venice</strong> &rarr; <strong>Abbey Road</strong> &rarr; Primrose Hill</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Camden</strong> &rarr; Regent's Park &rarr; Baker St</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act"><strong>British Museum</strong></span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">15:45</span><span class="tl-act"><strong>National Gallery</strong> (tras Covent Garden)</span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Embankment &rarr; Golden Jubilee Bridge &rarr; mercado de South Bank &rarr; Westminster</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">23:00</span><span class="tl-act"><strong>FlixBus a Par&iacute;s</strong> desde Victoria Coach Station</span><span class="tl-cost">Pagado</span></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ===========================
-         PARIS
-    =========================== -->
+    <!-- =========================== PARIS =========================== -->
     <div class="city-section paris" id="paris">
         <div class="city-hero">
             <div class="city-hero-img" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800')"></div>
             <div class="city-hero-overlay"></div>
-            <div class="city-hero-nights">5 noches</div>
+            <div class="city-hero-nights">4 noches</div>
             <div class="city-hero-content">
                 <div class="city-hero-eyebrow">Cap&iacute;tulo II</div>
                 <div class="city-hero-title">Par&iacute;s</div>
-                <div class="city-hero-dates">29 diciembre 2026 &ndash; 3 enero 2027</div>
+                <div class="city-hero-dates">29 diciembre 2026 &ndash; 2 enero 2027</div>
             </div>
         </div>
 
         <div class="accommodation-card">
             <div class="info-card-label">Alojamiento &mdash; Par&iacute;s</div>
-            <div class="info-row"><span class="lbl">Opciones</span><span class="val">Adagio Access La Villette &bull; Adagio Cit&eacute; de la Musique (19e) &bull; Hotel de L'Union (20e)</span></div>
-            <div class="info-row"><span class="lbl">Presupuesto</span><span class="val">$1,523&ndash;$1,700 USD (5 noches, 6 personas)</span></div>
+            <div class="info-row"><span class="lbl">Hotel</span><span class="val">hotelF1 Porte de Montreuil (metro L9)</span></div>
+            <div class="info-row"><span class="lbl">Transporte</span><span class="val">Navigo Easy (no pagar con tarjeta bancaria: &euro;3.35 por viaje)</span></div>
         </div>
 
         <div class="tabs-nav" data-city="paris">
-            <button class="tab-btn active" data-tab="paris-1">D&iacute;a 4 <span class="tab-date">29 dic</span></button>
-            <button class="tab-btn" data-tab="paris-2">D&iacute;a 5 <span class="tab-date">30 dic</span></button>
-            <button class="tab-btn" data-tab="paris-3">D&iacute;a 6 <span class="tab-date">31 dic</span></button>
-            <button class="tab-btn" data-tab="paris-4">D&iacute;a 7 <span class="tab-date">1 ene</span></button>
-            <button class="tab-btn" data-tab="paris-5">D&iacute;a 8 <span class="tab-date">2 ene</span></button>
-            <button class="tab-btn" data-tab="paris-6">D&iacute;a 9 <span class="tab-date">3 ene</span></button>
+            <button class="tab-btn active" data-tab="paris-1">Mar <span class="tab-date">29 dic</span></button>
+            <button class="tab-btn" data-tab="paris-2">Mi&eacute; <span class="tab-date">30 dic</span></button>
+            <button class="tab-btn" data-tab="paris-3">Jue <span class="tab-date">31 dic</span></button>
+            <button class="tab-btn" data-tab="paris-4">Vie <span class="tab-date">1 ene</span></button>
+            <button class="tab-btn" data-tab="paris-5">S&aacute;b <span class="tab-date">2 ene</span></button>
         </div>
 
-        <!-- Paris Day 4 -->
         <div class="tab-panel active" id="paris-1">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800" alt="Paris Notre Dame area" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Montmartre &mdash; Notre Dame &mdash; Barrio Latino</div>
+                        <div class="day-title-main">P&egrave;re Lachaise &mdash; Marais &mdash; islas &mdash; Barrio Latino</div>
                         <div class="day-date-main">Martes 29 diciembre</div>
                     </div>
-                    <span class="day-badge badge-media">Media</span>
+                    <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">10:29</span><span class="tl-act">Llegan Gare du Nord</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">10:45</span><span class="tl-act">Metro al hotel, dejan maletas (~45 min ida y vuelta)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act"><strong>Sacr&eacute;-Coeur + Montmartre</strong> (Place du Tertre, pintores, callejuelas)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act">Almuerzo Montmartre (cr&ecirc;peries ~&euro;8&ndash;10/pers)</span><span class="tl-cost">~&euro;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:00</span><span class="tl-act">Metro a <strong>&Icirc;le de la Cit&eacute;</strong> &mdash; <strong>Notre Dame</strong> exterior + <strong>Sainte-Chapelle</strong></span><span class="tl-cost">&euro;13/adulto</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act">Cruzar a <strong>&Icirc;le Saint-Louis</strong> (paseo, helado Berthillon)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act"><strong>Barrio Latino</strong> &mdash; Bd Saint-Michel, librer&iacute;as, Pante&oacute;n exterior</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Cena Barrio Latino (kebab/cr&ecirc;pes ~&euro;8&ndash;12/pers)</span><span class="tl-cost">~&euro;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">18:30</span><span class="tl-act">Metro al hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:40</span><span class="tl-act">Llegada a Bercy &rarr; metro al hotel (maletas)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>P&egrave;re Lachaise</strong> &rarr; Bastille &rarr; <strong>Place des Vosges</strong> &rarr; Carnavalet</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Pompidou (fuera) &rarr; H&ocirc;tel de Ville &rarr; &Icirc;le St-Louis</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Notre-Dame</strong></span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Sainte-Chapelle (fuera) &rarr; Pont Neuf &rarr; St-Michel y Shakespeare &amp; Co &rarr; Rue Mouffetard</span><span class="tl-cost">Gratis</span></div>
                 </div>
+                <div class="tip"><strong>Tip:</strong> Notre-Dame: la reserva abre ~72 h antes (s&aacute;b 26 dic).</div>
             </div>
         </div>
 
-        <!-- Paris Day 5 -->
         <div class="tab-panel" id="paris-2">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1543429258-a1d462aa5765?w=800" alt="Versailles" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Versalles &mdash; Torre Eiffel</div>
+                        <div class="day-title-main">Louvre &mdash; &Oacute;pera &mdash; Campos El&iacute;seos &mdash; Eiffel</div>
                         <div class="day-date-main">Mi&eacute;rcoles 30 diciembre</div>
                     </div>
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">07:00</span><span class="tl-act">Salida, desayuno panader&iacute;a (~&euro;5/pers)</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act">RER C a Versailles (~45 min)</span><span class="tl-cost">&euro;4.60/pers ida</span></div>
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Ch&acirc;teau de Versailles</strong> (Galer&iacute;a de los Espejos, jardines, Petit Trianon)</span><span class="tl-cost">&euro;25/adulto, &lt;18 gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act">Almuerzo Versalles pueblo</span><span class="tl-cost">~&euro;12/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">RER C regreso (~45 min)</span><span class="tl-cost">&euro;4.60/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act"><strong>Pont Alexandre III</strong> (el puente m&aacute;s bonito de Par&iacute;s)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:30</span><span class="tl-act"><strong>Trocad&eacute;ro &mdash; Vista Torre Eiffel iluminada</strong> (destellos cada hora)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Cena + hotel</span><span class="tl-cost">~&euro;12/pers</span></div>
+                    <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act"><strong>Louvre</strong> (Pir&aacute;mide o Carrusel, llevar pasaporte)</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Tuller&iacute;as &rarr; Rivoli &rarr; Vend&ocirc;me &rarr; <strong>&Oacute;pera</strong> y terraza de Galeries Lafayette</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Madeleine &rarr; Concorde &rarr; Grand y Petit Palais &rarr; Pont Alexandre III</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Campos El&iacute;seos</strong> &rarr; Arco del Triunfo &rarr; Trocad&eacute;ro &rarr; <strong>Torre Eiffel de noche</strong></span><span class="tl-cost">Gratis</span></div>
                 </div>
-                <div class="tip"><strong>Tip:</strong> Reserva obligatoria online en chateauversailles.fr. Llegar a las 8:45 para ser de los primeros. Jardines gratis en invierno.</div>
             </div>
         </div>
 
-        <!-- Paris Day 6 -->
         <div class="tab-panel" id="paris-3">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800" alt="Paris Eiffel Tower" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Louvre &mdash; A&ntilde;o Nuevo en los Champs-&Eacute;lys&eacute;es</div>
+                        <div class="day-title-main">Montmartre &mdash; Canal St-Martin &mdash; A&ntilde;o Nuevo</div>
                         <div class="day-date-main">Jueves 31 diciembre</div>
-                    </div>
-                    <span class="day-badge badge-alta">Intensa</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act">Metro al Louvre</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Louvre</strong> (Mona Lisa, Venus de Milo, Victoria de Samotracia). Entrar por Passage Richelieu.</span><span class="tl-cost">&euro;32/adulto, &lt;18 gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:45</span><span class="tl-act">Almuerzo zona Louvre / Rue de Rivoli</span><span class="tl-cost">~&euro;12/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act"><strong>Palais Royal</strong> (columnas Buren, jard&iacute;n, fotos)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act">Regreso hotel, <strong>descanso obligatorio</strong></span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Cena temprana en el barrio</span><span class="tl-cost">~&euro;12/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">18:30</span><span class="tl-act">Salen a <strong>Champs-&Eacute;lys&eacute;es</strong> (metro GRATIS desde 17:00)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">00:00</span><span class="tl-act"><strong>Fuegos artificiales Arco del Triunfo</strong> + Torre Eiffel destellando</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">00:30</span><span class="tl-act">Regreso hotel (metro gratis toda la noche)</span><span class="tl-cost"></span></div>
-                </div>
-                <div class="tip"><strong>Seguridad A&ntilde;o Nuevo:</strong> No llevar botellas de vidrio ni mochilas grandes. Bolsillos delanteros, ri&ntilde;onera. Ni&ntilde;os siempre de la mano. Usar ba&ntilde;o ANTES de ir. Abrigarse mucho (2&ndash;5&deg;C).</div>
-            </div>
-        </div>
-
-        <!-- Paris Day 7 -->
-        <div class="tab-panel" id="paris-4">
-            <div class="day-content">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Disneyland Par&iacute;s</div>
-                        <div class="day-date-main">Viernes 1 enero</div>
-                    </div>
-                    <span class="day-badge badge-alta">Intensa</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">07:30</span><span class="tl-act">Salida hotel. Metro L5/L1 &rarr; RER A (~70&ndash;80 min)</span><span class="tl-cost">~&euro;5.40/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act"><strong>Disneyland Paris</strong> apertura. Directo a Big Thunder Mountain y Peter Pan.</span><span class="tl-cost">~&euro;90&ndash;100/adulto</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Almuerzo (llevar sandwiches en mochila &mdash; permitido)</span><span class="tl-cost">~&euro;5/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">20:00</span><span class="tl-act">Espect&aacute;culo nocturno frente al castillo</span><span class="tl-cost">Incluido</span></div>
-                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act">RER A regreso</span><span class="tl-cost">~&euro;5.40/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">22:30</span><span class="tl-act">Hotel</span><span class="tl-cost"></span></div>
-                </div>
-                <div class="tip"><strong>Disney hack:</strong> Llevar comida en mochila (permitido, no vidrio). Usar app Disneyland Paris para ver tiempos de espera. Ir DIRECTO a las atracciones populares al abrir.</div>
-            </div>
-        </div>
-
-        <!-- Paris Day 8 -->
-        <div class="tab-panel" id="paris-5">
-            <div class="day-content">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Le Marais &mdash; Orsay &mdash; Saint-Germain</div>
-                        <div class="day-date-main">S&aacute;bado 2 enero</div>
                     </div>
                     <span class="day-badge badge-media">Media</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act">Salida hotel, metro a <strong>Le Marais</strong></span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Le Marais:</strong> Place des Vosges, Rue des Francs-Bourgeois, tiendas</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Almuerzo &mdash; <strong>L'As du Fallafel</strong> (Rue des Rosiers, ~&euro;8&ndash;10/pers)</span><span class="tl-cost">~&euro;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act"><strong>&Icirc;le Saint-Louis</strong> (paseo, Berthillon helados) + vista Notre Dame</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act"><strong>Mus&eacute;e d'Orsay</strong> (Monet, Van Gogh, Renoir)</span><span class="tl-cost">&euro;16/adulto, &lt;18 gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:30</span><span class="tl-act"><strong>Saint-Germain-des-Pr&eacute;s</strong> &mdash; chocolat chaud en Caf&eacute; de Flore</span><span class="tl-cost">~&euro;8&ndash;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Metro al hotel</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Cena supermercado, <strong>empacar maletas</strong></span><span class="tl-cost">~&euro;8/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act"><strong>Dormir temprano.</strong> Alarma: 2:30am</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Sacr&eacute;-C&oelig;ur</strong> &rarr; Place du Tertre &rarr; Moulin de la Galette &rarr; Abbesses &rarr; Moulin Rouge</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Canal St-Martin &rarr; R&eacute;publique</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">00:00</span><span class="tl-act"><strong>A&ntilde;o Nuevo</strong>: Trocad&eacute;ro, Campos El&iacute;seos o Sacr&eacute;-C&oelig;ur (se decide all&aacute;)</span><span class="tl-cost">Gratis</span></div>
+                </div>
+                <div class="tip"><strong>Tip:</strong> Metro gratis desde las 17:00 del 31 hasta las 12:00 del 1. L&iacute;nea 9 directo de Trocad&eacute;ro al hotel.</div>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="paris-4">
+            <div class="day-content">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <div class="day-title-main">Disneyland</div>
+                        <div class="day-date-main">Viernes 1 enero</div>
+                    </div>
+                    <span class="day-badge badge-media">Media</span>
+                </div>
+                <div class="tl">
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">RER A desde Nation (gratis hasta las 12:00)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Disneyland Par&iacute;s</strong></span><span class="tl-cost">Pagado</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- Paris Day 9 (travel) -->
-        <div class="tab-panel" id="paris-6">
+        <div class="tab-panel" id="paris-5">
             <div class="day-content">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Vuelo a Roma</div>
-                        <div class="day-date-main">Domingo 3 enero</div>
+                        <div class="day-title-main">Versalles &mdash; Rive Gauche &mdash; bus a &Aacute;msterdam</div>
+                        <div class="day-date-main">S&aacute;bado 2 enero</div>
                     </div>
-                    <span class="day-badge badge-viaje">Viaje</span>
+                    <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">02:30</span><span class="tl-act">Despertar</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">03:00</span><span class="tl-act">Check-out, Uber XL al aeropuerto CDG</span><span class="tl-cost">~&euro;85 total</span></div>
-                    <div class="tl-item"><span class="tl-time">04:10</span><span class="tl-act">Llegada CDG, check-in ITA Airways</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">06:10</span><span class="tl-act"><strong>Vuelo ITA Airways AZ317</strong> CDG &rarr; FCO</span><span class="tl-cost">&euro;1,073 total</span></div>
-                    <div class="tl-item"><span class="tl-time">08:15</span><span class="tl-act">Llegada a <strong>Roma Fiumicino</strong></span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Check-out &rarr; maletas a consigna en Porte Maillot</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">RER C (cambio en Champ de Mars, tren &ldquo;Versailles Ch&acirc;teau Rive Gauche&rdquo;)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Palacio de Versalles</strong> (entrada A, acceso 09:00&ndash;09:30)</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">RER C a St-Michel &rarr; Pante&oacute;n &rarr; <strong>Jardines de Luxemburgo</strong> &rarr; St-Sulpice</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">St-Germain &rarr; Pont des Arts &rarr; Orsay (fuera) &rarr; <strong>Inv&aacute;lidos</strong> &rarr; Rue Cler &rarr; Bir-Hakeim</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">23:25</span><span class="tl-act"><strong>FlixBus a &Aacute;msterdam</strong> desde Porte Maillot</span><span class="tl-cost">Pagado</span></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ===========================
-         ROME
-    =========================== -->
+    <!-- =========================== AMSTERDAM =========================== -->
+    <div class="city-section amsterdam" id="amsterdam">
+        <div class="city-hero">
+            <div class="city-hero-img" style="background-image: url('https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800')"></div>
+            <div class="city-hero-overlay"></div>
+            <div class="city-hero-nights">1 noche</div>
+            <div class="city-hero-content">
+                <div class="city-hero-eyebrow">Cap&iacute;tulo III</div>
+                <div class="city-hero-title">&Aacute;msterdam</div>
+                <div class="city-hero-dates">3 &ndash; 4 enero 2027</div>
+            </div>
+        </div>
+
+        <div class="accommodation-card">
+            <div class="info-card-label">Alojamiento &mdash; &Aacute;msterdam</div>
+            <div class="info-row"><span class="lbl">Hotel</span><span class="val">ibis Styles Amsterdam Central Station (a 300 m de Centraal)</span></div>
+            <div class="info-row"><span class="lbl">Transporte</span><span class="val">Tarjeta bancaria sin contacto: marcar al subir Y al bajar. Ferris gratis.</span></div>
+        </div>
+
+        <div class="tabs-nav" data-city="amsterdam">
+            <button class="tab-btn active" data-tab="amsterdam-1">Dom <span class="tab-date">3 ene</span></button>
+            <button class="tab-btn" data-tab="amsterdam-2">Lun <span class="tab-date">4 ene</span></button>
+        </div>
+
+        <div class="tab-panel active" id="amsterdam-1">
+            <div class="day-content">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <div class="day-title-main">Puerto &mdash; centro antiguo &mdash; canales &mdash; luces</div>
+                        <div class="day-date-main">Domingo 3 enero</div>
+                    </div>
+                    <span class="day-badge badge-alta">Intensa</span>
+                </div>
+                <div class="tl">
+                    <div class="tl-item"><span class="tl-time">08:55</span><span class="tl-act">Llegada a Centraal &rarr; hotel (maletas)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Ferry gratis</strong> ida y vuelta (vista del puerto) &rarr; NEMO (fuera)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Biblioteca OBA</strong> (vista desde arriba)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Oudeschans &rarr; <strong>Nieuwmarkt</strong> &rarr; Zeedijk y Chinatown &rarr; Barrio Rojo</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Damrak &rarr; <strong>Dam</strong> &rarr; <strong>Begijnhof</strong> &rarr; Spui &rarr; Bloemenmarkt</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Rembrandtplein &rarr; Reguliersgracht (7 puentes) &rarr; <strong>Magere Brug</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Festival de luces</strong> &rarr; cena &rarr; bar (Wynand Fockink / In de Wildeman)</span><span class="tl-cost"></span></div>
+                </div>
+                <div class="tip"><strong>Tip:</strong> Barrio Rojo: prohibido fotografiar las vitrinas y beber en la calle.</div>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="amsterdam-2">
+            <div class="day-content">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <div class="day-title-main">Zaanse Schans &mdash; Jordaan &mdash; noche &mdash; bus a Berl&iacute;n</div>
+                        <div class="day-date-main">Lunes 4 enero</div>
+                    </div>
+                    <span class="day-badge badge-alta">Intensa</span>
+                </div>
+                <div class="tl">
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Check-out, maletas en el hotel</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Tren a <strong>Zaanse Schans</strong>: molinos, queser&iacute;a y zuecos</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Jordaan: Brouwersgracht &rarr; Singel 7 &rarr; canales chicos &rarr; hofjes</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">tarde</span><span class="tl-act"><strong>Casa de Ana Frank</strong> &rarr; Westerkerk &rarr; Nueve Calles</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Tram a Leidseplein &rarr; luces &rarr; caf&eacute; marr&oacute;n &rarr; cena en Chinatown</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">22:30</span><span class="tl-act">Recoger maletas &rarr; and&eacute;n H</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">23:15</span><span class="tl-act"><strong>FlixBus a Berl&iacute;n</strong></span><span class="tl-cost">Pagado</span></div>
+                </div>
+                <div class="tip"><strong>Tip:</strong> Ana Frank: entradas salen mar 24 nov a las 04:00 (hora Lima).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================== BERLIN =========================== -->
+    <div class="city-section berlin" id="berlin">
+        <div class="city-hero">
+            <div class="city-hero-img" style="background-image: url('https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800')"></div>
+            <div class="city-hero-overlay"></div>
+            <div class="city-hero-nights">2 noches</div>
+            <div class="city-hero-content">
+                <div class="city-hero-eyebrow">Cap&iacute;tulo IV</div>
+                <div class="city-hero-title">Berl&iacute;n</div>
+                <div class="city-hero-dates">5 &ndash; 7 enero 2027</div>
+            </div>
+        </div>
+
+        <div class="accommodation-card">
+            <div class="info-card-label">Alojamiento &mdash; Berl&iacute;n</div>
+            <div class="info-row"><span class="lbl">Hotel</span><span class="val">Premier Inn Berlin Alexanderplatz</span></div>
+            <div class="info-row"><span class="lbl">Llegada</span><span class="val">ZOB (Charlottenburg) &rarr; U2 directo a Alexanderplatz</span></div>
+        </div>
+
+        <div class="tabs-nav" data-city="berlin">
+            <button class="tab-btn active" data-tab="berlin-1">Mar <span class="tab-date">5 ene</span></button>
+            <button class="tab-btn" data-tab="berlin-2">Mi&eacute; <span class="tab-date">6 ene</span></button>
+        </div>
+
+        <div class="tab-panel active" id="berlin-1">
+            <div class="day-content">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <div class="day-title-main">Mitte &mdash; Brandeburgo &mdash; Tiergarten &mdash; Reichstag</div>
+                        <div class="day-date-main">Martes 5 enero</div>
+                    </div>
+                    <span class="day-badge badge-alta">Intensa</span>
+                </div>
+                <div class="tl">
+                    <div class="tl-item"><span class="tl-time">09:10</span><span class="tl-act">Llegada a ZOB &rarr; U2 al hotel (maletas)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Catedral e Isla de los Museos (fuera) &rarr; Unter den Linden &rarr; Bebelplatz &rarr; Gendarmenmarkt</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Checkpoint Charlie (solo pasar) &rarr; <strong>Memorial del Holocausto</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Puerta de Brandeburgo</strong> &rarr; Memorial Sovi&eacute;tico &rarr; Tiergarten &rarr; Siegess&auml;ule</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Iglesia del Recuerdo</strong> &rarr; bus 100</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">~18:00</span><span class="tl-act"><strong>C&uacute;pula del Reichstag</strong> (llevar pasaporte)</span><span class="tl-cost">Reserva gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">U5 de vuelta a Alexanderplatz</span><span class="tl-cost"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-panel" id="berlin-2">
+            <div class="day-content">
+                <div class="day-header">
+                    <div class="day-header-left">
+                        <div class="day-title-main">Sachsenhausen &mdash; Muro &mdash; Kreuzberg</div>
+                        <div class="day-date-main">Mi&eacute;rcoles 6 enero</div>
+                    </div>
+                    <span class="day-badge badge-alta">Intensa</span>
+                </div>
+                <div class="tl">
+                    <div class="tl-item"><span class="tl-time">ma&ntilde;ana</span><span class="tl-act">Tren a Oranienburg &rarr; <strong>Memorial de Sachsenhausen</strong></span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Memorial del Muro</strong> en Bernauer Stra&szlig;e</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Hackesche H&ouml;fe &rarr; Torre de TV (fuera) &rarr; Alexanderplatz</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Kreuzberg: puente Oberbaum iluminado &rarr; cena barata</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Dormir temprano: vuelo jueves 06:00</span><span class="tl-cost"></span></div>
+                </div>
+                <div class="tip"><strong>Tip:</strong> Boleto con zona C para Sachsenhausen y para el aeropuerto BER.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================== ROME =========================== -->
     <div class="city-section rome" id="rome">
         <div class="city-hero">
             <div class="city-hero-img" style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800')"></div>
             <div class="city-hero-overlay"></div>
-            <div class="city-hero-nights">7 noches</div>
+            <div class="city-hero-nights">3 noches</div>
             <div class="city-hero-content">
-                <div class="city-hero-eyebrow">Cap&iacute;tulo III</div>
+                <div class="city-hero-eyebrow">Cap&iacute;tulo V</div>
                 <div class="city-hero-title">Roma</div>
-                <div class="city-hero-dates">3 &ndash; 10 enero 2027</div>
+                <div class="city-hero-dates">7 &ndash; 10 enero 2027</div>
             </div>
         </div>
 
         <div class="accommodation-card">
             <div class="info-card-label">Alojamiento &mdash; Roma</div>
-            <div class="info-row"><span class="lbl">Zona</span><span class="val">Cerca de Termini / Monti / Trastevere</span></div>
-            <div class="info-row"><span class="lbl">Presupuesto</span><span class="val">$1,200&ndash;$1,800 USD (7 noches, 6 personas)</span></div>
-            <div class="info-row"><span class="lbl">Nota</span><span class="val">Enero es temporada baja en Roma &mdash; precios m&aacute;s accesibles</span></div>
+            <div class="info-row"><span class="lbl">Hotel</span><span class="val">Antica Dimora dell'Orso &mdash; junto a Piazza Navona</span></div>
+            <div class="info-row"><span class="lbl">Aeropuerto</span><span class="val">Leonardo Express + bus 40/64 (sin taxis)</span></div>
         </div>
 
         <div class="tabs-nav" data-city="rome">
-            <button class="tab-btn active" data-tab="rome-1">D&iacute;a 9 <span class="tab-date">3 ene</span></button>
-            <button class="tab-btn" data-tab="rome-2">D&iacute;a 10 <span class="tab-date">4 ene</span></button>
-            <button class="tab-btn" data-tab="rome-3">D&iacute;a 11 <span class="tab-date">5 ene</span></button>
-            <button class="tab-btn" data-tab="rome-4">D&iacute;a 12 <span class="tab-date">6 ene</span></button>
-            <button class="tab-btn" data-tab="rome-5">D&iacute;a 13 <span class="tab-date">7 ene</span></button>
-            <button class="tab-btn" data-tab="rome-6">D&iacute;a 14 <span class="tab-date">8 ene</span></button>
-            <button class="tab-btn" data-tab="rome-7">D&iacute;a 15 <span class="tab-date">9 ene</span></button>
-            <button class="tab-btn" data-tab="rome-8">D&iacute;a 16 <span class="tab-date">10 ene</span></button>
+            <button class="tab-btn active" data-tab="rome-1">Jue <span class="tab-date">7 ene</span></button>
+            <button class="tab-btn" data-tab="rome-2">Vie <span class="tab-date">8 ene</span></button>
+            <button class="tab-btn" data-tab="rome-3">S&aacute;b <span class="tab-date">9 ene</span></button>
+            <button class="tab-btn" data-tab="rome-4">Dom <span class="tab-date">10 ene</span></button>
         </div>
 
-        <!-- Rome Day 9 -->
         <div class="tab-panel active" id="rome-1">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1534113414509-0eec2bfb493f?w=800" alt="Trevi Fountain Rome" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Llegada &mdash; Centro Hist&oacute;rico</div>
-                        <div class="day-date-main">S&aacute;bado 3 enero</div>
+                        <div class="day-title-main">Vaticano &mdash; Roma barroca</div>
+                        <div class="day-date-main">Jueves 7 enero</div>
                     </div>
-                    <span class="day-badge badge-baja">Suave</span>
+                    <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">08:15</span><span class="tl-act">Llegan a FCO. Leonardo Express a Roma Termini (32 min)</span><span class="tl-cost">&euro;14/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">10:45</span><span class="tl-act">Hotel: dejan maletas / check-in</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">11:30</span><span class="tl-act">Almuerzo: <strong>Antico Forno Roscioli</strong> (pizza al taglio)</span><span class="tl-cost">~&euro;8/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act"><strong>Pante&oacute;n</strong></span><span class="tl-cost">&euro;5/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:30</span><span class="tl-act"><strong>Piazza Navona</strong> (Fuente de los Cuatro R&iacute;os de Bernini)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">14:45</span><span class="tl-act"><strong>Fontana di Trevi</strong> (tirar la moneda)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act"><strong>Piazza di Spagna</strong> + Escalinata</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:15</span><span class="tl-act"><strong>Piazza del Popolo</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">19:30</span><span class="tl-act">Cena trattoria local</span><span class="tl-cost">~&euro;18/pers</span></div>
+                    <div class="tl-item"><span class="tl-time">06:00</span><span class="tl-act"><strong>Vuelo easyJet</strong> BER &rarr; FCO (llega 08:10)</span><span class="tl-cost">Pagado</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Leonardo Express a Termini &rarr; bus 40/64 &rarr; hotel (maletas)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act"><strong>Museos Vaticanos + Capilla Sixtina</strong></span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act"><strong>Bas&iacute;lica de San Pedro</strong> y la plaza</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">~16:55</span><span class="tl-act"><strong>Castel Sant'Angelo</strong> al atardecer &rarr; Piazza Navona</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">~17:45</span><span class="tl-act"><strong>Pante&oacute;n</strong></span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Sant'Ignazio &rarr; cena y dormir temprano</span><span class="tl-cost">Gratis</span></div>
                 </div>
-                <div class="tip"><strong>Comida barata Roma:</strong> Pizza al taglio (&euro;3&ndash;5/porci&oacute;n), suppl&igrave; (&euro;2&ndash;3, croqueta de arroz). Evitar restaurantes con fotos en el men&uacute; o jaladores en la puerta.</div>
+                <div class="tip"><strong>Tip:</strong> Vaticano e iglesias: hombros y rodillas cubiertos.</div>
             </div>
         </div>
 
-        <!-- Rome Day 10 -->
         <div class="tab-panel" id="rome-2">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800" alt="Colosseum Rome" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Coliseo &mdash; Foro Romano &mdash; Trastevere</div>
-                        <div class="day-date-main">Domingo 4 enero</div>
+                        <div class="day-title-main">Roma antigua &mdash; Aventino &mdash; Trastevere</div>
+                        <div class="day-date-main">Viernes 8 enero</div>
                     </div>
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act"><strong>Coliseo</strong> (reserva obligatoria, llegar al abrir)</span><span class="tl-cost">&euro;18/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">10:15</span><span class="tl-act"><strong>Foro Romano</strong> (Via Sacra, Templo de Saturno, Arco de Tito)</span><span class="tl-cost">Incluido</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act"><strong>Palatino</strong> (vistas del Foro desde arriba)</span><span class="tl-cost">Incluido</span></div>
-                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act">Almuerzo: <strong>Luzzi</strong> (pasta desde &euro;8)</span><span class="tl-cost">~&euro;12/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act">Circo M&aacute;ximo + <strong>Bocca della Verit&agrave;</strong></span><span class="tl-cost">&euro;2/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>Isla Tiberina</strong> &rarr; <strong>Trastevere</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Merienda: <strong>Suppl&igrave; Roma</strong> (suppl&igrave; al telefono &euro;2)</span><span class="tl-cost">~&euro;5/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">Cena en Trastevere: <strong>Da Enzo al 29</strong> (cacio e pepe legendario)</span><span class="tl-cost">~&euro;18/pers</span></div>
+                    <div class="tl-item"><span class="tl-time">08:00</span><span class="tl-act">San Pietro in Vincoli: <strong>Mois&eacute;s de Miguel &Aacute;ngel</strong> (cierra al mediod&iacute;a)</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Coliseo</strong> &rarr; Foro Romano &rarr; Palatino</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Campidoglio (terraza al Foro) &rarr; Altare della Patria &rarr; Gueto jud&iacute;o</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Boca de la Verdad &rarr; Circo M&aacute;ximo</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">~16:55</span><span class="tl-act"><strong>Aventino</strong>: Jard&iacute;n de los Naranjos y cerradura de los Caballeros de Malta</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Isla Tiberina &rarr; <strong>Trastevere</strong> (cena) &rarr; Ponte Sisto &rarr; Campo de' Fiori</span><span class="tl-cost"></span></div>
                 </div>
             </div>
         </div>
 
-        <!-- Rome Day 11 -->
         <div class="tab-panel" id="rome-3">
             <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?w=800" alt="Vatican St Peters" class="day-thumb" loading="lazy">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Vaticano &mdash; D&iacute;a completo</div>
-                        <div class="day-date-main">Lunes 5 enero</div>
+                        <div class="day-title-main">Pompeya &mdash; N&aacute;poles</div>
+                        <div class="day-date-main">S&aacute;bado 9 enero</div>
                     </div>
                     <span class="day-badge badge-alta">Intensa</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">08:15</span><span class="tl-act">Metro A a Ottaviano. Llegar a <strong>Museos Vaticanos</strong></span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Museos Vaticanos + Capilla Sixtina</strong> (Galer&iacute;a Mapas, Estancias de Rafael)</span><span class="tl-cost">&euro;25/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Salida directa a <strong>Bas&iacute;lica de San Pedro</strong> (La Piet&agrave;, baldaquino Bernini)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act"><strong>C&uacute;pula de San Pedro</strong> (opcional, vista 360&deg;)</span><span class="tl-cost">&euro;8&ndash;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:45</span><span class="tl-act"><strong>Plaza de San Pedro</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act">Almuerzo: <strong>Pizzarium Bonci</strong> (mejor pizza al taglio de Roma)</span><span class="tl-cost">~&euro;10/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act"><strong>Castel Sant'Angelo</strong> exterior + <strong>Puente de los &Aacute;ngeles</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">17:00</span><span class="tl-act">San Pedro iluminado desde el puente (foto obligada)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">19:30</span><span class="tl-act">Cena zona Prati</span><span class="tl-cost">~&euro;18/pers</span></div>
+                    <div class="tl-item"><span class="tl-time">07:15</span><span class="tl-act"><strong>Tren r&aacute;pido</strong> Termini &rarr; N&aacute;poles</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time"></span><span class="tl-act">Circumvesuviana a Pompei Scavi</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">~09:45</span><span class="tl-act"><strong>Pompeya</strong>: Foro, Graneros del Foro (moldes), Lupanar, Teatro, Huerto de los Fugitivos (moldes)</span><span class="tl-cost">Reserva</span></div>
+                    <div class="tl-item"><span class="tl-time">~15:15</span><span class="tl-act">N&aacute;poles: Ges&ugrave; Nuovo &rarr; <strong>Spaccanapoli</strong> &rarr; San Gregorio Armeno &rarr; Duomo</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">~17:30</span><span class="tl-act"><strong>Pizza napolitana</strong></span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">~18:30</span><span class="tl-act">Tren r&aacute;pido a Roma</span><span class="tl-cost">Reserva</span></div>
                 </div>
-                <div class="tip"><strong>Importante:</strong> Museos Vaticanos CIERRAN el 6 ene (Epifan&iacute;a). Hacerlo el 5 ene obligatoriamente. Reservar en museivaticani.va (60 d&iacute;as antes).</div>
             </div>
         </div>
 
-        <!-- Rome Day 12 -->
         <div class="tab-panel" id="rome-4">
             <div class="day-content">
                 <div class="day-header">
                     <div class="day-header-left">
-                        <div class="day-title-main">Epifan&iacute;a &mdash; Villa Borghese &mdash; Piazza Navona</div>
-                        <div class="day-date-main">Martes 6 enero &mdash; La Befana</div>
-                    </div>
-                    <span class="day-badge badge-baja">Relajado</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">Desayuno tranquilo (sin prisa)</span><span class="tl-cost">~&euro;5/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Villa Borghese</strong> (jardines, Piazzale del Pincio con vista)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act"><strong>Galer&iacute;a Borghese</strong> (opcional, reserva obligatoria: Bernini, Caravaggio)</span><span class="tl-cost">&euro;18/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:00</span><span class="tl-act">Almuerzo zona Piazza del Popolo</span><span class="tl-cost">~&euro;12/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act"><strong>Piazza Navona</strong> &mdash; &uacute;ltimo d&iacute;a mercado de Epifan&iacute;a / La Befana</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">15:30</span><span class="tl-act">Paseo: Via dei Coronari + <strong>Campo de' Fiori</strong></span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">Merienda: <strong>Forno Campo de' Fiori</strong> (pizza bianca con mortadella)</span><span class="tl-cost">~&euro;4/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">19:30</span><span class="tl-act">Cena especial de Epifan&iacute;a</span><span class="tl-cost">~&euro;20/pers</span></div>
-                </div>
-                <div class="tip"><strong>La Befana:</strong> Tradici&oacute;n italiana donde una bruja buena trae dulces a los ni&ntilde;os. Piazza Navona estar&aacute; llena de vida. Feriado nacional pero restaurantes y atracciones tur&iacute;sticas abren.</div>
-            </div>
-        </div>
-
-        <!-- Rome Day 13 (Florence) -->
-        <div class="tab-panel" id="rome-5">
-            <div class="day-content">
-                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800" alt="Italy landscape Florence" class="day-thumb" loading="lazy">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Day trip &mdash; Florencia</div>
-                        <div class="day-date-main">Mi&eacute;rcoles 7 enero</div>
-                    </div>
-                    <span class="day-badge badge-viaje">Day trip</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">07:00</span><span class="tl-act">Tren Roma Termini &rarr; Firenze S.M.N. (Frecciarossa, 1h30)</span><span class="tl-cost">&euro;15&ndash;30/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act">Llegada Florencia. Todo es caminable.</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">08:45</span><span class="tl-act"><strong>Duomo</strong> (exterior). Opcional: Campanile de Giotto (414 escalones, vistas)</span><span class="tl-cost">Gratis ext. / &euro;20 campanario</span></div>
-                    <div class="tl-item"><span class="tl-time">10:00</span><span class="tl-act"><strong>Galleria dell'Accademia</strong> (El David de Miguel &Aacute;ngel)</span><span class="tl-cost">&euro;16/pers + &euro;4 reserva</span></div>
-                    <div class="tl-item"><span class="tl-time">11:15</span><span class="tl-act"><strong>Piazza della Signoria</strong> + Loggia dei Lanzi (esculturas gratis)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">12:00</span><span class="tl-act">Almuerzo: <strong>All'Antico Vinaio</strong> (s&aacute;ndwiches m&aacute;s famosos de Italia, &euro;5&ndash;7)</span><span class="tl-cost">~&euro;8/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act"><strong>Ponte Vecchio</strong> + Oltrarno</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act">Paseo libre: Mercado San Lorenzo, gelato</span><span class="tl-cost">Variable</span></div>
-                    <div class="tl-item"><span class="tl-time">16:30</span><span class="tl-act"><strong>Piazzale Michelangelo</strong> (panor&aacute;mica de Florencia al atardecer)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">19:00</span><span class="tl-act">Tren regreso a Roma (~20:30 llegada)</span><span class="tl-cost">&euro;15&ndash;30/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">21:00</span><span class="tl-act">Cena ligera en Roma</span><span class="tl-cost">~&euro;10/pers</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Rome Day 14 (Pompeii) -->
-        <div class="tab-panel" id="rome-6">
-            <div class="day-content">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Day trip &mdash; Pompeya &amp; N&aacute;poles</div>
-                        <div class="day-date-main">Jueves 8 enero</div>
-                    </div>
-                    <span class="day-badge badge-viaje">Day trip</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">07:00</span><span class="tl-act">Tren Roma &rarr; N&aacute;poles Centrale (Frecciarossa, 1h10)</span><span class="tl-cost">&euro;20&ndash;40/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">08:30</span><span class="tl-act">Circumvesuviana N&aacute;poles &rarr; Pompei Scavi (36 min)</span><span class="tl-cost">&euro;3.30/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">09:15</span><span class="tl-act"><strong>Pompeya</strong> (Foro, Casa del Fauno, Lupanar, Teatro, Anfiteatro)</span><span class="tl-cost">&euro;20/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act">Circumvesuviana regreso a N&aacute;poles</span><span class="tl-cost">&euro;3.30/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:15</span><span class="tl-act"><strong>Pizza napolitana: Da Michele</strong> (la de Eat Pray Love, margherita &euro;5&ndash;6)</span><span class="tl-cost">~&euro;8/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">15:15</span><span class="tl-act"><strong>Spaccanapoli</strong> (calle hist&oacute;rica, nacimientos artesanales)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:15</span><span class="tl-act"><strong>Lungomare</strong> (vista del Vesubio sobre la bah&iacute;a)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">18:00</span><span class="tl-act">Tren N&aacute;poles &rarr; Roma (1h10)</span><span class="tl-cost">&euro;20&ndash;40/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">20:00</span><span class="tl-act">Cena ligera en Roma</span><span class="tl-cost">~&euro;10/pers</span></div>
-                </div>
-                <div class="tip"><strong>Seguridad N&aacute;poles:</strong> Cuidar pertenencias en el centro y en el Circumvesuviana &mdash; carteristas activos. Mochilas siempre adelante.</div>
-            </div>
-        </div>
-
-        <!-- Rome Day 15 -->
-        <div class="tab-panel" id="rome-7">
-            <div class="day-content">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Monti &mdash; Compras &mdash; Despedida</div>
-                        <div class="day-date-main">Viernes 9 enero</div>
-                    </div>
-                    <span class="day-badge badge-media">Media</span>
-                </div>
-                <div class="tl">
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act"><strong>Galer&iacute;a Borghese</strong> (si no fueron el d&iacute;a 6) o <strong>Termas de Caracalla</strong></span><span class="tl-cost">&euro;12&ndash;18/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">11:00</span><span class="tl-act">Compras <strong>Via del Corso</strong> (ropa italiana, souvenirs)</span><span class="tl-cost">Variable</span></div>
-                    <div class="tl-item"><span class="tl-time">12:30</span><span class="tl-act">Almuerzo de despedida: <strong>Roscioli Salumeria</strong> (la mejor carbonara de Roma)</span><span class="tl-cost">~&euro;20/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">14:30</span><span class="tl-act"><strong>Barrio de Monti</strong> (vintage shops, caf&eacute;s, arte callejero)</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">16:00</span><span class="tl-act">&Uacute;ltimas fotos: <strong>Coliseo ilumin&aacute;ndose</strong> desde Via dei Fori Imperiali</span><span class="tl-cost">Gratis</span></div>
-                    <div class="tl-item"><span class="tl-time">17:30</span><span class="tl-act">Regreso hotel, preparar maletas</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">19:30</span><span class="tl-act"><strong>Cena de despedida:</strong> Felice a Testaccio (carbonara definitiva) o Armando al Pantheon</span><span class="tl-cost">~&euro;25/pers</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Rome Day 16 (return flight) -->
-        <div class="tab-panel" id="rome-8">
-            <div class="day-content">
-                <div class="day-header">
-                    <div class="day-header-left">
-                        <div class="day-title-main">Vuelo de regreso a Lima</div>
-                        <div class="day-date-main">S&aacute;bado 10 enero</div>
+                        <div class="day-title-main">Roma de madrugada &mdash; vuelta a casa</div>
+                        <div class="day-date-main">Domingo 10 enero</div>
                     </div>
                     <span class="day-badge badge-viaje">Viaje</span>
                 </div>
                 <div class="tl">
-                    <div class="tl-item"><span class="tl-time">07:30</span><span class="tl-act">Despertar, desayuno, check-out</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">Salir hacia Termini</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">09:30</span><span class="tl-act"><strong>Leonardo Express</strong> &rarr; Fiumicino (32 min)</span><span class="tl-cost">&euro;14/pers</span></div>
-                    <div class="tl-item"><span class="tl-time">10:05</span><span class="tl-act">Llegada FCO, check-in</span><span class="tl-cost"></span></div>
-                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act"><strong>Vuelo FCO &rarr; YUL &rarr; LIM</strong> (llegan 11 ene 03:15)</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">03:30</span><span class="tl-act">Navona vac&iacute;a &rarr; Pante&oacute;n iluminado &rarr; <strong>Fontana di Trevi sin gente</strong> &rarr; Plaza de Espa&ntilde;a</span><span class="tl-cost">Gratis</span></div>
+                    <div class="tl-item"><span class="tl-time">04:45</span><span class="tl-act">Hotel a dormir</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">09:00</span><span class="tl-act">Bus 40/64 &rarr; Leonardo Express a Fiumicino</span><span class="tl-cost"></span></div>
+                    <div class="tl-item"><span class="tl-time">13:15</span><span class="tl-act"><strong>Vuelo FCO &rarr; YUL &rarr; LIM</strong> (llega lun 11, 03:15)</span><span class="tl-cost">Pagado</span></div>
                 </div>
+                <div class="tip"><strong>Tip:</strong> Trevi: no sentarse en el borde (multa). La moneda s&iacute;.</div>
             </div>
         </div>
     </div>
 
-    <!-- ===========================
-         BUDGET
-    =========================== -->
-    <div class="section-divider"></div>
-
-    <div class="budget-section">
-        <div class="section-title">
-            <h2>Presupuesto estimado</h2>
-            <p>Todos los valores en USD. Rangos m&iacute;n &mdash; m&aacute;x seg&uacute;n opciones elegidas.</p>
-            <div class="title-rule"></div>
-        </div>
-
-        <div class="budget-table-wrap">
-            <table class="budget-table">
-                <thead>
-                    <tr>
-                        <th>Concepto</th>
-                        <th>Total (6 pers)</th>
-                        <th>Por persona</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- LONDON -->
-                    <tr class="city-header-row london"><td colspan="3">Londres &mdash; 3 noches</td></tr>
-                    <tr><td>Alojamiento (hotel o Airbnb)</td><td>$800&ndash;$1,200</td><td>$133&ndash;$200</td></tr>
-                    <tr><td>Comida (&pound;20&ndash;25/pers/d&iacute;a &times; 3 d&iacute;as)</td><td>$470&ndash;$590</td><td>$78&ndash;$98</td></tr>
-                    <tr><td>Heathrow &rarr; centro (Piccadilly Line)</td><td>$44</td><td>$7</td></tr>
-                    <tr><td>Metro 3 d&iacute;as (Oyster tope diario)</td><td>$190</td><td>$32</td></tr>
-                    <tr><td>Eurostar Londres &rarr; Par&iacute;s (&euro;103/pers)</td><td>$680</td><td>$113</td></tr>
-                    <tr class="subtotal-row"><td>Subtotal Londres</td><td>$2,184&ndash;$2,704</td><td>$364&ndash;$451</td></tr>
-
-                    <!-- PARIS -->
-                    <tr class="city-header-row paris"><td colspan="3">Par&iacute;s &mdash; 5 noches</td></tr>
-                    <tr><td>Alojamiento (aparthotel Adagio / Hotel L'Union)</td><td>$1,523&ndash;$1,700</td><td>$254&ndash;$283</td></tr>
-                    <tr><td>Comida (&euro;22/pers/d&iacute;a &times; 6 d&iacute;as)</td><td>$870</td><td>$145</td></tr>
-                    <tr><td>Transporte local metro (6 d&iacute;as)</td><td>$275</td><td>$46</td></tr>
-                    <tr><td>Vuelo ITA Airways + Uber XL a CDG</td><td>$1,274</td><td>$212</td></tr>
-                    <tr><td>Versalles (&euro;25/adulto, &lt;18 gratis)</td><td>$110&ndash;$165</td><td>$18&ndash;$28</td></tr>
-                    <tr><td>RER Versalles ida+vuelta</td><td>$61</td><td>$10</td></tr>
-                    <tr><td>Louvre (&euro;32/adulto, &lt;18 gratis)</td><td>$140&ndash;$211</td><td>$23&ndash;$35</td></tr>
-                    <tr><td>Disneyland 1 parque (~&euro;95/pers)</td><td>$627</td><td>$105</td></tr>
-                    <tr><td>RER Disney ida+vuelta</td><td>$71</td><td>$12</td></tr>
-                    <tr class="subtotal-row"><td>Subtotal Par&iacute;s</td><td>$4,951&ndash;$5,254</td><td>$825&ndash;$876</td></tr>
-
-                    <!-- ROME -->
-                    <tr class="city-header-row rome"><td colspan="3">Roma &mdash; 7 noches</td></tr>
-                    <tr><td>Alojamiento (estimado)</td><td>$1,200&ndash;$1,800</td><td>$200&ndash;$300</td></tr>
-                    <tr><td>Comida (&euro;25&ndash;30/pers/d&iacute;a &times; 8 d&iacute;as)</td><td>$1,320&ndash;$1,584</td><td>$220&ndash;$264</td></tr>
-                    <tr><td>Leonardo Express aeropuerto ida+vuelta</td><td>$185</td><td>$31</td></tr>
-                    <tr><td>Transporte urbano (pases ROMA 72H + sueltos)</td><td>$290</td><td>$48</td></tr>
-                    <tr><td>Tren Roma&ndash;Florencia ida+vuelta</td><td>$198&ndash;$396</td><td>$33&ndash;$66</td></tr>
-                    <tr><td>Tren Roma&ndash;N&aacute;poles ida+vuelta</td><td>$264&ndash;$528</td><td>$44&ndash;$88</td></tr>
-                    <tr><td>Circumvesuviana N&aacute;poles&ndash;Pompeya ida+vuelta</td><td>$44</td><td>$7</td></tr>
-                    <tr><td>Coliseo + Foro Romano + Palatino (&euro;18/pers)</td><td>$119</td><td>$20</td></tr>
-                    <tr><td>Museos Vaticanos + Sixtina (&euro;25/pers)</td><td>$165</td><td>$28</td></tr>
-                    <tr><td>Bas&iacute;lica de San Pedro</td><td>Gratis</td><td>Gratis</td></tr>
-                    <tr><td>C&uacute;pula San Pedro (opcional, &euro;10/pers)</td><td>$0&ndash;$66</td><td>$0&ndash;$11</td></tr>
-                    <tr><td>Pante&oacute;n (&euro;5/pers)</td><td>$33</td><td>$6</td></tr>
-                    <tr><td>Bocca della Verit&agrave; (&euro;2/pers)</td><td>$13</td><td>$2</td></tr>
-                    <tr><td>Galer&iacute;a Borghese (opcional, &euro;18/pers)</td><td>$0&ndash;$119</td><td>$0&ndash;$20</td></tr>
-                    <tr><td>Pompeya (&euro;20/pers)</td><td>$132</td><td>$22</td></tr>
-                    <tr><td>Galleria dell'Accademia Florencia (opcional, &euro;20/pers)</td><td>$0&ndash;$132</td><td>$0&ndash;$22</td></tr>
-                    <tr class="subtotal-row"><td>Subtotal Roma</td><td>$3,963&ndash;$5,592</td><td>$661&ndash;$932</td></tr>
-
-                    <!-- GRAND TOTAL -->
-                    <tr class="grand-total"><td>TOTAL DEL VIAJE</td><td>$11,098&ndash;$13,550</td><td></td></tr>
-                    <tr class="per-person"><td>TOTAL POR PERSONA</td><td></td><td>$1,850&ndash;$2,258</td></tr>
-                </tbody>
-            </table>
-            <div class="bc-note">No incluye vuelos internacionales Lima&ndash;Londres / Roma&ndash;Lima (ya comprados por separado) ni equipaje despachado. Los rangos dependen de opciones elegidas (hotel vs Airbnb, atracciones opcionales, anticipaci&oacute;n de compra de trenes).</div>
-        </div>
-
-        <!-- GASTO POR DIA — TOTAL GRUPO (6 PERSONAS) -->
-        <div style="margin-top: 40px;">
-            <div class="section-title">
-                <h2>Gasto por d&iacute;a &mdash; Total grupo (6 personas)</h2>
-                <div class="title-rule"></div>
-            </div>
-        </div>
-        <div class="budget-table-wrap" style="overflow-x:auto;">
-            <table class="budget-table" style="font-size:0.78rem;">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th style="color:var(--london);">D1<br><small>26 dic</small></th>
-                        <th style="color:var(--london);">D2<br><small>27 dic</small></th>
-                        <th style="color:var(--london);">D3<br><small>28 dic</small></th>
-                        <th style="color:var(--london);border-right:2px solid var(--london);">D4<br><small>29 dic</small></th>
-                        <th style="color:var(--paris);">D5<br><small>30 dic</small></th>
-                        <th style="color:var(--paris);">D6<br><small>31 dic</small></th>
-                        <th style="color:var(--paris);">D7<br><small>1 ene</small></th>
-                        <th style="color:var(--paris);border-right:2px solid var(--paris);">D8<br><small>2 ene</small></th>
-                        <th style="color:var(--rome);">D9<br><small>3 ene</small></th>
-                        <th style="color:var(--rome);">D10<br><small>4 ene</small></th>
-                        <th style="color:var(--rome);">D11<br><small>5 ene</small></th>
-                        <th style="color:var(--rome);">D12<br><small>6 ene</small></th>
-                        <th style="color:var(--rome);">D13<br><small>7 ene</small></th>
-                        <th style="color:var(--rome);">D14<br><small>8 ene</small></th>
-                        <th style="color:var(--rome);">D15<br><small>9 ene</small></th>
-                        <th style="color:var(--rome);">D16<br><small>10 ene</small></th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="font-weight:600;">Alojamiento</td>
-                        <td>$267&ndash;$400</td><td>$267&ndash;$400</td><td>$267&ndash;$400</td>
-                        <td>$305&ndash;$340</td>
-                        <td>$305&ndash;$340</td><td>$305&ndash;$340</td><td>$305&ndash;$340</td><td>$305&ndash;$340</td>
-                        <td>$171&ndash;$257</td><td>$171&ndash;$257</td><td>$171&ndash;$257</td><td>$171&ndash;$257</td><td>$171&ndash;$257</td><td>$171&ndash;$257</td><td>$171&ndash;$257</td>
-                        <td>&mdash;</td>
-                        <td><strong>$3,523&ndash;$4,700</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Comida</td>
-                        <td>$157&ndash;$197</td><td>$157&ndash;$197</td><td>$157&ndash;$197</td>
-                        <td>$145</td>
-                        <td>$145</td><td>$145</td><td>$145</td><td>$145</td>
-                        <td>$165&ndash;$198</td><td>$165&ndash;$198</td><td>$165&ndash;$198</td><td>$165&ndash;$198</td><td>$165&ndash;$198</td><td>$165&ndash;$198</td><td>$165&ndash;$198</td>
-                        <td>$80</td>
-                        <td><strong>$2,511&ndash;$2,862</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Transporte local</td>
-                        <td>$44</td><td>$32</td><td>$32</td>
-                        <td>$46</td>
-                        <td>$61</td><td>$46</td><td>$71</td><td>$46</td>
-                        <td>$84</td><td>$48</td><td>$48</td><td>$48</td><td>$198&ndash;$396</td><td>$308&ndash;$572</td><td>$48</td>
-                        <td>$84</td>
-                        <td><strong>$1,244&ndash;$1,706</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Vuelos / trenes<br>entre ciudades</td>
-                        <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>$680</td>
-                        <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>$1,274</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>&mdash;</td>
-                        <td><strong>$1,954</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Atracciones</td>
-                        <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>&mdash;</td>
-                        <td>$110&ndash;$165</td><td>$140&ndash;$211</td><td>$627</td><td>&mdash;</td>
-                        <td>$33</td><td>$119</td><td>$165</td><td>$0&ndash;$119</td><td>$0&ndash;$132</td><td>$132</td><td>$0&ndash;$119</td>
-                        <td>&mdash;</td>
-                        <td><strong>$1,326&ndash;$1,692</strong></td>
-                    </tr>
-                    <tr class="grand-total">
-                        <td>TOTAL D&Iacute;A</td>
-                        <td>$468</td><td>$456</td><td>$456</td>
-                        <td>$1,176</td>
-                        <td>$621</td><td>$636</td><td>$1,148</td><td>$496</td>
-                        <td>$1,727</td><td>$503</td><td>$549</td><td>$384</td><td>$534</td><td>$776</td><td>$384</td>
-                        <td>$164</td>
-                        <td><strong>$10,558&ndash;$12,914</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="bc-note">Valores aproximados por d&iacute;a. Los totales por categor&iacute;a son los que cuentan &mdash; el desglose diario es orientativo. D4 = d&iacute;a Eurostar (ma&ntilde;ana Londres, tarde Par&iacute;s). D9 = d&iacute;a vuelo ITA (madrugada Par&iacute;s, tarde Roma).</div>
-        </div>
-
-        <!-- GASTO POR DIA — POR PERSONA -->
-        <div style="margin-top: 40px;">
-            <div class="section-title">
-                <h2>Gasto por d&iacute;a &mdash; Por persona</h2>
-                <div class="title-rule"></div>
-            </div>
-        </div>
-        <div class="budget-table-wrap" style="overflow-x:auto;">
-            <table class="budget-table" style="font-size:0.78rem;">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th style="color:var(--london);">D1<br><small>26 dic</small></th>
-                        <th style="color:var(--london);">D2<br><small>27 dic</small></th>
-                        <th style="color:var(--london);">D3<br><small>28 dic</small></th>
-                        <th style="color:var(--london);border-right:2px solid var(--london);">D4<br><small>29 dic</small></th>
-                        <th style="color:var(--paris);">D5<br><small>30 dic</small></th>
-                        <th style="color:var(--paris);">D6<br><small>31 dic</small></th>
-                        <th style="color:var(--paris);">D7<br><small>1 ene</small></th>
-                        <th style="color:var(--paris);border-right:2px solid var(--paris);">D8<br><small>2 ene</small></th>
-                        <th style="color:var(--rome);">D9<br><small>3 ene</small></th>
-                        <th style="color:var(--rome);">D10<br><small>4 ene</small></th>
-                        <th style="color:var(--rome);">D11<br><small>5 ene</small></th>
-                        <th style="color:var(--rome);">D12<br><small>6 ene</small></th>
-                        <th style="color:var(--rome);">D13<br><small>7 ene</small></th>
-                        <th style="color:var(--rome);">D14<br><small>8 ene</small></th>
-                        <th style="color:var(--rome);">D15<br><small>9 ene</small></th>
-                        <th style="color:var(--rome);">D16<br><small>10 ene</small></th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="font-weight:600;">Alojamiento</td>
-                        <td>$44&ndash;$67</td><td>$44&ndash;$67</td><td>$44&ndash;$67</td>
-                        <td>$51&ndash;$57</td>
-                        <td>$51&ndash;$57</td><td>$51&ndash;$57</td><td>$51&ndash;$57</td><td>$51&ndash;$57</td>
-                        <td>$29&ndash;$43</td><td>$29&ndash;$43</td><td>$29&ndash;$43</td><td>$29&ndash;$43</td><td>$29&ndash;$43</td><td>$29&ndash;$43</td><td>$29&ndash;$43</td>
-                        <td>&mdash;</td>
-                        <td><strong>$587&ndash;$783</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Comida</td>
-                        <td>$26&ndash;$33</td><td>$26&ndash;$33</td><td>$26&ndash;$33</td>
-                        <td>$24</td>
-                        <td>$24</td><td>$24</td><td>$24</td><td>$24</td>
-                        <td>$28&ndash;$33</td><td>$28&ndash;$33</td><td>$28&ndash;$33</td><td>$28&ndash;$33</td><td>$28&ndash;$33</td><td>$28&ndash;$33</td><td>$28&ndash;$33</td>
-                        <td>$13</td>
-                        <td><strong>$419&ndash;$477</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Transporte local</td>
-                        <td>$7</td><td>$5</td><td>$5</td>
-                        <td>$8</td>
-                        <td>$10</td><td>$8</td><td>$12</td><td>$8</td>
-                        <td>$14</td><td>$8</td><td>$8</td><td>$8</td><td>$33&ndash;$66</td><td>$51&ndash;$95</td><td>$8</td>
-                        <td>$14</td>
-                        <td><strong>$207&ndash;$284</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Vuelos / trenes<br>entre ciudades</td>
-                        <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>$113</td>
-                        <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>$212</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>&mdash;</td>
-                        <td><strong>$326</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:600;">Atracciones</td>
-                        <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-                        <td>&mdash;</td>
-                        <td>$18&ndash;$28</td><td>$23&ndash;$35</td><td>$105</td><td>&mdash;</td>
-                        <td>$6</td><td>$20</td><td>$28</td><td>$0&ndash;$20</td><td>$0&ndash;$22</td><td>$22</td><td>$0&ndash;$20</td>
-                        <td>&mdash;</td>
-                        <td><strong>$221&ndash;$282</strong></td>
-                    </tr>
-                    <tr class="per-person">
-                        <td>TOTAL D&Iacute;A</td>
-                        <td>$78</td><td>$76</td><td>$76</td>
-                        <td>$196</td>
-                        <td>$104</td><td>$106</td><td>$191</td><td>$83</td>
-                        <td>$288</td><td>$84</td><td>$92</td><td>$64</td><td>$89</td><td>$129</td><td>$64</td>
-                        <td>$27</td>
-                        <td><strong>$1,760&ndash;$2,152</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="bc-note">Valores aproximados por d&iacute;a. Los totales por categor&iacute;a en la tabla detallada de arriba son la referencia principal.</div>
-        </div>
-    </div>
-
-    <!-- ===========================
-         CHECKLIST
-    =========================== -->
     <div class="section-divider"></div>
 
     <div class="checklist-section">
         <div class="section-title">
             <h2>Checklist de reservas</h2>
-            <p>Ordenado por urgencia. Las marcadas en rojo requieren acci&oacute;n inmediata.</p>
+            <p>Hechas y pendientes, con la fecha en que abre cada una</p>
             <div class="title-rule"></div>
         </div>
 
         <div class="checklist">
+            <div class="cl-item checked-item">
+                <div class="cl-check later checked" onclick="toggleCheck(this)">
+                    <span class="cl-num-text" style="display:none">1</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">Natural History Museum &mdash; dom 27 dic 13:00</div>
+                    <div class="cl-when">Reservado (gratis)</div>
+                </div>
+                <span class="cl-badge later">Listo</span>
+            </div>
+            <div class="cl-item checked-item">
+                <div class="cl-check later checked" onclick="toggleCheck(this)">
+                    <span class="cl-num-text" style="display:none">2</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">British Museum &mdash; lun 28 dic 13:00</div>
+                    <div class="cl-when">Reservado (gratis)</div>
+                </div>
+                <span class="cl-badge later">Listo</span>
+            </div>
+            <div class="cl-item checked-item">
+                <div class="cl-check later checked" onclick="toggleCheck(this)">
+                    <span class="cl-num-text" style="display:none">3</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">National Gallery &mdash; lun 28 dic 15:45</div>
+                    <div class="cl-when">Reservado (gratis)</div>
+                </div>
+                <span class="cl-badge later">Listo</span>
+            </div>
+            <div class="cl-item checked-item">
+                <div class="cl-check later checked" onclick="toggleCheck(this)">
+                    <span class="cl-num-text" style="display:none">4</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">Louvre &mdash; mi&eacute; 30 dic 09:30</div>
+                    <div class="cl-when">Pagado (6 &times; &euro;32)</div>
+                </div>
+                <span class="cl-badge later">Listo</span>
+            </div>
+            <div class="cl-item checked-item">
+                <div class="cl-check later checked" onclick="toggleCheck(this)">
+                    <span class="cl-num-text" style="display:none">5</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">Disneyland Par&iacute;s &mdash; vie 1 ene</div>
+                    <div class="cl-when">Pagado</div>
+                </div>
+                <span class="cl-badge later">Listo</span>
+            </div>
+            <div class="cl-item checked-item">
+                <div class="cl-check later checked" onclick="toggleCheck(this)">
+                    <span class="cl-num-text" style="display:none">6</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">Versalles &mdash; s&aacute;b 2 ene 09:00</div>
+                    <div class="cl-when">Pagado (6 &times; &euro;25)</div>
+                </div>
+                <span class="cl-badge later">Listo</span>
+            </div>
             <div class="cl-item">
                 <div class="cl-check urgent" onclick="toggleCheck(this)">
-                    <span class="cl-num-text">1</span>
-                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-                </div>
-                <div class="cl-info">
-                    <div class="cl-title">Trenes Florencia y N&aacute;poles (Italo / Trenitalia)</div>
-                    <div class="cl-when">Reservar YA &mdash; mientras m&aacute;s temprano, m&aacute;s barato</div>
-                </div>
-                <span class="cl-badge urgent">Urgente</span>
-            </div>
-
-            <div class="cl-item">
-                <div class="cl-check urgent" onclick="toggleCheck(this)">
-                    <span class="cl-num-text">2</span>
-                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-                </div>
-                <div class="cl-info">
-                    <div class="cl-title">Eurostar Londres &rarr; Par&iacute;s (07:01, 29 dic)</div>
-                    <div class="cl-when">Reservar YA &mdash; precios suben cerca de la fecha</div>
-                </div>
-                <span class="cl-badge urgent">Urgente</span>
-            </div>
-
-            <div class="cl-item">
-                <div class="cl-check urgent" onclick="toggleCheck(this)">
-                    <span class="cl-num-text">3</span>
-                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-                </div>
-                <div class="cl-info">
-                    <div class="cl-title">Vuelo ITA Airways Par&iacute;s &rarr; Roma (3 ene)</div>
-                    <div class="cl-when">Reservar YA</div>
-                </div>
-                <span class="cl-badge urgent">Urgente</span>
-            </div>
-
-            <div class="cl-item">
-                <div class="cl-check urgent" onclick="toggleCheck(this)">
-                    <span class="cl-num-text">4</span>
-                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-                </div>
-                <div class="cl-info">
-                    <div class="cl-title">Alojamiento (Londres, Par&iacute;s, Roma)</div>
-                    <div class="cl-when">Reservar YA &mdash; temporada alta Navidad / A&ntilde;o Nuevo</div>
-                </div>
-                <span class="cl-badge urgent">Urgente</span>
-            </div>
-
-            <div class="cl-item">
-                <div class="cl-check soon" onclick="toggleCheck(this)">
-                    <span class="cl-num-text">5</span>
-                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-                </div>
-                <div class="cl-info">
-                    <div class="cl-title">Museos Vaticanos + Capilla Sixtina (5 ene)</div>
-                    <div class="cl-when">Reserva abre ~60 d&iacute;as antes (~6 noviembre 2026) en museivaticani.va</div>
-                </div>
-                <span class="cl-badge soon">Pronto</span>
-            </div>
-
-            <div class="cl-item">
-                <div class="cl-check soon" onclick="toggleCheck(this)">
-                    <span class="cl-num-text">6</span>
-                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-                </div>
-                <div class="cl-info">
-                    <div class="cl-title">Coliseo + Foro Romano + Palatino (4 ene)</div>
-                    <div class="cl-when">Reserva abre 30 d&iacute;as antes (~5 diciembre 2026) en ticketing.colosseo.it</div>
-                </div>
-                <span class="cl-badge soon">Pronto</span>
-            </div>
-
-            <div class="cl-item">
-                <div class="cl-check soon" onclick="toggleCheck(this)">
                     <span class="cl-num-text">7</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Versalles (30 dic)</div>
-                    <div class="cl-when">Reserva con cr&eacute;neau horaire obligatoria en chateauversailles.fr</div>
+                    <div class="cl-title">Trenes Roma &harr; N&aacute;poles &mdash; s&aacute;b 9 ene</div>
+                    <div class="cl-when">Comprar ya (suben de precio)</div>
                 </div>
-                <span class="cl-badge soon">Pronto</span>
+                <span class="cl-badge urgent">Urgente</span>
             </div>
-
             <div class="cl-item">
-                <div class="cl-check soon" onclick="toggleCheck(this)">
+                <div class="cl-check urgent" onclick="toggleCheck(this)">
                     <span class="cl-num-text">8</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Louvre (31 dic)</div>
-                    <div class="cl-when">Reserva online obligatoria en louvre.fr</div>
+                    <div class="cl-title">Pompeya &mdash; s&aacute;b 9 ene</div>
+                    <div class="cl-when">Comprar ya, junto con los trenes</div>
                 </div>
-                <span class="cl-badge soon">Pronto</span>
+                <span class="cl-badge urgent">Urgente</span>
             </div>
-
             <div class="cl-item">
                 <div class="cl-check soon" onclick="toggleCheck(this)">
                     <span class="cl-num-text">9</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Disneyland Par&iacute;s (1 ene)</div>
-                    <div class="cl-when">Comprar tickets online (m&aacute;s barato que taquilla)</div>
+                    <div class="cl-title">Casa de Ana Frank &mdash; lun 4 ene (tarde)</div>
+                    <div class="cl-when">Mar 24 nov, 04:00 hora Lima &mdash; annefrank.org</div>
                 </div>
                 <span class="cl-badge soon">Pronto</span>
             </div>
-
             <div class="cl-item">
-                <div class="cl-check later" onclick="toggleCheck(this)">
+                <div class="cl-check soon" onclick="toggleCheck(this)">
                     <span class="cl-num-text">10</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Galer&iacute;a Borghese (6 ene, opcional)</div>
-                    <div class="cl-when">Reserva abre 10 d&iacute;as antes (~27 dic 2026)</div>
+                    <div class="cl-title">Sky Garden &mdash; s&aacute;b 26 dic ~15:15</div>
+                    <div class="cl-when">Lun 30 nov, 05:00 hora Lima (plan B Horizon 22: 7 y 14 dic)</div>
                 </div>
-                <span class="cl-badge later">Despu&eacute;s</span>
+                <span class="cl-badge soon">Pronto</span>
             </div>
-
             <div class="cl-item">
-                <div class="cl-check later" onclick="toggleCheck(this)">
+                <div class="cl-check soon" onclick="toggleCheck(this)">
                     <span class="cl-num-text">11</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Galleria dell'Accademia Florencia (7 ene)</div>
-                    <div class="cl-when">Reservar online con anticipaci&oacute;n</div>
+                    <div class="cl-title">C&uacute;pula del Reichstag &mdash; mar 5 ene ~18:00</div>
+                    <div class="cl-when">Desde mar 1 dic &mdash; bundestag.de (gratis)</div>
                 </div>
-                <span class="cl-badge later">Despu&eacute;s</span>
+                <span class="cl-badge soon">Pronto</span>
             </div>
-
             <div class="cl-item">
-                <div class="cl-check later" onclick="toggleCheck(this)">
+                <div class="cl-check soon" onclick="toggleCheck(this)">
                     <span class="cl-num-text">12</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Winter Wonderland Hyde Park (28 dic)</div>
-                    <div class="cl-when">Entrada gratuita pero requiere reserva con franja horaria</div>
+                    <div class="cl-title">Museos Vaticanos + Sixtina &mdash; jue 7 ene 12:00</div>
+                    <div class="cl-when">Enero a&uacute;n no abre: revisar cada semana &mdash; tickets.museivaticani.va</div>
                 </div>
-                <span class="cl-badge later">Despu&eacute;s</span>
+                <span class="cl-badge soon">Pronto</span>
             </div>
-
             <div class="cl-item">
-                <div class="cl-check later" onclick="toggleCheck(this)">
+                <div class="cl-check soon" onclick="toggleCheck(this)">
                     <span class="cl-num-text">13</span>
                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
                 </div>
                 <div class="cl-info">
-                    <div class="cl-title">Tower of London (27 dic)</div>
-                    <div class="cl-when">Reservar online (ahorro ~10%) en hrp.org.uk</div>
+                    <div class="cl-title">Coliseo + Foro + Palatino &mdash; vie 8 ene 09:00</div>
+                    <div class="cl-when">~Mar 8 dic, 18:00 hora Lima &mdash; ticketing.colosseo.it</div>
+                </div>
+                <span class="cl-badge soon">Pronto</span>
+            </div>
+            <div class="cl-item">
+                <div class="cl-check later" onclick="toggleCheck(this)">
+                    <span class="cl-num-text">14</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">Pante&oacute;n &mdash; jue 7 ene ~17:45</div>
+                    <div class="cl-when">~Mediados de dic &mdash; app Musei Italiani (o comprar all&aacute;)</div>
+                </div>
+                <span class="cl-badge later">Despu&eacute;s</span>
+            </div>
+            <div class="cl-item">
+                <div class="cl-check later" onclick="toggleCheck(this)">
+                    <span class="cl-num-text">15</span>
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
+                </div>
+                <div class="cl-info">
+                    <div class="cl-title">Notre-Dame &mdash; mar 29 dic</div>
+                    <div class="cl-when">~S&aacute;b 26 dic (72 h antes, gratis)</div>
                 </div>
                 <span class="cl-badge later">Despu&eacute;s</span>
             </div>
@@ -2138,11 +1840,13 @@
     <div class="footer-route">
         <div class="footer-city-dot" style="background:var(--london)"></div>
         <div class="footer-city-dot" style="background:var(--paris)"></div>
+        <div class="footer-city-dot" style="background:var(--amsterdam)"></div>
+        <div class="footer-city-dot" style="background:var(--berlin)"></div>
         <div class="footer-city-dot" style="background:var(--rome)"></div>
     </div>
     <p><strong>Viaje Fin de A&ntilde;o 2026&ndash;2027</strong></p>
-    <p>6 viajeros &bull; 15 noches en Europa</p>
-    <p>&Uacute;ltima actualizaci&oacute;n: mayo 2026</p>
+    <p>6 viajeros &bull; 5 ciudades &bull; 15 noches en Europa</p>
+    <p>&Uacute;ltima actualizaci&oacute;n: 5 noviembre 2026</p>
 </footer>
 
 <script>
