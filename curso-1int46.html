@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experimentos de elección en ciencias sociales (1INT46) — José Antonio Mendoza Sánchez</title>
+  <meta name="description" content="Materiales del curso 1INT46, PUCP 2026-2: slides, código en R y experimentos en vivo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .course-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 1.2rem 0 0; }
+    .course-links a { color: var(--primary); font-size: 0.85rem; text-decoration: none; padding: 0.4rem 0.8rem; border: 1px solid var(--border); border-radius: 6px; background: white; transition: all 0.2s; }
+    .course-links a:hover { background: var(--primary); color: white; }
+    .exp-content a { color: var(--primary-light); }
+    .course-note { font-size: 0.85rem; color: var(--text-light); margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">J. A. Mendoza S.</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#teaching">Teaching</a>
+      <a href="curso-1int46.html" style="color:var(--primary);">Course</a>
+      <a href="index.html#fieldwork">Fieldwork</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="assets/uploads/cv_jose_mendoza.pdf" target="_blank">CV ↓</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:7rem;">
+  <div class="container">
+    <h2 class="section-title">Experimentos de elección en ciencias sociales</h2>
+    <p class="section-subtitle">Curso 1INT46 · Facultad de Ciencias Sociales, Pontificia Universidad Católica del Perú · 2026-2</p>
+    <p style="max-width:780px;">Slides, prácticas dirigidas, código en R con datos simulados y los experimentos que los alumnos respondieron en vivo durante las clases: encuestas en Shiny, un bot de WhatsApp, MaxDiff, conjoint y una página web con seis diseños de plataformas.</p>
+    <div class="course-links">
+      <a href="https://github.com/josemendozas/curso-1int46-experimentos" target="_blank">Repositorio en GitHub</a>
+      <a href="https://github.com/josemendozas/curso-1int46-experimentos/archive/refs/heads/main.zip">Descargar todo (.zip)</a>
+      <a href="https://josemendozas.github.io/curso-1int46-experimentos/bibliografia/bibliografia-anotada.pdf" target="_blank">Bibliografía anotada</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Semanas</h2>
+    <p class="section-subtitle">Material de cada clase</p>
+    <div class="exp-grid">
+      <div class="exp-item">
+        <div class="exp-date">Semana 1<br>20 ago</div>
+        <div class="exp-content">
+          <h3>Fundamentos de los experimentos de elección</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-01-fundamentos/slides/slides-teoria-semana01.pdf" target="_blank">Slides</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-01-fundamentos/slides/slides-paper-mutz.pdf" target="_blank">Paper: Mutz (2011)</a></li>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-01-fundamentos/setup/guia-setup.pdf" target="_blank">Guía para instalar R</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-01-fundamentos/setup" target="_blank">Scripts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 2<br>27 ago</div>
+        <div class="exp-content">
+          <h3>Split-ballot y framing</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-02-framing/slides/slides-teoria-semana02.pdf" target="_blank">Slides</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-02-framing/slides/slides-paper-kahneman-tversky.pdf" target="_blank">Paper: Kahneman y Tversky (1984)</a></li>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-02-framing/practica-dirigida/pd1-guia.pdf" target="_blank">Práctica dirigida 1</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-02-framing/practica-dirigida" target="_blank">Código</a></li>
+            <li>Experimento en vivo (Shiny): <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-02-framing/experimento-vivo" target="_blank">código</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-02-framing/experimento-vivo/guia-deploy-experimento.pdf" target="_blank">cómo publicarlo</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-02-framing/experimento-vivo/guia-codigo-shiny.pdf" target="_blank">cómo leer el código</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 3<br>3 sep</div>
+        <div class="exp-content">
+          <h3>Experimentos de provisión de información</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-03-provision-informacion/slides/slides-teoria-semana03.pdf" target="_blank">Slides</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-03-provision-informacion/slides/slides-paper-haaland-roth-wohlfart.pdf" target="_blank">Paper: Haaland, Roth y Wohlfart (2023)</a></li>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-03-provision-informacion/practica-dirigida/ejercicio-info-provision-guia.pdf" target="_blank">Ejercicio</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-03-provision-informacion" target="_blank">Código y experimento en vivo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 4<br>10 sep</div>
+        <div class="exp-content">
+          <h3>Preguntas sensibles: list y endorsement experiments</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-04-list-endorsement/slides/slides-teoria-semana04.pdf" target="_blank">Slides</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-04-list-endorsement/slides/slides-paper-blair-imai.pdf" target="_blank">Paper: Blair e Imai (2012)</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-04-list-endorsement/slides/slides-paper-bullock-imai-shapiro.pdf" target="_blank">Paper: Bullock, Imai y Shapiro (2011)</a></li>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-04-list-endorsement/practica-dirigida/pd2-guia.pdf" target="_blank">Práctica dirigida 2</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-04-list-endorsement/practica-dirigida/endorsement-guia.pdf" target="_blank">Guía de endorsement</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-04-list-endorsement" target="_blank">Código y experimentos en vivo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 5<br>17 sep</div>
+        <div class="exp-content">
+          <h3>Audit y correspondence studies</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-05-audit/slides/slides-teoria-semana05.pdf" target="_blank">Slides</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-05-audit/codigo" target="_blank">Código</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 6<br>24 sep</div>
+        <div class="exp-content">
+          <h3>Experimentos de campo digitales: A/B testing por WhatsApp</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-06-ab-whatsapp/slides/slides-teoria-semana06.pdf" target="_blank">Slides</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-06-ab-whatsapp/slides/slides-paper-karlan.pdf" target="_blank">Paper: Karlan et al. (2016)</a></li>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-06-ab-whatsapp/practica-dirigida/pd3-guia.pdf" target="_blank">Práctica dirigida 3</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-06-ab-whatsapp/practica-dirigida" target="_blank">Código</a></li>
+            <li>Bot de WhatsApp con n8n: <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-06-ab-whatsapp/bot-n8n/guia-tecnica-completa.html" target="_blank">guía técnica</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-06-ab-whatsapp/bot-n8n/flujograma-bot-karlan.html" target="_blank">flujograma</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-06-ab-whatsapp/bot-n8n" target="_blank">flujos y análisis</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 7<br>1 oct</div>
+        <div class="exp-content">
+          <h3>Experimentos con outcome textual: un LLM como instrumento de medición</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-07-bot-llm/slides/slides-teoria-semana07.pdf" target="_blank">Slides</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-07-bot-llm/slides/slides-paper-dellavigna-linos.pdf" target="_blank">Paper: DellaVigna y Linos (2022)</a></li>
+            <li>Bot con clasificación por LLM: <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-07-bot-llm/bot-n8n/guia-tecnica-sem7.html" target="_blank">guía técnica</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-07-bot-llm/bot-n8n/flujograma-bot-inflacion.html" target="_blank">flujograma</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-07-bot-llm/bot-n8n" target="_blank">flujos, prompt y análisis</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semanas 8-9</div>
+        <div class="exp-content">
+          <h3>Primer trabajo grupal</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/trabajos-grupales/tg1-guia.pdf" target="_blank">Guía del trabajo grupal 1</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 10<br>22 oct</div>
+        <div class="exp-content">
+          <h3>MaxDiff: teoría, diseño, estimación y casos</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-10-maxdiff/slides/slides-teoria-semana10.pdf" target="_blank">Slides</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-10-maxdiff" target="_blank">Práctica dirigida 4 y experimento en vivo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 11<br>29 oct</div>
+        <div class="exp-content">
+          <h3>MaxDiff: extensiones</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-11-maxdiff-extensiones/slides/slides-teoria-semana11.pdf" target="_blank">Slides</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-11-maxdiff-extensiones/codigo" target="_blank">Código</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semanas 12-13<br>12 nov</div>
+        <div class="exp-content">
+          <h3>Conjoint: teoría, diseño, estimación y análisis</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-12-13-conjoint/slides/slides-teoria-semana12-13.pdf" target="_blank">Slides</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-12-13-conjoint" target="_blank">Práctica dirigida 5 y experimento en vivo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 14<br>19 nov</div>
+        <div class="exp-content">
+          <h3>Cuando el A/B no alcanza: diseños experimentales de las plataformas digitales</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-14-plataformas/slides/slides-teoria-semana14.pdf" target="_blank">Slides</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/semana-14-plataformas/codigo" target="_blank">Código</a></li>
+            <li>Habita, la página del experimento en vivo: <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-14-plataformas/habita/index.html" target="_blank">probarla (modo prueba)</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/semana-14-plataformas/habita/panel.html?demo=1" target="_blank">panel con datos simulados</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Semana 15<br>26 nov</div>
+        <div class="exp-content">
+          <h3>Exposiciones del trabajo grupal final</h3>
+          <ul>
+            <li><a href="https://josemendozas.github.io/curso-1int46-experimentos/trabajos-grupales/tg2-guia.pdf" target="_blank">Guía del trabajo grupal 2</a> · Plantillas: <a href="https://josemendozas.github.io/curso-1int46-experimentos/plantillas/maxdiff/walkthrough.pdf" target="_blank">MaxDiff</a> · <a href="https://josemendozas.github.io/curso-1int46-experimentos/plantillas/conjoint-dce/walkthrough.pdf" target="_blank">conjoint</a> · <a href="https://github.com/josemendozas/curso-1int46-experimentos/tree/main/plantillas" target="_blank">código</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="course-note">Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank">CC BY-NC-SA 4.0</a>. No incluye las prácticas calificadas ni los textos de las lecturas.</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 José Antonio Mendoza Sánchez. Built with care.</p>
+</footer>
+
+</body>
+</html>
